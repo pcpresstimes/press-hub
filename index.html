@@ -12,6 +12,8 @@
       --times-orange-light: #fff7ed;
       --legal-gold: #854d0e;
       --legal-bg: #fefce8;
+      --classified-green: #15803d;
+      --classified-bg: #f0fdf4;
       --archive-navy: #1e3a8a;
       --archive-bg: #eff6ff;
       --obit-slate: #334155;
@@ -117,7 +119,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.15rem;
+      gap: 1.1rem;
       border-top: 1px solid var(--border);
       padding-top: 0.65rem;
       flex-wrap: wrap;
@@ -130,6 +132,12 @@
       transition: color 0.15s ease;
     }
     nav a:hover { color: var(--press-red); }
+    .nav-classifieds {
+      color: var(--classified-green) !important;
+      font-weight: 700;
+      border-bottom: 2px solid var(--classified-green);
+      padding-bottom: 2px;
+    }
     .nav-obits {
       color: var(--obit-slate) !important;
       font-weight: 700;
@@ -330,9 +338,7 @@
     }
     .btn-times:hover { background: #9a4a00; }
 
-    /* -------------------------------------------
-       HISTORICAL WEATHER WIDGET (SIDEBAR)
-    ------------------------------------------- */
+    /* Historical Weather Widget */
     .weather-widget {
       background: #ffffff;
       border: 1px solid var(--border);
@@ -463,6 +469,120 @@
       color: var(--ink);
     }
     .biz-ad-slot button:hover { background: var(--ink); color: #fff; }
+
+    /* -------------------------------------------
+       CLASSIFIEDS SECTION (100% FREE TO VIEW)
+    ------------------------------------------- */
+    #classifieds {
+      background: var(--classified-bg);
+      border: 1px solid #bbf7d0;
+      border-top: 4px solid var(--classified-green);
+      border-radius: 8px;
+      padding: 2.25rem 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .classifieds-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid #86efac;
+      padding-bottom: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+    .classifieds-header h2 {
+      font-size: 1.5rem;
+      color: #166534;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .classified-badge {
+      background: var(--classified-green);
+      color: #fff;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+    }
+    .classified-cat-filters {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .cat-btn {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 4px;
+      border: 1px solid #86efac;
+      background: #ffffff;
+      color: #166534;
+      cursor: pointer;
+    }
+    .cat-btn.active {
+      background: #166534;
+      color: #ffffff;
+    }
+    .classifieds-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .classifieds-grid { grid-template-columns: 1fr; }
+    }
+    .classified-card {
+      background: #ffffff;
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .classified-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .classified-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+    .classified-desc {
+      font-size: 0.88rem;
+      color: #4b5563;
+      margin-bottom: 0.85rem;
+      line-height: 1.45;
+    }
+    .classified-footer {
+      border-top: 1px solid #f1f5f9;
+      padding-top: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    .classified-price {
+      font-weight: 800;
+      color: #166534;
+      font-size: 1rem;
+    }
+    .classified-contact {
+      color: var(--ink);
+      font-weight: 600;
+    }
 
     /* Admin Pre-Loader Demo Box */
     .admin-preload-box {
@@ -834,6 +954,7 @@
     
     <nav>
       <a href="#coverage">Headlines</a>
+      <a href="#classifieds" class="nav-classifieds">Classifieds (Free)</a>
       <a href="#obituaries" class="nav-obits">Obituaries (Free)</a>
       <a href="#legals" class="nav-legals">Public Notices & Legals (Free)</a>
       <a href="#archives">Historical Archives</a>
@@ -849,7 +970,7 @@
     <!-- SEARCH BAR -->
     <div class="search-wrapper">
       <span style="font-size: 1.2rem;">🔍</span>
-      <input type="text" id="siteSearchInput" class="search-input" placeholder="Search entire website (e.g. 'Beavers', 'Irrigation', 'Council')..." onkeydown="if(event.key==='Enter') executeSiteSearch();" />
+      <input type="text" id="siteSearchInput" class="search-input" placeholder="Search entire website (e.g. 'Beavers', 'Tractor', 'Irrigation')..." onkeydown="if(event.key==='Enter') executeSiteSearch();" />
       <button class="search-btn" onclick="executeSiteSearch()">Search Website</button>
     </div>
 
@@ -898,7 +1019,7 @@
 
         <!-- Press Sidebar -->
         <aside>
-          <!-- Daily Historical Weather Box (Press) -->
+          <!-- Weather Box (Press) -->
           <div class="weather-widget press-weather">
             <div class="weather-widget-header">
               <h4>⛅ Weather Almanac</h4>
@@ -977,7 +1098,7 @@
 
         <!-- Times Sidebar -->
         <aside>
-          <!-- Daily Historical Weather Box (Times) -->
+          <!-- Weather Box (Times) -->
           <div class="weather-widget times-weather">
             <div class="weather-widget-header">
               <h4>⛅ Weather Almanac</h4>
@@ -1022,8 +1143,109 @@
     </div>
 
     <!-- =============================================
-         ADMIN DEMO: PRE-LOAD / SCHEDULE WEATHER DATA
+         SECTION 3: CLASSIFIEDS MARKETPLACE (ALWAYS FREE TO VIEW)
     ============================================= -->
+    <section id="classifieds">
+      <div class="classifieds-header">
+        <div>
+          <h2>
+            <span>🏷️ Community Classifieds</span>
+            <span class="classified-badge">Always Free to Read</span>
+          </h2>
+          <p style="font-size: 0.88rem; color: #166534; margin-top: 0.25rem;">
+            Published across Power and Bingham counties. Ads placed in print appear online automatically at no extra reader cost.
+          </p>
+        </div>
+        <button class="plan-button" style="background: #166534; width: auto; padding: 0.5rem 1.25rem; font-size: 0.85rem;" onclick="openSubmissionForm('Place a Classified Ad')">
+          + Place a Classified Ad
+        </button>
+      </div>
+
+      <!-- Category Filter Buttons -->
+      <div class="classified-cat-filters">
+        <button class="cat-btn active" onclick="filterClassifieds('all', this)">All Classifieds</button>
+        <button class="cat-btn" onclick="filterClassifieds('farm', this)">Farm & Ag Equipment</button>
+        <button class="cat-btn" onclick="filterClassifieds('jobs', this)">Employment / Help Wanted</button>
+        <button class="cat-btn" onclick="filterClassifieds('items', this)">For Sale & Livestock</button>
+        <button class="cat-btn" onclick="filterClassifieds('rentals', this)">Real Estate & Rentals</button>
+      </div>
+
+      <div class="classifieds-grid" id="classifiedsContainer">
+        <!-- Sample Ad 1: Ag Equipment (Times) -->
+        <div class="classified-card" data-cat="farm">
+          <div>
+            <div class="classified-meta">
+              <span style="color: var(--times-orange);">The Aberdeen Times</span>
+              <span>Run: Sep 18 – Oct 02</span>
+            </div>
+            <div class="classified-title">Case IH 8240 Combine with 35ft Header</div>
+            <p class="classified-desc">
+              Well-maintained, field-ready combine. 1,450 separator hours, dual front tires, guidance-ready system. Field inspections welcome near Aberdeen.
+            </p>
+          </div>
+          <div class="classified-footer">
+            <span class="classified-price">$142,000 OBO</span>
+            <span class="classified-contact">Call/Text: (208) 555-0192</span>
+          </div>
+        </div>
+
+        <!-- Sample Ad 2: Help Wanted (Press) -->
+        <div class="classified-card" data-cat="jobs">
+          <div>
+            <div class="classified-meta">
+              <span style="color: var(--press-red);">The Power County Press</span>
+              <span>Run: Sep 15 – Sep 29</span>
+            </div>
+            <div class="classified-title">Seasonal Grain Elevator Operator / Scale Attendant</div>
+            <p class="classified-desc">
+              Seeking reliable full-time seasonal workers for fall harvest intake in American Falls. CDL-A preferred but not required. Overtime opportunities available.
+            </p>
+          </div>
+          <div class="classified-footer">
+            <span class="classified-price">$21.50 / hr</span>
+            <span class="classified-contact">Apply at Elevator Office or Call (208) 226-5294</span>
+          </div>
+        </div>
+
+        <!-- Sample Ad 3: Livestock / For Sale (Press) -->
+        <div class="classified-card" data-cat="items">
+          <div>
+            <div class="classified-meta">
+              <span style="color: var(--press-red);">The Power County Press</span>
+              <span>Run: Sep 22 – Oct 06</span>
+            </div>
+            <div class="classified-title">Registered Nigerian Dwarf Goat Kids & Dairy Does</div>
+            <p class="classified-desc">
+              Gentle, healthy herd. Disbudded, CD&T vaccinated, raised on clean forage. Excellent milk lines for homestead or 4-H projects. Located in Power County.
+            </p>
+          </div>
+          <div class="classified-footer">
+            <span class="classified-price">$250 – $400</span>
+            <span class="classified-contact">Call: (208) 555-0144</span>
+          </div>
+        </div>
+
+        <!-- Sample Ad 4: Rental (Times) -->
+        <div class="classified-card" data-cat="rentals">
+          <div>
+            <div class="classified-meta">
+              <span style="color: var(--times-orange);">The Aberdeen Times</span>
+              <span>Run: Sep 18 – Oct 02</span>
+            </div>
+            <div class="classified-title">Commercial Shop Space & Heated Yard - South Main</div>
+            <p class="classified-desc">
+              Approx. 2,400 sq. ft. insulated shop with 14-ft roll-up bay door and office restroom. Ideal for equipment maintenance or contractor storage.
+            </p>
+          </div>
+          <div class="classified-footer">
+            <span class="classified-price">$1,150 / mo</span>
+            <span class="classified-contact">Inquire: (208) 397-4440</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN DEMO: PRE-LOAD WEATHER -->
     <div class="admin-preload-box" id="weatherAdmin">
       <h3><span>📅</span> Staff Demonstration: Pre-Load Daily Historical Weather</h3>
       <p style="font-size: 0.88rem; color: #15803d; margin-bottom: 1.25rem;">
@@ -1107,6 +1329,7 @@
       <p>Local news relies on our readers. Send us your stories, events, scores, and life milestones to be published in print and online.</p>
       
       <div class="action-button-row">
+        <button class="action-btn" onclick="openSubmissionForm('Place a Classified Ad')">🏷️ Place Classified Ad</button>
         <button class="action-btn" onclick="openSubmissionForm('Obituary Notice')">🕊️ Submit an Obituary</button>
         <button class="action-btn" onclick="openSubmissionForm('Game Score / Sports Recap')">🏈 Submit Sports Score</button>
         <button class="action-btn" onclick="openSubmissionForm('Letter to the Editor')">✍️ Letter to the Editor</button>
@@ -1162,7 +1385,7 @@
         <div style="font-size: 1.4rem;">⏰</div>
         <div>
           <strong>Weekly Newspaper Deadlines:</strong> 
-          All advertising, legal notices, obituaries, and editorial submissions are strictly due by 
+          All advertising, classifieds, legal notices, obituaries, and editorial submissions are strictly due by 
           <strong>Thursday at 12:00 PM (Noon)</strong> the week prior to publication.
         </div>
       </div>
@@ -1386,14 +1609,18 @@
     </div>
   </div>
 
-  <!-- COMMUNITY SUBMISSION / AD INQUIRY MODAL -->
+  <!-- COMMUNITY SUBMISSION / CLASSIFIED AD INQUIRY MODAL -->
   <div id="submitModal" class="modal-overlay">
     <div class="modal-box">
       <h3 id="submitModalTitle">Submit to Our Newsroom</h3>
       <p style="color: var(--muted); font-size: 0.88rem; margin-bottom: 1rem;">Submissions are reviewed by our editors and advertising team.</p>
-      <form onsubmit="event.preventDefault(); alert('Inquiry received! Our advertising and editorial desk will be in touch. (Demo preview)'); closeSubmitModal();" style="display: flex; flex-direction: column; gap: 0.75rem;">
-        <select id="submitCategorySelect" required>
+      <form onsubmit="event.preventDefault(); alert('Submission received! Our desk will review and confirm pricing or publication. (Demo preview)'); closeSubmitModal();" style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <select id="submitCategorySelect" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;">
           <option value="">Select Purpose</option>
+          <option value="classified-farm">Classified: Farm & Ag Equipment</option>
+          <option value="classified-job">Classified: Employment / Help Wanted</option>
+          <option value="classified-item">Classified: For Sale / Livestock</option>
+          <option value="classified-rental">Classified: Rentals / Real Estate</option>
           <option value="biz-press">Power County Business Directory Listing</option>
           <option value="biz-times">Aberdeen Business Directory Listing</option>
           <option value="obit">Obituary Notice</option>
@@ -1401,11 +1628,18 @@
           <option value="letter">Letter to the Editor</option>
           <option value="tip">General News Tip</option>
         </select>
+        <select required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;">
+          <option value="">Run in Which Newspaper?</option>
+          <option value="press">The Power County Press (American Falls)</option>
+          <option value="times">The Aberdeen Times (Aberdeen)</option>
+          <option value="both">Both Newspapers (Best Coverage)</option>
+        </select>
         <input type="text" placeholder="Your Name or Business Name" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
-        <input type="tel" placeholder="Phone Number" style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
+        <input type="tel" placeholder="Phone Number (Printed in ad)" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
         <input type="email" placeholder="Email Address" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
-        <textarea rows="4" placeholder="Enter business details, ad inquiry, or story details..." required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
-        <button type="submit" class="plan-button" style="background: var(--ink);">Submit Details</button>
+        <textarea rows="4" placeholder="Enter classified ad text, asking price, or inquiry details..." required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;"></textarea>
+        <p style="font-size: 0.75rem; color: var(--muted); margin: 0;">*Standard classified rates apply. Classifieds deadline: Thursday at noon the week prior to print.</p>
+        <button type="submit" class="plan-button" style="background: var(--ink);">Submit Classified for Review</button>
         <button type="button" style="background: transparent; border: none; color: var(--muted); cursor: pointer; margin-top: 5px;" onclick="closeSubmitModal()">Cancel</button>
       </form>
     </div>
@@ -1415,11 +1649,7 @@
     let isLoggedIn = false;
     let currentUserEmail = '';
 
-    /* =========================================================
-       TWO SEPARATE PRE-LOADED DATA STORES:
-       One calendar dictionary for The Press, one for The Times.
-       Key format: "M-D" (e.g. "9-22" for September 22)
-    ========================================================= */
+    // Weather Calendars
     const pressWeatherCalendar = {
       "9-22": {
         high: "88°F (1990)",
@@ -1462,7 +1692,6 @@
       }
     };
 
-    // Automatically detect today's date and swap data
     function renderDailyHistoricalWeather() {
       const now = new Date();
       const month = now.getMonth() + 1;
@@ -1471,7 +1700,6 @@
 
       const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-      // Fallback template if a day hasn't been pre-loaded yet
       const pressEntry = pressWeatherCalendar[key] || {
         high: "75°F (Avg)",
         low: "41°F (Avg)",
@@ -1486,14 +1714,12 @@
         note: `Average historical climate readings for ${dateStr} in Aberdeen & Bingham County.`
       };
 
-      // Set Press Box
       document.getElementById('weatherDatePress').innerText = `${dateStr} in History`;
       document.getElementById('weatherHighPress').innerText = pressEntry.high;
       document.getElementById('weatherLowPress').innerText = pressEntry.low;
       document.getElementById('weatherPrecipPress').innerText = pressEntry.precip;
       document.getElementById('weatherNotePress').innerText = pressEntry.note;
 
-      // Set Times Box
       document.getElementById('weatherDateTimes').innerText = `${dateStr} in History`;
       document.getElementById('weatherHighTimes').innerText = timesEntry.high;
       document.getElementById('weatherLowTimes').innerText = timesEntry.low;
@@ -1501,7 +1727,6 @@
       document.getElementById('weatherNoteTimes').innerText = timesEntry.note;
     }
 
-    // Interactive Admin Simulation: Saves entries immediately for demonstration
     function adminSaveWeather() {
       const now = new Date();
       const key = `${now.getMonth() + 1}-${now.getDate()}`;
@@ -1527,7 +1752,24 @@
 
     window.addEventListener('DOMContentLoaded', renderDailyHistoricalWeather);
 
-    // Site Search Database
+    // Classifieds Category Filter
+    function filterClassifieds(cat, btn) {
+      const buttons = document.querySelectorAll('.cat-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.classified-card');
+      cards.forEach(card => {
+        const itemCat = card.getAttribute('data-cat');
+        if (cat === 'all' || itemCat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Site Search Database (Including Classifieds)
     const siteIndex = [
       {
         title: "American Falls Beavers Clinch Conference Title With Fourth-Quarter Defensive Stand",
@@ -1546,6 +1788,24 @@
         teaser: "ABERDEEN — In a unanimous 5-0 decision Tuesday evening, the Aberdeen City Council approved a comprehensive commercial facade improvement program aimed at downtown retailers.",
         rest: "The incentive matching funds will cover up to 50 percent of approved exterior renovations, storefront signage, and historic brick repairs along South Main Street. Funding allocations begin on November 1st.",
         keywords: "aberdeen council downtown business revitalization grants main street"
+      },
+      {
+        title: "Case IH 8240 Combine with 35ft Header (Classified)",
+        paper: "The Aberdeen Times",
+        date: "Sep 18, 2026",
+        isPaid: false,
+        teaser: "Well-maintained, field-ready combine. 1,450 separator hours, dual front tires, guidance-ready system. Field inspections welcome near Aberdeen.",
+        rest: "Price: $142,000 OBO. Call or text: (208) 555-0192.",
+        keywords: "combine case ih tractor header farm ag classified equipment"
+      },
+      {
+        title: "Registered Nigerian Dwarf Goat Kids & Dairy Does (Classified)",
+        paper: "The Power County Press",
+        date: "Sep 22, 2026",
+        isPaid: false,
+        teaser: "Gentle, healthy herd. Disbudded, vaccinated, raised on clean forage. Excellent milk lines for homestead or 4-H projects.",
+        rest: "Price: $250 - $400. Located in Power County. Call: (208) 555-0144.",
+        keywords: "goats nigerian dwarf livestock kids dairy farm classified"
       },
       {
         title: "American Falls Library District Extends Fall Operating Hours",
@@ -1591,7 +1851,7 @@
       document.getElementById('searchQueryLabel').innerText = `Showing ${results.length} result(s) for "${q}":`;
 
       if (results.length === 0) {
-        listContainer.innerHTML = '<p style="color: var(--muted); font-size: 0.9rem;">No articles matched that keyword. Try searching for "Beavers", "Irrigation", or "Council".</p>';
+        listContainer.innerHTML = '<p style="color: var(--muted); font-size: 0.9rem;">No results matched that keyword. Try searching for "Beavers", "Combine", or "Goats".</p>';
       } else {
         results.forEach(item => {
           const itemDiv = document.createElement('div');
@@ -1763,4 +2023,3 @@
   </script>
 </body>
 </html>
-        
