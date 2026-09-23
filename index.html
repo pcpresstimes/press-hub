@@ -12,6 +12,8 @@
       --times-orange-light: #fff7ed;
       --legal-gold: #854d0e;
       --legal-bg: #fefce8;
+      --archive-navy: #1e3a8a;
+      --archive-bg: #eff6ff;
       --bg-warm: #fafaf9;
       --card-bg: #ffffff;
       --border: #e7e5e4;
@@ -80,7 +82,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.4rem;
       border-top: 1px solid var(--border);
       padding-top: 0.65rem;
       flex-wrap: wrap;
@@ -98,6 +100,10 @@
       font-weight: 700;
       border-bottom: 2px solid var(--legal-gold);
       padding-bottom: 2px;
+    }
+    .nav-archive {
+      color: var(--archive-navy) !important;
+      font-weight: 600;
     }
     .nav-cta {
       background: var(--ink);
@@ -223,7 +229,55 @@
     .btn-times:hover { background: #9a4a00; }
 
     /* -------------------------------------------
-       PUBLIC NOTICES & LEGALS SECTION (FREE)
+       DIGITAL ARCHIVES SECTION (COMING SOON)
+    ------------------------------------------- */
+    #archives {
+      background: var(--archive-bg);
+      border: 1px solid #bfdbfe;
+      border-top: 4px solid var(--archive-navy);
+      border-radius: 8px;
+      padding: 2.25rem 1.75rem;
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+    .archive-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .archive-badge {
+      background: var(--archive-navy);
+      color: #fff;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+    .archive-preview-box {
+      background: #ffffff;
+      border: 1px dashed #93c5fd;
+      border-radius: 6px;
+      padding: 1.75rem;
+      text-align: center;
+    }
+    .archive-features-list {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      color: #1e3a8a;
+      font-weight: 600;
+    }
+
+    /* -------------------------------------------
+       PUBLIC NOTICES & LEGALS (FREE)
     ------------------------------------------- */
     #legals {
       background: var(--legal-bg);
@@ -401,6 +455,10 @@
       font-weight: bold;
       margin-right: 0.5rem;
     }
+    .perk-upcoming {
+      color: var(--archive-navy);
+      font-weight: 700;
+    }
 
     .plan-button {
       width: 100%;
@@ -458,8 +516,6 @@
       border-top: 5px solid var(--ink);
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
-    .modal-box h3 { margin-bottom: 0.5rem; font-size: 1.35rem; color: var(--ink); }
-    .modal-box p { font-size: 0.92rem; color: #4b5563; margin-bottom: 1.25rem; }
   </style>
 </head>
 <body>
@@ -471,7 +527,7 @@
       
       <div class="masthead-divider"></div>
       
-      <!-- The Aberdeen Times Clean Logo -->
+      <!-- The Aberdeen Times Logo -->
       <img src="times-logo.jpg" alt="The Aberdeen Times - Serving Aberdeen and Bingham County" class="masthead-logo-times" />
     </div>
 
@@ -481,6 +537,7 @@
       <a href="#papers">Publications</a>
       <a href="#latest">Headlines</a>
       <a href="#legals" class="nav-legals">Public Notices & Legals (Free)</a>
+      <a href="#archives" class="nav-archive">Historical Archives</a>
       <a href="#rates" class="nav-cta">Subscribe / Rates</a>
       <a href="#contact">Contact Newsrooms</a>
     </nav>
@@ -530,6 +587,37 @@
         <button class="btn-times" onclick="openPaywall('The Aberdeen Times', 'var(--times-orange)')">Read Full Story</button>
       </div>
     </div>
+
+    <!-- =============================================
+         DIGITAL ARCHIVES PREVIEW (COMING SOON)
+    ============================================= -->
+    <section id="archives">
+      <div class="archive-header">
+        <div>
+          <h2 style="color: var(--archive-navy); font-size: 1.5rem; margin-bottom: 0.25rem;">
+            Searchable Historical Newspaper Archives
+          </h2>
+          <p style="color: #334155; font-size: 0.92rem;">
+            We are digitizing over a century of local history from American Falls, Aberdeen, and surrounding communities.
+          </p>
+        </div>
+        <span class="archive-badge">Coming Soon • Subscriber Perk</span>
+      </div>
+
+      <div class="archive-preview-box">
+        <h3 style="color: #0f172a; margin-bottom: 0.5rem; font-size: 1.15rem;">Over 100 Years of Community History at Your Fingertips</h3>
+        <p style="color: #475569; font-size: 0.9rem; max-width: 700px; margin: 0 auto;">
+          Digital subscribers will soon have complete, on-demand access to searchable PDF archives of past editions of both <strong>The Power County Press</strong> and <strong>The Aberdeen Times</strong>. Search by family name, historical event, obituary date, or high school sports records.
+        </p>
+
+        <div class="archive-features-list">
+          <span>🔍 Keyword & Name Search</span>
+          <span>📄 Full Original PDF Layouts</span>
+          <span>📅 Issues Dating Back to 1911</span>
+          <span>🔓 Included with All Digital Subscriptions</span>
+        </div>
+      </div>
+    </section>
 
     <!-- =============================================
          PUBLIC NOTICES & LEGALS (PERMANENTLY FREE)
@@ -587,7 +675,7 @@
     <section id="rates">
       <div class="rates-heading">
         <h2>Subscription Rates & Services</h2>
-        <p>Support independent local journalism in Southern Idaho. Tax is included on all subscriptions. Digital subscribers receive next-day game coverage and breaking alerts.</p>
+        <p>Support independent local journalism in Southern Idaho. Tax is included on all subscriptions. Digital subscribers receive next-day game coverage, breaking alerts, and upcoming archive access.</p>
       </div>
 
       <div class="pricing-grid">
@@ -605,6 +693,7 @@
               <li><strong>Both newspapers included</strong> for one fee</li>
               <li>Next-day scores & game recaps</li>
               <li>Early access before the print edition drops</li>
+              <li class="perk-upcoming">Coming Soon: Searchable PDF historical archives</li>
               <li>Multi-year rates: $120 (2-yr) / $175 (3-yr)</li>
               <li>Same rate everywhere (In or Out of Idaho)</li>
             </ul>
@@ -625,6 +714,7 @@
               <li>Mailed paper of your choice</li>
               <li>Full digital access to <strong>both</strong> papers</li>
               <li>Next-day sports & event coverage</li>
+              <li>Searchable historical PDF archives access</li>
               <li>$95/year for both papers mailed + web</li>
               <li>Out of Idaho mailed combo: $90/year</li>
             </ul>
@@ -680,7 +770,7 @@
   <div id="paywallModal" class="modal-overlay">
     <div class="modal-box" id="modalBox" style="text-align: center;">
       <h3 id="paywallTitle">Subscriber Exclusive</h3>
-      <p>This reporting is supported directly by our subscribers. Join today for full digital access to both newspapers.</p>
+      <p>This reporting is supported directly by our subscribers. Join today for full digital access to both newspapers, early breaking stories, and upcoming historical archives.</p>
       <button class="plan-button" id="modalBtn" onclick="closePaywall(); window.location.href='#rates';">View Plans & Rates (From $65/yr)</button>
       <br />
       <button style="margin-top: 12px; background: transparent; border: none; color: var(--muted); cursor: pointer;" onclick="closePaywall()">Close Preview</button>
