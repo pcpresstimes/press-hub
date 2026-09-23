@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Download Aberdeen Times Logo</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    .card {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 720px;
+    }
+    svg {
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      margin-bottom: 1.5rem;
+      max-width: 100%;
+      height: auto;
+    }
+    button {
+      background: #c25e00;
+      color: #fff;
+      border: none;
+      padding: 0.85rem 1.75rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background: #9a4a00; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2 style="margin-top: 0; color: #111827;">The Aberdeen Times Clean Logo</h2>
+    <p style="color: #6b7280; margin-bottom: 1.5rem;">Click below to download the high-resolution image to your computer.</p>
+    
+    <svg id="logoSvg" width="680" height="200" viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="340" height="100" fill="#ffffff"/>
+      <!-- Sun & Horizon -->
+      <circle cx="55" cy="48" r="32" fill="#fff7ed" stroke="#c25e00" stroke-width="2" />
+      <path d="M23 48 C35 44, 75 44, 87 48" stroke="#c25e00" stroke-width="1.5" fill="none" />
+      <path d="M25 54 L85 54" stroke="#c25e00" stroke-width="1" />
+      <!-- Field Perspective Lines -->
+      <path d="M30 60 L18 88" stroke="#111827" stroke-width="1.5" />
+      <path d="M42 60 L38 88" stroke="#111827" stroke-width="1.5" />
+      <path d="M54 60 L58 88" stroke="#111827" stroke-width="1.5" />
+      <path d="M66 60 L78 88" stroke="#111827" stroke-width="1.5" />
+      <!-- Wheat Stalks -->
+      <path d="M85 86 C82 55, 96 22, 102 12" stroke="#c25e00" stroke-width="2.5" fill="none" stroke-linecap="round" />
+      <path d="M84 86 C78 58, 86 28, 90 18" stroke="#c25e00" stroke-width="2.5" fill="none" stroke-linecap="round" />
+      <!-- Wheat Grains -->
+      <ellipse cx="98" cy="18" rx="4" ry="7" fill="#d97706" transform="rotate(25 98 18)" />
+      <ellipse cx="106" cy="14" rx="4" ry="7" fill="#d97706" transform="rotate(-20 106 14)" />
+      <ellipse cx="94" cy="28" rx="4" ry="7" fill="#d97706" transform="rotate(30 94 28)" />
+      <ellipse cx="102" cy="24" rx="4" ry="7" fill="#d97706" transform="rotate(-15 102 24)" />
+      <ellipse cx="88" cy="25" rx="3.5" ry="6" fill="#c25e00" transform="rotate(20 88 25)" />
+      <ellipse cx="84" cy="35" rx="3.5" ry="6" fill="#c25e00" transform="rotate(25 84 35)" />
+      <!-- Divider Rule -->
+      <line x1="112" y1="45" x2="330" y2="45" stroke="#111827" stroke-width="1.5" />
+      <!-- Serif Typography -->
+      <text x="114" y="38" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="bold" fill="#111827" letter-spacing="0.5">The Aberdeen</text>
+      <text x="112" y="86" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="normal" fill="#111827">Times</text>
+    </svg>
+    <br>
+    <button onclick="downloadPng()">Download as PNG Image</button>
+  </div>
+
+  <script>
+    function downloadPng() {
+      const svg = document.getElementById('logoSvg');
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const canvas = document.createElement('canvas');
+      canvas.width = 1360;
+      canvas.height = 400;
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, 1360, 400);
+        const a = document.createElement('a');
+        a.download = 'times-logo.png';
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+      };
+    }
+  </script>
+</body>
+</html>
