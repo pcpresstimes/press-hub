@@ -14,6 +14,8 @@
       --legal-bg: #fefce8;
       --archive-navy: #1e3a8a;
       --archive-bg: #eff6ff;
+      --obit-slate: #334155;
+      --obit-bg: #f8fafc;
       --bg-warm: #fafaf9;
       --card-bg: #ffffff;
       --border: #e7e5e4;
@@ -26,6 +28,18 @@
       color: var(--ink);
       line-height: 1.6;
     }
+
+    /* Top Dateline Bar */
+    .top-bar {
+      background: #1e293b;
+      color: #cbd5e1;
+      font-size: 0.78rem;
+      padding: 0.4rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar span { font-weight: 500; }
 
     /* Dual Masthead Header */
     header {
@@ -82,7 +96,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.4rem;
+      gap: 1.25rem;
       border-top: 1px solid var(--border);
       padding-top: 0.65rem;
       flex-wrap: wrap;
@@ -95,15 +109,17 @@
       transition: color 0.15s ease;
     }
     nav a:hover { color: var(--press-red); }
+    .nav-obits {
+      color: var(--obit-slate) !important;
+      font-weight: 700;
+      border-bottom: 2px solid var(--obit-slate);
+      padding-bottom: 2px;
+    }
     .nav-legals {
       color: var(--legal-gold) !important;
       font-weight: 700;
       border-bottom: 2px solid var(--legal-gold);
       padding-bottom: 2px;
-    }
-    .nav-archive {
-      color: var(--archive-navy) !important;
-      font-weight: 600;
     }
     .nav-cta {
       background: var(--ink);
@@ -117,35 +133,56 @@
 
     .container { max-width: 1040px; margin: 2rem auto; padding: 0 1rem; }
 
-    /* Publication Selector Cards */
-    .paper-hub {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-    @media (max-width: 640px) {
-      .paper-hub { grid-template-columns: 1fr; }
-    }
-    .paper-card {
-      background: var(--card-bg);
+    /* Desk Selector Bar */
+    .desk-selector-box {
+      background: #ffffff;
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.5rem;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 2rem;
       text-align: center;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
-    .paper-card.press-card { border-top: 5px solid var(--press-red); }
-    .paper-card.times-card { border-top: 5px solid var(--times-orange); }
-    .paper-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+    .desk-selector-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
     }
-    .paper-card h2 { font-size: 1.35rem; margin-bottom: 0.25rem; }
-    .paper-card.press-card h2 { color: var(--press-red); }
-    .paper-card.times-card h2 { color: var(--times-orange); }
-    .paper-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .desk-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 0.6rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 6px;
+      border: 2px solid var(--border);
+      background: #ffffff;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .filter-btn.active-all {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+    .filter-btn.active-press {
+      background: var(--press-red);
+      color: #fff;
+      border-color: var(--press-red);
+    }
+    .filter-btn.active-times {
+      background: var(--times-orange);
+      color: #fff;
+      border-color: var(--times-orange);
+    }
 
     /* Section Headers */
     .section-header {
@@ -171,6 +208,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform 0.15s ease;
     }
     .badge {
       display: inline-block;
@@ -184,6 +222,7 @@
     }
     .badge-press { background: #fef2f2; color: var(--press-red); border: 1px solid #fecaca; }
     .badge-times { background: var(--times-orange-light); color: var(--times-orange); border: 1px solid #fed7aa; }
+    .badge-both { background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; }
 
     .article-card .paper-tag {
       font-size: 0.75rem;
@@ -194,6 +233,7 @@
     }
     .article-card.press-theme .paper-tag { color: var(--press-red); }
     .article-card.times-theme .paper-tag { color: var(--times-orange); }
+    .article-card.both-theme .paper-tag { color: #475569; }
 
     .article-card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; line-height: 1.35; }
     .article-card p { font-size: 0.92rem; color: #44403c; }
@@ -228,9 +268,86 @@
     }
     .btn-times:hover { background: #9a4a00; }
 
-    /* -------------------------------------------
-       DIGITAL ARCHIVES SECTION (COMING SOON)
-    ------------------------------------------- */
+    /* OBITUARIES SECTION */
+    #obituaries {
+      background: var(--obit-bg);
+      border: 1px solid #cbd5e1;
+      border-top: 4px solid var(--obit-slate);
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .obit-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .obit-header h2 { font-size: 1.45rem; color: var(--obit-slate); }
+    .obit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .obit-grid { grid-template-columns: 1fr; }
+    }
+    .obit-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .obit-name { font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: 0.25rem; font-family: Georgia, serif; }
+    .obit-dates { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.6rem; font-weight: 600; }
+    .obit-text { font-size: 0.9rem; color: #475569; margin-bottom: 1rem; line-height: 1.5; }
+
+    /* COMMUNITY ACTIONS HUB */
+    .community-actions-hub {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      margin-bottom: 3.5rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .community-actions-hub h2 { font-size: 1.4rem; color: var(--ink); margin-bottom: 0.5rem; }
+    .community-actions-hub p { color: var(--muted); font-size: 0.9rem; max-width: 650px; margin: 0 auto 1.5rem; }
+    .action-button-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .action-btn {
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg-warm);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.15s ease;
+    }
+    .action-btn:hover {
+      background: #1e293b;
+      color: #fff;
+      border-color: #1e293b;
+    }
+
+    /* DIGITAL ARCHIVES SECTION */
     #archives {
       background: var(--archive-bg);
       border: 1px solid #bfdbfe;
@@ -238,7 +355,6 @@
       border-radius: 8px;
       padding: 2.25rem 1.75rem;
       margin-bottom: 3.5rem;
-      position: relative;
     }
     .archive-header {
       display: flex;
@@ -256,7 +372,6 @@
       font-weight: 700;
       padding: 0.25rem 0.65rem;
       border-radius: 20px;
-      letter-spacing: 0.5px;
     }
     .archive-preview-box {
       background: #ffffff;
@@ -265,20 +380,8 @@
       padding: 1.75rem;
       text-align: center;
     }
-    .archive-features-list {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 1.25rem;
-      flex-wrap: wrap;
-      font-size: 0.88rem;
-      color: #1e3a8a;
-      font-weight: 600;
-    }
 
-    /* -------------------------------------------
-       PUBLIC NOTICES & LEGALS (FREE)
-    ------------------------------------------- */
+    /* PUBLIC NOTICES & LEGALS */
     #legals {
       background: var(--legal-bg);
       border: 1px solid #fef08a;
@@ -297,13 +400,7 @@
       border-bottom: 1px solid #fde047;
       padding-bottom: 0.75rem;
     }
-    .legals-header h2 {
-      font-size: 1.5rem;
-      color: #713f12;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+    .legals-header h2 { font-size: 1.5rem; color: #713f12; }
     .public-badge {
       background: #ca8a04;
       color: #fff;
@@ -312,12 +409,6 @@
       font-weight: 700;
       padding: 0.2rem 0.6rem;
       border-radius: 3px;
-      letter-spacing: 0.5px;
-    }
-    .legal-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
     }
     .legal-item {
       background: #ffffff;
@@ -329,28 +420,7 @@
       align-items: center;
       gap: 1.25rem;
       flex-wrap: wrap;
-    }
-    .legal-meta {
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.25rem;
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-    }
-    .legal-tag-press { color: var(--press-red); }
-    .legal-tag-times { color: var(--times-orange); }
-    .legal-title {
-      font-size: 1.05rem;
-      color: var(--ink);
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-    .legal-snippet {
-      font-size: 0.88rem;
-      color: #57534e;
+      margin-bottom: 1rem;
     }
     .btn-legal-read {
       background: #ffffff;
@@ -361,12 +431,8 @@
       font-weight: 600;
       font-size: 0.85rem;
       cursor: pointer;
-      white-space: nowrap;
     }
-    .btn-legal-read:hover {
-      background: #ca8a04;
-      color: #fff;
-    }
+    .btn-legal-read:hover { background: #ca8a04; color: #fff; }
 
     /* RATES & SUBSCRIPTIONS */
     #rates {
@@ -377,11 +443,7 @@
       margin-bottom: 3.5rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     }
-    .rates-heading {
-      text-align: center;
-      max-width: 650px;
-      margin: 0 auto 2rem;
-    }
+    .rates-heading { text-align: center; max-width: 650px; margin: 0 auto 2rem; }
     .rates-heading h2 { font-size: 1.8rem; color: var(--ink); margin-bottom: 0.5rem; }
     .rates-heading p { color: var(--muted); font-size: 0.95rem; }
 
@@ -394,7 +456,6 @@
     @media (max-width: 850px) {
       .pricing-grid { grid-template-columns: 1fr; }
     }
-
     .plan-card {
       background: var(--bg-warm);
       border: 1px solid var(--border);
@@ -430,15 +491,9 @@
     }
     .plan-card h3 { font-size: 1.3rem; margin-bottom: 0.35rem; color: var(--ink); }
     .plan-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.25rem; min-height: 40px; }
-
-    .plan-price {
-      margin-bottom: 1.25rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid var(--border);
-    }
+    .plan-price { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
     .plan-price .amount { font-size: 2.2rem; font-weight: 800; color: var(--ink); }
     .plan-price .period { font-size: 0.85rem; color: var(--muted); }
-
     .plan-features {
       list-style: none;
       font-size: 0.88rem;
@@ -449,17 +504,7 @@
       gap: 0.5rem;
       text-align: left;
     }
-    .plan-features li::before {
-      content: "✓";
-      color: #059669;
-      font-weight: bold;
-      margin-right: 0.5rem;
-    }
-    .perk-upcoming {
-      color: var(--archive-navy);
-      font-weight: 700;
-    }
-
+    .plan-features li::before { content: "✓"; color: #059669; font-weight: bold; margin-right: 0.5rem; }
     .plan-button {
       width: 100%;
       padding: 0.75rem;
@@ -470,27 +515,71 @@
       font-weight: 700;
       cursor: pointer;
       font-size: 0.9rem;
-      transition: opacity 0.15s ease;
     }
-    .plan-button:hover { opacity: 0.9; }
 
-    /* Contact Form */
-    .contact-section {
+    /* -------------------------------------------
+       CONTACT & OFFICES SECTION (DETAILED)
+    ------------------------------------------- */
+    #offices {
+      margin-bottom: 3.5rem;
+    }
+    .deadline-banner {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-left: 5px solid var(--press-red);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .deadline-banner strong { color: #991b1b; }
+
+    .offices-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .offices-grid { grid-template-columns: 1fr; }
+    }
+    .office-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 2rem;
-      max-width: 650px;
-      margin: 0 auto;
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
-    .contact-section form { display: flex; flex-direction: column; gap: 0.85rem; }
-    .contact-section input, .contact-section select, .contact-section textarea {
-      width: 100%;
-      padding: 0.7rem;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 0.95rem;
+    .office-card.press-office { border-top: 5px solid var(--press-red); }
+    .office-card.times-office { border-top: 5px solid var(--times-orange); }
+
+    .office-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--ink); }
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.9rem;
+      font-size: 0.92rem;
+    }
+    .contact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.15rem;
+    }
+    .contact-value {
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .contact-value a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .contact-value a:hover {
+      text-decoration: underline;
     }
 
     /* Modal Styling */
@@ -520,6 +609,12 @@
 </head>
 <body>
 
+  <!-- Dateline Bar -->
+  <div class="top-bar">
+    <span>Published in American Falls & Aberdeen, Idaho</span>
+    <span>Tuesday, September 22, 2026</span>
+  </div>
+
   <header>
     <div class="masthead-wrapper">
       <!-- Power County Press Logo -->
@@ -534,39 +629,37 @@
     <p class="tagline">Local News • Public Notices • Community Reporting</p>
     
     <nav>
-      <a href="#papers">Publications</a>
-      <a href="#latest">Headlines</a>
+      <a href="#coverage">Headlines</a>
+      <a href="#obituaries" class="nav-obits">Obituaries (Free)</a>
       <a href="#legals" class="nav-legals">Public Notices & Legals (Free)</a>
-      <a href="#archives" class="nav-archive">Historical Archives</a>
+      <a href="#archives">Historical Archives</a>
+      <a href="#submissions">Community Submissions</a>
+      <a href="#offices">Offices & Contact</a>
       <a href="#rates" class="nav-cta">Subscribe / Rates</a>
-      <a href="#contact">Contact Newsrooms</a>
     </nav>
   </header>
 
   <div class="container">
-    <!-- Publication Selector Cards -->
-    <div id="papers" class="paper-hub">
-      <div class="paper-card press-card">
-        <h2>The Power County Press</h2>
-        <p>Serving American Falls and Power County, Idaho</p>
-        <button class="btn-press">View Press Stories</button>
-      </div>
-      <div class="paper-card times-card">
-        <h2>The Aberdeen Times</h2>
-        <p>Serving Aberdeen and Bingham County since 1911</p>
-        <button class="btn-times">View Times Stories</button>
+
+    <!-- DESK / PUBLICATION FILTER -->
+    <div class="desk-selector-box" id="coverage">
+      <div class="desk-selector-title">Filter Coverage by Publication:</div>
+      <div class="desk-buttons">
+        <button class="filter-btn active-all" id="btnFilterAll" onclick="filterDesk('all')">All Community News</button>
+        <button class="filter-btn" id="btnFilterPress" onclick="filterDesk('press')">The Power County Press</button>
+        <button class="filter-btn" id="btnFilterTimes" onclick="filterDesk('times')">The Aberdeen Times</button>
       </div>
     </div>
 
     <!-- Stories Grid -->
     <div class="section-header">
-      <h2 id="latest">Recent Coverage</h2>
+      <h2 id="streamHeading">Recent News Coverage</h2>
       <span style="font-size: 0.85rem; color: var(--muted);">Click paid story to test paywall</span>
     </div>
 
-    <div class="articles">
-      <!-- Free Story: Press -->
-      <div class="article-card press-theme">
+    <div class="articles" id="articleStream">
+      <!-- Story 1: Press Only -->
+      <div class="article-card press-theme" data-desk="press">
         <div>
           <div class="paper-tag">The Power County Press</div>
           <span class="badge badge-press">Free Public Story</span>
@@ -576,8 +669,8 @@
         <button class="btn-press">Read Free</button>
       </div>
 
-      <!-- Paid Story: Times -->
-      <div class="article-card times-theme">
+      <!-- Story 2: Times Only -->
+      <div class="article-card times-theme" data-desk="times">
         <div>
           <div class="paper-tag">The Aberdeen Times</div>
           <span class="badge badge-times">Subscribers Only</span>
@@ -586,11 +679,76 @@
         </div>
         <button class="btn-times" onclick="openPaywall('The Aberdeen Times', 'var(--times-orange)')">Read Full Story</button>
       </div>
+
+      <!-- Story 3: Both Publications -->
+      <div class="article-card both-theme" data-desk="both">
+        <div>
+          <div class="paper-tag">Published in Both Newspapers</div>
+          <span class="badge badge-both">Regional News • Free</span>
+          <h3>Snake River Water District Issues Seasonal Irrigation Shutoff Schedule</h3>
+          <p>Canal flow reductions will begin across Power and Bingham counties on October 15th to facilitate scheduled canal bank maintenance...</p>
+        </div>
+        <button class="btn-press" style="background: var(--ink);">Read Full Report</button>
+      </div>
     </div>
 
     <!-- =============================================
-         DIGITAL ARCHIVES PREVIEW (COMING SOON)
+         COMMUNITY OBITUARIES (PERMANENTLY FREE)
     ============================================= -->
+    <section id="obituaries">
+      <div class="obit-header">
+        <div>
+          <h2>Community Obituaries & Remembrances</h2>
+          <p style="font-size: 0.88rem; color: #64748b; margin-top: 0.25rem;">
+            Honoring the lives of our neighbors across Power and Bingham counties. Always free to read without a subscription.
+          </p>
+        </div>
+        <a href="#submissions" style="font-size: 0.85rem; color: var(--obit-slate); font-weight: 700; text-decoration: none;">Submit an Obituary Notice →</a>
+      </div>
+
+      <div class="obit-grid">
+        <!-- Sample Obituary 1 -->
+        <div class="obit-card">
+          <div>
+            <div class="obit-name">Evelyn Rose Miller (88)</div>
+            <div class="obit-dates">November 14, 1937 – September 18, 2026 • American Falls, Idaho</div>
+            <p class="obit-text">
+              Evelyn was a beloved educator in the Power County School District for 34 years and an active volunteer at the community center. Memorial services will be held on Saturday...
+            </p>
+          </div>
+          <button class="btn-legal-read" style="border-color: #64748b; color: #334155;" onclick="openObitModal('Evelyn Rose Miller', 'November 14, 1937 – September 18, 2026', 'American Falls, ID', 'Full service details: Services will be conducted at 11:00 AM on Saturday, September 26, 2026 at the American Falls Community Church. Interment will follow at Falls View Cemetery.')">Read Full Obituary</button>
+        </div>
+
+        <!-- Sample Obituary 2 -->
+        <div class="obit-card">
+          <div>
+            <div class="obit-name">Dale Kenneth Wahlen (74)</div>
+            <div class="obit-dates">March 2, 1952 – September 15, 2026 • Aberdeen, Idaho</div>
+            <p class="obit-text">
+              A lifelong Aberdeen farmer and dedicated community leader who served on the canal board and supported high school athletics throughout his life...
+            </p>
+          </div>
+          <button class="btn-legal-read" style="border-color: #64748b; color: #334155;" onclick="openObitModal('Dale Kenneth Wahlen', 'March 2, 1952 – September 15, 2026', 'Aberdeen, ID', 'Full service details: Family visitation will be held Friday evening from 6:00 to 8:00 PM. Graveside dedication will take place at the Aberdeen Cemetery on Saturday morning.')">Read Full Obituary</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         COMMUNITY SUBMISSIONS HUB
+    ============================================= -->
+    <section id="submissions" class="community-actions-hub">
+      <h2>Community Submissions & Newsroom Desk</h2>
+      <p>Local news relies on our readers. Send us your stories, events, scores, and life milestones to be published in print and online.</p>
+      
+      <div class="action-button-row">
+        <button class="action-btn" onclick="openSubmissionForm('Obituary Notice')">🕊️ Submit an Obituary</button>
+        <button class="action-btn" onclick="openSubmissionForm('Game Score / Sports Recap')">🏈 Submit Sports Score</button>
+        <button class="action-btn" onclick="openSubmissionForm('Letter to the Editor')">✍️ Letter to the Editor</button>
+        <button class="action-btn" onclick="openSubmissionForm('General News Tip')">📢 Send News Tip</button>
+      </div>
+    </section>
+
+    <!-- DIGITAL ARCHIVES PREVIEW -->
     <section id="archives">
       <div class="archive-header">
         <div>
@@ -598,7 +756,7 @@
             Searchable Historical Newspaper Archives
           </h2>
           <p style="color: #334155; font-size: 0.92rem;">
-            We are digitizing over a century of local history from American Falls, Aberdeen, and surrounding communities.
+            Digitizing over a century of local history from American Falls, Aberdeen, and Bingham County.
           </p>
         </div>
         <span class="archive-badge">Coming Soon • Subscriber Perk</span>
@@ -609,64 +767,90 @@
         <p style="color: #475569; font-size: 0.9rem; max-width: 700px; margin: 0 auto;">
           Digital subscribers will soon have complete, on-demand access to searchable PDF archives of past editions of both <strong>The Power County Press</strong> and <strong>The Aberdeen Times</strong>. Search by family name, historical event, obituary date, or high school sports records.
         </p>
+      </div>
+    </section>
 
-        <div class="archive-features-list">
-          <span>🔍 Keyword & Name Search</span>
-          <span>📄 Full Original PDF Layouts</span>
-          <span>📅 Issues Dating Back to 1911</span>
-          <span>🔓 Included with All Digital Subscriptions</span>
+    <!-- PUBLIC NOTICES & LEGALS -->
+    <section id="legals">
+      <div class="legals-header">
+        <div>
+          <h2>Official Public Notices & Legal Ads <span class="public-badge">Always Free</span></h2>
+          <p style="font-size: 0.88rem; color: #78350f; margin-top: 0.25rem;">
+            Published in accordance with Idaho State Code. Free to all citizens without subscription.
+          </p>
+        </div>
+        <a href="#submissions" style="font-size: 0.85rem; color: #854d0e; font-weight: 700; text-decoration: none;">Submit a Legal Notice →</a>
+      </div>
+
+      <div class="legal-list">
+        <div class="legal-item">
+          <div>
+            <div style="font-size: 0.78rem; font-weight: bold; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem;">
+              <span style="color: var(--press-red);">The Power County Press</span> • Sep 18, 2026 • ID: 2026-PC-084
+            </div>
+            <div style="font-weight: 700; color: var(--ink);">Notice of Public Hearing: American Falls Zoning Ordinance Revision</div>
+          </div>
+          <button class="btn-legal-read" onclick="alert('Displaying sample legal notice...')">Read Notice</button>
         </div>
       </div>
     </section>
 
     <!-- =============================================
-         PUBLIC NOTICES & LEGALS (PERMANENTLY FREE)
+         NEWSROOM OFFICES & CONTACT DETAILS
     ============================================= -->
-    <section id="legals">
-      <div class="legals-header">
+    <section id="offices">
+      <!-- Universal Deadlines Notice -->
+      <div class="deadline-banner">
+        <div style="font-size: 1.4rem;">⏰</div>
         <div>
-          <h2>
-            Official Public Notices & Legal Ads
-            <span class="public-badge">Always Free Access</span>
-          </h2>
-          <p style="font-size: 0.88rem; color: #78350f; margin-top: 0.25rem;">
-            Published in accordance with Idaho State Code. Free and open to all citizens without subscription or login.
-          </p>
+          <strong>Weekly Newspaper Deadlines:</strong> 
+          All advertising, legal notices, obituaries, and editorial submissions are strictly due by 
+          <strong>Thursday at 12:00 PM (Noon)</strong> the week prior to publication.
         </div>
-        <a href="#contact" style="font-size: 0.85rem; color: #854d0e; font-weight: 700; text-decoration: none;">Submit a Legal Notice →</a>
       </div>
 
-      <div class="legal-list">
-        <!-- Notice 1: Power County Press -->
-        <div class="legal-item">
-          <div>
-            <div class="legal-meta">
-              <span class="legal-tag-press">The Power County Press</span>
-              <span>•</span>
-              <span>Published: Sep 18, 2026</span>
-              <span>•</span>
-              <span>Notice ID: 2026-PC-084</span>
-            </div>
-            <div class="legal-title">Notice of Public Hearing: American Falls Zoning Ordinance Revision</div>
-            <div class="legal-snippet">Notice is hereby given that the American Falls Planning & Zoning Commission will conduct a public hearing on proposed amendments to residential setback requirements...</div>
+      <div class="offices-grid">
+        <!-- Office 1: The Power County Press -->
+        <div class="office-card press-office">
+          <h3 style="color: var(--press-red);">The Power County Press</h3>
+          
+          <div class="contact-item">
+            <span class="contact-label">Physical & Mailing Address</span>
+            <span class="contact-value">174 Idaho Street<br>American Falls, Idaho 83211</span>
           </div>
-          <button class="btn-legal-read" onclick="openLegalModal('Notice of Public Hearing: American Falls Zoning Ordinance Revision', 'The Power County Press', 'Sep 18, 2026', 'NOTICE IS HEREBY GIVEN that the City of American Falls Planning & Zoning Commission will hold a public hearing on October 14, 2026 at 6:30 PM at City Hall, 550 N Oregon Trail, American Falls, ID. The purpose of this hearing is to receive public comment regarding proposed updates to Chapter 4 of the Municipal Zoning Code regarding residential accessory structures and side-yard setback minimums. All interested citizens are invited to attend and provide testimony or submit written comments to the City Clerk prior to 5:00 PM on October 12, 2026.')">Read Full Notice</button>
+
+          <div class="contact-item">
+            <span class="contact-label">Phone Number</span>
+            <span class="contact-value"><a href="tel:2082265294">208-226-5294</a></span>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-label">Office Hours</span>
+            <span class="contact-value">
+              Monday – Friday: 8:30 AM – 4:30 PM<br>
+              <em style="color: #b91c1c; font-size: 0.85rem;">*Closed Tuesdays starting at 10:00 AM</em>
+            </span>
+          </div>
         </div>
 
-        <!-- Notice 2: Aberdeen Times -->
-        <div class="legal-item">
-          <div>
-            <div class="legal-meta">
-              <span class="legal-tag-times">The Aberdeen Times</span>
-              <span>•</span>
-              <span>Published: Sep 16, 2026</span>
-              <span>•</span>
-              <span>Notice ID: 2026-AT-112</span>
-            </div>
-            <div class="legal-title">Bingham County Estate Notice to Creditors: Case No. CV06-26-0419</div>
-            <div class="legal-snippet">In the District Court of the Seventh Judicial District of the State of Idaho, in and for the County of Bingham. In the matter of the Estate of...</div>
+        <!-- Office 2: The Aberdeen Times -->
+        <div class="office-card times-office">
+          <h3 style="color: var(--times-orange);">The Aberdeen Times</h3>
+          
+          <div class="contact-item">
+            <span class="contact-label">Physical & Mailing Address</span>
+            <span class="contact-value">31 S. Main Street<br>Aberdeen, Idaho 83210</span>
           </div>
-          <button class="btn-legal-read" onclick="openLegalModal('Bingham County Estate Notice to Creditors: Case No. CV06-26-0419', 'The Aberdeen Times', 'Sep 16, 2026', 'IN THE DISTRICT COURT OF THE SEVENTH JUDICIAL DISTRICT OF THE STATE OF IDAHO, IN AND FOR THE COUNTY OF BINGHAM. In the Matter of the Estate of Robert H. Miller, Deceased. Case No. CV06-26-0419. NOTICE IS HEREBY GIVEN that the undersigned has been appointed Personal Representative of the above-named estate. All persons having claims against the said deceased are required to present their claims within four (4) months after the date of the first publication of this notice or said claims will be forever barred.')">Read Full Notice</button>
+
+          <div class="contact-item">
+            <span class="contact-label">Phone Number</span>
+            <span class="contact-value"><a href="tel:2083974440">208-397-4440</a></span>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-label">Office Hours</span>
+            <span class="contact-value">By Appointment</span>
+          </div>
         </div>
       </div>
     </section>
@@ -679,7 +863,7 @@
       </div>
 
       <div class="pricing-grid">
-        <!-- 1. Digital All-Access -->
+        <!-- Digital All-Access -->
         <div class="plan-card featured">
           <span class="plan-badge">Best Online Value</span>
           <div>
@@ -693,15 +877,15 @@
               <li><strong>Both newspapers included</strong> for one fee</li>
               <li>Next-day scores & game recaps</li>
               <li>Early access before the print edition drops</li>
-              <li class="perk-upcoming">Coming Soon: Searchable PDF historical archives</li>
+              <li>Coming Soon: Searchable PDF historical archives</li>
               <li>Multi-year rates: $120 (2-yr) / $175 (3-yr)</li>
               <li>Same rate everywhere (In or Out of Idaho)</li>
             </ul>
           </div>
-          <button class="plan-button" style="background: var(--ink);" onclick="alert('Proceeding to Digital checkout preview...')">Subscribe Online</button>
+          <button class="plan-button" onclick="alert('Proceeding to Digital checkout preview...')">Subscribe Online</button>
         </div>
 
-        <!-- 2. Print + Digital Combo -->
+        <!-- Combo -->
         <div class="plan-card">
           <div>
             <h3>All-Access Combo</h3>
@@ -722,7 +906,7 @@
           <button class="plan-button" onclick="alert('Proceeding to Combo checkout preview...')">Choose Combo</button>
         </div>
 
-        <!-- 3. Print Only -->
+        <!-- Print Only -->
         <div class="plan-card">
           <div>
             <h3>Print Edition Only</h3>
@@ -743,79 +927,114 @@
         </div>
       </div>
     </section>
-
-    <!-- Contact Form -->
-    <div id="contact" class="contact-section">
-      <h2 style="font-size: 1.3rem; margin-bottom: 0.35rem; color: var(--ink);">Contact Our Newsrooms</h2>
-      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.25rem;">
-        Submit news tips, public notices, announcements, letters to the editor, or circulation inquiries.
-      </p>
-      <form onsubmit="event.preventDefault(); alert('Message sent! (Prototype demo)');">
-        <select required>
-          <option value="">Select Purpose / Department</option>
-          <option value="legal">Submit Public Notice / Legal Ad</option>
-          <option value="press">The Power County Press (News/Tips)</option>
-          <option value="times">The Aberdeen Times (News/Tips)</option>
-          <option value="sub">Subscription & Circulation Help</option>
-        </select>
-        <input type="text" placeholder="Your Full Name or Agency Name" required />
-        <input type="email" placeholder="Your Email Address" required />
-        <textarea rows="4" placeholder="Your Message, Public Notice Text, or Question" required></textarea>
-        <button type="submit" class="plan-button" style="align-self: flex-start; width: auto; padding: 0.65rem 1.5rem;">Send Message</button>
-      </form>
-    </div>
   </div>
 
   <!-- Paywall Modal -->
   <div id="paywallModal" class="modal-overlay">
     <div class="modal-box" id="modalBox" style="text-align: center;">
       <h3 id="paywallTitle">Subscriber Exclusive</h3>
-      <p>This reporting is supported directly by our subscribers. Join today for full digital access to both newspapers, early breaking stories, and upcoming historical archives.</p>
-      <button class="plan-button" id="modalBtn" onclick="closePaywall(); window.location.href='#rates';">View Plans & Rates (From $65/yr)</button>
+      <p>This reporting is supported directly by our subscribers. Join today for full digital access to both newspapers.</p>
+      <button class="plan-button" onclick="closePaywall(); window.location.href='#rates';">View Plans & Rates (From $65/yr)</button>
       <br />
       <button style="margin-top: 12px; background: transparent; border: none; color: var(--muted); cursor: pointer;" onclick="closePaywall()">Close Preview</button>
     </div>
   </div>
 
-  <!-- Legal Notice Reader Modal (Always Free) -->
-  <div id="legalModal" class="modal-overlay">
-    <div class="modal-box" style="border-top: 5px solid var(--legal-gold);">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-        <span id="modalLegalPaper" style="font-size: 0.8rem; font-weight: bold; text-transform: uppercase;"></span>
-        <span class="public-badge">Free Public Notice</span>
-      </div>
-      <h3 id="modalLegalTitle" style="font-size: 1.25rem; margin-bottom: 0.25rem;"></h3>
-      <p id="modalLegalDate" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem;"></p>
+  <!-- Submission Modal -->
+  <div id="submitModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3 id="submitModalTitle">Submit to Our Newsroom</h3>
+      <p style="color: var(--muted); font-size: 0.88rem; margin-bottom: 1rem;">Submissions are reviewed by our editors before publication.</p>
+      <form onsubmit="event.preventDefault(); alert('Submission received! (Demo preview)'); closeSubmitModal();" style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <select required>
+          <option value="">Target Publication</option>
+          <option value="press">The Power County Press (American Falls)</option>
+          <option value="times">The Aberdeen Times (Aberdeen)</option>
+          <option value="both">Both Publications</option>
+        </select>
+        <input type="text" placeholder="Your Name or Organization" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
+        <input type="email" placeholder="Your Email Address" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
+        <textarea rows="4" placeholder="Enter details, obituary text, or tip summary..." required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;"></textarea>
+        <button type="submit" class="plan-button" style="background: var(--ink);">Submit for Review</button>
+        <button type="button" style="background: transparent; border: none; color: var(--muted); cursor: pointer; margin-top: 5px;" onclick="closeSubmitModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Free Obituary Modal -->
+  <div id="obitModal" class="modal-overlay">
+    <div class="modal-box" style="border-top: 5px solid var(--obit-slate);">
+      <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: bold; color: var(--muted);">Free Community Remembrance</span>
+      <h3 id="obitModalName" style="font-size: 1.4rem; margin-top: 0.35rem; font-family: Georgia, serif;"></h3>
+      <p id="obitModalDates" style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem;"></p>
       <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 1rem;" />
-      <p id="modalLegalBody" style="font-family: Georgia, serif; line-height: 1.7; color: #1c1917; font-size: 0.95rem; white-space: pre-line;"></p>
-      <button class="btn-legal-read" style="margin-top: 1rem; width: 100%;" onclick="closeLegalModal()">Close Public Notice</button>
+      <p id="obitModalBody" style="line-height: 1.7; font-size: 0.95rem; color: #334155; font-family: Georgia, serif;"></p>
+      <button class="btn-legal-read" style="margin-top: 1.25rem; width: 100%; border-color: #64748b; color: #334155;" onclick="closeObitModal()">Close Obituary</button>
     </div>
   </div>
 
   <script>
+    // Publication Desk Filtering
+    function filterDesk(desk) {
+      const cards = document.querySelectorAll('.article-card');
+      const btnAll = document.getElementById('btnFilterAll');
+      const btnPress = document.getElementById('btnFilterPress');
+      const btnTimes = document.getElementById('btnFilterTimes');
+      const heading = document.getElementById('streamHeading');
+
+      btnAll.className = 'filter-btn';
+      btnPress.className = 'filter-btn';
+      btnTimes.className = 'filter-btn';
+
+      if (desk === 'press') {
+        btnPress.className = 'filter-btn active-press';
+        heading.innerText = 'The Power County Press Coverage';
+      } else if (desk === 'times') {
+        btnTimes.className = 'filter-btn active-times';
+        heading.innerText = 'The Aberdeen Times Coverage';
+      } else {
+        btnAll.className = 'filter-btn active-all';
+        heading.innerText = 'All Community News Coverage';
+      }
+
+      cards.forEach(card => {
+        const cardDesk = card.getAttribute('data-desk');
+        if (desk === 'all' || cardDesk === desk || cardDesk === 'both') {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Paywall Modal
     function openPaywall(paperName, accentColor) {
-      if (paperName) {
-        document.getElementById('paywallTitle').innerText = paperName + ' Exclusive';
-      }
-      if (accentColor) {
-        document.getElementById('modalBox').style.borderTopColor = accentColor;
-        document.getElementById('paywallTitle').style.color = accentColor;
-      }
+      document.getElementById('paywallTitle').innerText = paperName + ' Exclusive';
+      document.getElementById('modalBox').style.borderTopColor = accentColor;
       document.getElementById('paywallModal').style.display = 'flex';
     }
     function closePaywall() {
       document.getElementById('paywallModal').style.display = 'none';
     }
 
-    function openLegalModal(title, paper, date, body) {
-      document.getElementById('modalLegalTitle').innerText = title;
-      document.getElementById('modalLegalPaper').innerText = paper;
-      document.getElementById('modalLegalDate').innerText = 'Published: ' + date;
-      document.getElementById('modalLegalBody').innerText = body;
-      document.getElementById('legalModal').style.display = 'flex';
+    // Submissions Modal
+    function openSubmissionForm(formType) {
+      document.getElementById('submitModalTitle').innerText = 'Submit: ' + formType;
+      document.getElementById('submitModal').style.display = 'flex';
     }
-    function closeLegalModal() {
-      document.getElementById('legalModal').style.display = 'none';
+    function closeSubmitModal() {
+      document.getElementById('submitModal').style.display = 'none';
+    }
+
+    // Free Obituary Modal
+    function openObitModal(name, dates, location, details) {
+      document.getElementById('obitModalName').innerText = name;
+      document.getElementById('obitModalDates').innerText = dates + ' • ' + location;
+      document.getElementById('obitModalBody').innerText = details;
+      document.getElementById('obitModal').style.display = 'flex';
+    }
+    function closeObitModal() {
+      document.getElementById('obitModal').style.display = 'none';
     }
   </script>
 </body>
