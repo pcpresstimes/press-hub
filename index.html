@@ -10,6 +10,8 @@
       --press-red: #c81e2b;
       --times-orange: #c25e00;
       --times-orange-light: #fff7ed;
+      --legal-gold: #854d0e;
+      --legal-bg: #fefce8;
       --bg-warm: #fafaf9;
       --card-bg: #ffffff;
       --border: #e7e5e4;
@@ -78,7 +80,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.75rem;
+      gap: 1.5rem;
       border-top: 1px solid var(--border);
       padding-top: 0.65rem;
       flex-wrap: wrap;
@@ -91,6 +93,12 @@
       transition: color 0.15s ease;
     }
     nav a:hover { color: var(--press-red); }
+    .nav-legals {
+      color: var(--legal-gold) !important;
+      font-weight: 700;
+      border-bottom: 2px solid var(--legal-gold);
+      padding-bottom: 2px;
+    }
     .nav-cta {
       background: var(--ink);
       color: #fff !important;
@@ -214,7 +222,99 @@
     }
     .btn-times:hover { background: #9a4a00; }
 
-    /* Rates & Subscriptions */
+    /* -------------------------------------------
+       PUBLIC NOTICES & LEGALS SECTION (FREE)
+    ------------------------------------------- */
+    #legals {
+      background: var(--legal-bg);
+      border: 1px solid #fef08a;
+      border-top: 4px solid var(--legal-gold);
+      border-radius: 8px;
+      padding: 2.25rem 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .legals-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #fde047;
+      padding-bottom: 0.75rem;
+    }
+    .legals-header h2 {
+      font-size: 1.5rem;
+      color: #713f12;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .public-badge {
+      background: #ca8a04;
+      color: #fff;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+    }
+    .legal-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .legal-item {
+      background: #ffffff;
+      border: 1px solid #fef08a;
+      border-radius: 6px;
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .legal-meta {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .legal-tag-press { color: var(--press-red); }
+    .legal-tag-times { color: var(--times-orange); }
+    .legal-title {
+      font-size: 1.05rem;
+      color: var(--ink);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .legal-snippet {
+      font-size: 0.88rem;
+      color: #57534e;
+    }
+    .btn-legal-read {
+      background: #ffffff;
+      color: #854d0e;
+      border: 1px solid #ca8a04;
+      padding: 0.45rem 0.95rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-legal-read:hover {
+      background: #ca8a04;
+      color: #fff;
+    }
+
+    /* RATES & SUBSCRIPTIONS */
     #rates {
       background: #ffffff;
       border: 1px solid var(--border);
@@ -335,7 +435,7 @@
       font-size: 0.95rem;
     }
 
-    /* Paywall Modal */
+    /* Modal Styling */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -350,14 +450,16 @@
       background: #fff;
       padding: 2.25rem;
       border-radius: 8px;
-      max-width: 440px;
+      max-width: 540px;
       width: 90%;
-      text-align: center;
+      max-height: 85vh;
+      overflow-y: auto;
+      text-align: left;
       border-top: 5px solid var(--ink);
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
-    .modal-box h3 { margin-bottom: 0.5rem; font-size: 1.4rem; }
-    .modal-box p { font-size: 0.95rem; color: #4b5563; margin-bottom: 1.5rem; }
+    .modal-box h3 { margin-bottom: 0.5rem; font-size: 1.35rem; color: var(--ink); }
+    .modal-box p { font-size: 0.92rem; color: #4b5563; margin-bottom: 1.25rem; }
   </style>
 </head>
 <body>
@@ -378,6 +480,7 @@
     <nav>
       <a href="#papers">Publications</a>
       <a href="#latest">Headlines</a>
+      <a href="#legals" class="nav-legals">Public Notices & Legals (Free)</a>
       <a href="#rates" class="nav-cta">Subscribe / Rates</a>
       <a href="#contact">Contact Newsrooms</a>
     </nav>
@@ -427,6 +530,58 @@
         <button class="btn-times" onclick="openPaywall('The Aberdeen Times', 'var(--times-orange)')">Read Full Story</button>
       </div>
     </div>
+
+    <!-- =============================================
+         PUBLIC NOTICES & LEGALS (PERMANENTLY FREE)
+    ============================================= -->
+    <section id="legals">
+      <div class="legals-header">
+        <div>
+          <h2>
+            Official Public Notices & Legal Ads
+            <span class="public-badge">Always Free Access</span>
+          </h2>
+          <p style="font-size: 0.88rem; color: #78350f; margin-top: 0.25rem;">
+            Published in accordance with Idaho State Code. Free and open to all citizens without subscription or login.
+          </p>
+        </div>
+        <a href="#contact" style="font-size: 0.85rem; color: #854d0e; font-weight: 700; text-decoration: none;">Submit a Legal Notice →</a>
+      </div>
+
+      <div class="legal-list">
+        <!-- Notice 1: Power County Press -->
+        <div class="legal-item">
+          <div>
+            <div class="legal-meta">
+              <span class="legal-tag-press">The Power County Press</span>
+              <span>•</span>
+              <span>Published: Sep 18, 2026</span>
+              <span>•</span>
+              <span>Notice ID: 2026-PC-084</span>
+            </div>
+            <div class="legal-title">Notice of Public Hearing: American Falls Zoning Ordinance Revision</div>
+            <div class="legal-snippet">Notice is hereby given that the American Falls Planning & Zoning Commission will conduct a public hearing on proposed amendments to residential setback requirements...</div>
+          </div>
+          <button class="btn-legal-read" onclick="openLegalModal('Notice of Public Hearing: American Falls Zoning Ordinance Revision', 'The Power County Press', 'Sep 18, 2026', 'NOTICE IS HEREBY GIVEN that the City of American Falls Planning & Zoning Commission will hold a public hearing on October 14, 2026 at 6:30 PM at City Hall, 550 N Oregon Trail, American Falls, ID. The purpose of this hearing is to receive public comment regarding proposed updates to Chapter 4 of the Municipal Zoning Code regarding residential accessory structures and side-yard setback minimums. All interested citizens are invited to attend and provide testimony or submit written comments to the City Clerk prior to 5:00 PM on October 12, 2026.')">Read Full Notice</button>
+        </div>
+
+        <!-- Notice 2: Aberdeen Times -->
+        <div class="legal-item">
+          <div>
+            <div class="legal-meta">
+              <span class="legal-tag-times">The Aberdeen Times</span>
+              <span>•</span>
+              <span>Published: Sep 16, 2026</span>
+              <span>•</span>
+              <span>Notice ID: 2026-AT-112</span>
+            </div>
+            <div class="legal-title">Bingham County Estate Notice to Creditors: Case No. CV06-26-0419</div>
+            <div class="legal-snippet">In the District Court of the Seventh Judicial District of the State of Idaho, in and for the County of Bingham. In the matter of the Estate of...</div>
+          </div>
+          <button class="btn-legal-read" onclick="openLegalModal('Bingham County Estate Notice to Creditors: Case No. CV06-26-0419', 'The Aberdeen Times', 'Sep 16, 2026', 'IN THE DISTRICT COURT OF THE SEVENTH JUDICIAL DISTRICT OF THE STATE OF IDAHO, IN AND FOR THE COUNTY OF BINGHAM. In the Matter of the Estate of Robert H. Miller, Deceased. Case No. CV06-26-0419. NOTICE IS HEREBY GIVEN that the undersigned has been appointed Personal Representative of the above-named estate. All persons having claims against the said deceased are required to present their claims within four (4) months after the date of the first publication of this notice or said claims will be forever barred.')">Read Full Notice</button>
+        </div>
+      </div>
+    </section>
 
     <!-- RATES & SUBSCRIPTIONS -->
     <section id="rates">
@@ -503,18 +658,19 @@
     <div id="contact" class="contact-section">
       <h2 style="font-size: 1.3rem; margin-bottom: 0.35rem; color: var(--ink);">Contact Our Newsrooms</h2>
       <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.25rem;">
-        Submit news tips, announcements, letters to the editor, or circulation inquiries.
+        Submit news tips, public notices, announcements, letters to the editor, or circulation inquiries.
       </p>
       <form onsubmit="event.preventDefault(); alert('Message sent! (Prototype demo)');">
         <select required>
-          <option value="">Select Publication</option>
-          <option value="press">The Power County Press (American Falls)</option>
-          <option value="times">The Aberdeen Times (Aberdeen)</option>
-          <option value="both">Both Publications</option>
+          <option value="">Select Purpose / Department</option>
+          <option value="legal">Submit Public Notice / Legal Ad</option>
+          <option value="press">The Power County Press (News/Tips)</option>
+          <option value="times">The Aberdeen Times (News/Tips)</option>
+          <option value="sub">Subscription & Circulation Help</option>
         </select>
-        <input type="text" placeholder="Your Full Name" required />
+        <input type="text" placeholder="Your Full Name or Agency Name" required />
         <input type="email" placeholder="Your Email Address" required />
-        <textarea rows="4" placeholder="Your Message or Tip" required></textarea>
+        <textarea rows="4" placeholder="Your Message, Public Notice Text, or Question" required></textarea>
         <button type="submit" class="plan-button" style="align-self: flex-start; width: auto; padding: 0.65rem 1.5rem;">Send Message</button>
       </form>
     </div>
@@ -522,12 +678,27 @@
 
   <!-- Paywall Modal -->
   <div id="paywallModal" class="modal-overlay">
-    <div class="modal-box" id="modalBox">
+    <div class="modal-box" id="modalBox" style="text-align: center;">
       <h3 id="paywallTitle">Subscriber Exclusive</h3>
       <p>This reporting is supported directly by our subscribers. Join today for full digital access to both newspapers.</p>
       <button class="plan-button" id="modalBtn" onclick="closePaywall(); window.location.href='#rates';">View Plans & Rates (From $65/yr)</button>
       <br />
       <button style="margin-top: 12px; background: transparent; border: none; color: var(--muted); cursor: pointer;" onclick="closePaywall()">Close Preview</button>
+    </div>
+  </div>
+
+  <!-- Legal Notice Reader Modal (Always Free) -->
+  <div id="legalModal" class="modal-overlay">
+    <div class="modal-box" style="border-top: 5px solid var(--legal-gold);">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+        <span id="modalLegalPaper" style="font-size: 0.8rem; font-weight: bold; text-transform: uppercase;"></span>
+        <span class="public-badge">Free Public Notice</span>
+      </div>
+      <h3 id="modalLegalTitle" style="font-size: 1.25rem; margin-bottom: 0.25rem;"></h3>
+      <p id="modalLegalDate" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem;"></p>
+      <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 1rem;" />
+      <p id="modalLegalBody" style="font-family: Georgia, serif; line-height: 1.7; color: #1c1917; font-size: 0.95rem; white-space: pre-line;"></p>
+      <button class="btn-legal-read" style="margin-top: 1rem; width: 100%;" onclick="closeLegalModal()">Close Public Notice</button>
     </div>
   </div>
 
@@ -544,6 +715,17 @@
     }
     function closePaywall() {
       document.getElementById('paywallModal').style.display = 'none';
+    }
+
+    function openLegalModal(title, paper, date, body) {
+      document.getElementById('modalLegalTitle').innerText = title;
+      document.getElementById('modalLegalPaper').innerText = paper;
+      document.getElementById('modalLegalDate').innerText = 'Published: ' + date;
+      document.getElementById('modalLegalBody').innerText = body;
+      document.getElementById('legalModal').style.display = 'flex';
+    }
+    function closeLegalModal() {
+      document.getElementById('legalModal').style.display = 'none';
     }
   </script>
 </body>
