@@ -66,6 +66,18 @@
       flex-wrap: wrap;
       margin-bottom: 0.5rem;
     }
+    .masthead-logo-link {
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      border-radius: 6px;
+      padding: 4px;
+    }
+    .masthead-logo-link:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
     .masthead-logo-press {
       max-height: 80px;
       width: auto;
@@ -225,6 +237,7 @@
     /* Section Layout with Sidebar */
     .desk-section-container {
       margin-bottom: 3rem;
+      scroll-margin-top: 1.5rem;
     }
     .section-header {
       display: flex;
@@ -246,7 +259,7 @@
       .main-with-sidebar { grid-template-columns: 1fr; }
     }
 
-    /* Article Cards Grid Inside Sections */
+    /* Article Cards */
     .desk-articles-grid {
       display: flex;
       flex-direction: column;
@@ -318,8 +331,74 @@
     .btn-times:hover { background: #9a4a00; }
 
     /* -------------------------------------------
-       SUPPORT LOCAL BUSINESS DIRECTORY SIDEBARS
+       HISTORICAL WEATHER WIDGET (SIDEBAR)
     ------------------------------------------- */
+    .weather-widget {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.15rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .weather-widget.press-weather { border-top: 3px solid var(--press-red); }
+    .weather-widget.times-weather { border-top: 3px solid var(--times-orange); }
+
+    .weather-widget-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.45rem;
+      margin-bottom: 0.75rem;
+    }
+    .weather-widget-header h4 {
+      font-size: 0.92rem;
+      color: var(--ink);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .weather-date-badge {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .weather-stats-row {
+      display: flex;
+      justify-content: space-around;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 0.65rem 0.5rem;
+      margin-bottom: 0.65rem;
+      text-align: center;
+    }
+    .weather-stat-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .weather-stat-label {
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .weather-stat-val {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .weather-note {
+      font-size: 0.8rem;
+      color: #475569;
+      line-height: 1.45;
+      font-style: italic;
+    }
+
+    /* Support Local Business Sidebars */
     .business-sidebar {
       background: #ffffff;
       border: 1px solid var(--border);
@@ -349,34 +428,20 @@
       color: var(--muted);
     }
 
-    .biz-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
+    .biz-list { display: flex; flex-direction: column; gap: 0.75rem; }
     .biz-card {
       background: var(--bg-warm);
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 0.85rem;
-      transition: transform 0.15s ease;
     }
     .biz-card.highlight {
       background: #ffffff;
       border: 1px solid #cbd5e1;
       box-shadow: 0 1px 2px rgba(0,0,0,0.04);
     }
-    .biz-name {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--ink);
-      margin-bottom: 0.15rem;
-    }
-    .biz-tagline {
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-weight: 600;
-    }
+    .biz-name { font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.15rem; }
+    .biz-tagline { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
 
     .biz-ad-slot {
       background: #fafaf9;
@@ -386,11 +451,7 @@
       text-align: center;
       margin-top: 0.5rem;
     }
-    .biz-ad-slot p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
+    .biz-ad-slot p { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
     .biz-ad-slot button {
       background: transparent;
       border: 1px solid var(--ink);
@@ -400,11 +461,25 @@
       font-weight: 700;
       cursor: pointer;
       color: var(--ink);
-      transition: all 0.15s ease;
     }
-    .biz-ad-slot button:hover {
-      background: var(--ink);
-      color: #fff;
+    .biz-ad-slot button:hover { background: var(--ink); color: #fff; }
+
+    /* Admin Pre-Loader Demo Box */
+    .admin-preload-box {
+      background: #f0fdf4;
+      border: 2px dashed #86efac;
+      border-radius: 8px;
+      padding: 1.75rem;
+      margin-top: 3rem;
+      margin-bottom: 3.5rem;
+    }
+    .admin-preload-box h3 {
+      font-size: 1.25rem;
+      color: #166534;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     /* OBITUARIES SECTION */
@@ -427,14 +502,8 @@
       margin-bottom: 1.5rem;
     }
     .obit-header h2 { font-size: 1.45rem; color: var(--obit-slate); }
-    .obit-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    @media (max-width: 640px) {
-      .obit-grid { grid-template-columns: 1fr; }
-    }
+    .obit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 640px) { .obit-grid { grid-template-columns: 1fr; } }
     .obit-card {
       background: #ffffff;
       border: 1px solid var(--border);
@@ -460,12 +529,7 @@
     }
     .community-actions-hub h2 { font-size: 1.4rem; color: var(--ink); margin-bottom: 0.5rem; }
     .community-actions-hub p { color: var(--muted); font-size: 0.9rem; max-width: 650px; margin: 0 auto 1.5rem; }
-    .action-button-row {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    .action-button-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
     .action-btn {
       padding: 0.75rem 1.25rem;
       border-radius: 6px;
@@ -480,11 +544,7 @@
       gap: 0.5rem;
       transition: all 0.15s ease;
     }
-    .action-btn:hover {
-      background: #1e293b;
-      color: #fff;
-      border-color: #1e293b;
-    }
+    .action-btn:hover { background: #1e293b; color: #fff; border-color: #1e293b; }
 
     /* DIGITAL ARCHIVES SECTION */
     #archives {
@@ -573,7 +633,7 @@
     }
     .btn-legal-read:hover { background: #ca8a04; color: #fff; }
 
-    /* CONTACT & OFFICES SECTION */
+    /* OFFICES & CONTACT */
     #offices { margin-bottom: 3.5rem; }
     .deadline-banner {
       background: #fef2f2;
@@ -588,14 +648,8 @@
     }
     .deadline-banner strong { color: #991b1b; }
 
-    .offices-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    @media (max-width: 768px) {
-      .offices-grid { grid-template-columns: 1fr; }
-    }
+    .offices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 768px) { .offices-grid { grid-template-columns: 1fr; } }
     .office-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -606,23 +660,10 @@
     .office-card.press-office { border-top: 5px solid var(--press-red); }
     .office-card.times-office { border-top: 5px solid var(--times-orange); }
     .office-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--ink); }
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 0.9rem;
-      font-size: 0.92rem;
-    }
-    .contact-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--muted);
-      letter-spacing: 0.5px;
-      margin-bottom: 0.15rem;
-    }
+    .contact-item { display: flex; flex-direction: column; margin-bottom: 0.9rem; font-size: 0.92rem; }
+    .contact-label { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 0.15rem; }
     .contact-value { color: var(--ink); font-weight: 500; }
     .contact-value a { color: var(--ink); text-decoration: none; font-weight: 700; }
-    .contact-value a:hover { text-decoration: underline; }
 
     /* RATES & SUBSCRIPTIONS */
     #rates {
@@ -644,9 +685,7 @@
       align-items: stretch;
       margin-bottom: 2rem;
     }
-    @media (max-width: 850px) {
-      .pricing-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 850px) { .pricing-grid { grid-template-columns: 1fr; } }
     .plan-card {
       background: var(--bg-warm);
       border: 1px solid var(--border);
@@ -663,9 +702,7 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       transform: scale(1.02);
     }
-    @media (max-width: 850px) {
-      .plan-card.featured { transform: none; }
-    }
+    @media (max-width: 850px) { .plan-card.featured { transform: none; } }
     .plan-badge {
       position: absolute;
       top: -12px;
@@ -708,7 +745,6 @@
       font-size: 0.9rem;
     }
 
-    /* Community Support Callout Box */
     .community-support-banner {
       background: #fafaf9;
       border: 1px solid #e7e5e4;
@@ -729,7 +765,7 @@
       gap: 0.5rem;
     }
 
-    /* Modal Base Styling */
+    /* Modal Base */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -751,10 +787,8 @@
       text-align: left;
       border-top: 5px solid var(--ink);
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      position: relative;
     }
 
-    /* Teaser / Blur Box on Paid Stories */
     .paywall-blur-box {
       position: relative;
       margin-top: 1rem;
@@ -769,25 +803,13 @@
       border-radius: 6px;
       margin-top: 0.5rem;
     }
-
-    .device-policy-note {
-      background: #f8fafc;
-      border: 1px solid #cbd5e1;
-      border-radius: 4px;
-      padding: 0.75rem 0.95rem;
-      font-size: 0.8rem;
-      color: #334155;
-      margin-top: 1rem;
-      line-height: 1.5;
-      text-align: left;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Dateline & Dynamic Login Status Bar -->
+  <!-- Dateline Bar -->
   <div class="top-bar">
-    <span>Published in American Falls & Aberdeen, Idaho • Tuesday, September 22, 2026</span>
+    <span id="currentDateDisplay">Tuesday, September 22, 2026 • Published in American Falls & Aberdeen, Idaho</span>
     <span id="userAuthDisplay">
       Are you a subscriber? <a class="auth-status-link" onclick="openLoginModal()">Log In Here</a>
     </span>
@@ -795,13 +817,17 @@
 
   <header>
     <div class="masthead-wrapper">
-      <!-- Power County Press Logo -->
-      <img src="press-logo.jpg" alt="The Power County Press - Published in American Falls, Idaho" class="masthead-logo-press" />
+      <!-- Press Click Target -->
+      <a class="masthead-logo-link" onclick="filterDesk('press'); scrollToDesk('pressSection');" title="View The Power County Press desk">
+        <img src="press-logo.jpg" alt="The Power County Press - Published in American Falls, Idaho" class="masthead-logo-press" />
+      </a>
       
       <div class="masthead-divider"></div>
       
-      <!-- The Aberdeen Times Logo -->
-      <img src="times-logo.jpg" alt="The Aberdeen Times - Serving Aberdeen and Bingham County" class="masthead-logo-times" />
+      <!-- Times Click Target -->
+      <a class="masthead-logo-link" onclick="filterDesk('times'); scrollToDesk('timesSection');" title="View The Aberdeen Times desk">
+        <img src="times-logo.jpg" alt="The Aberdeen Times - Serving Aberdeen and Bingham County" class="masthead-logo-times" />
+      </a>
     </div>
 
     <p class="tagline">Local News • Public Notices • Community Reporting</p>
@@ -820,16 +846,16 @@
 
   <div class="container">
 
-    <!-- SITE-WIDE SEARCH BAR -->
+    <!-- SEARCH BAR -->
     <div class="search-wrapper">
       <span style="font-size: 1.2rem;">🔍</span>
       <input type="text" id="siteSearchInput" class="search-input" placeholder="Search entire website (e.g. 'Beavers', 'Irrigation', 'Council')..." onkeydown="if(event.key==='Enter') executeSiteSearch();" />
       <button class="search-btn" onclick="executeSiteSearch()">Search Website</button>
     </div>
 
-    <!-- DESK / PUBLICATION FILTER -->
+    <!-- DESK FILTER -->
     <div class="desk-selector-box" id="coverage">
-      <div class="desk-selector-title">Filter Coverage by Publication:</div>
+      <div class="desk-selector-title">Filter Coverage by Publication (Or Click Either Logo Above):</div>
       <div class="desk-buttons">
         <button class="filter-btn active-all" id="btnFilterAll" onclick="filterDesk('all')">All Community News</button>
         <button class="filter-btn" id="btnFilterPress" onclick="filterDesk('press')">The Power County Press</button>
@@ -838,7 +864,7 @@
     </div>
 
     <!-- =============================================
-         SECTION 1: THE POWER COUNTY PRESS DESK & BUSINESSES
+         SECTION 1: THE POWER COUNTY PRESS DESK & SIDEBAR
     ============================================= -->
     <div class="desk-section-container" id="pressSection">
       <div class="section-header">
@@ -870,24 +896,46 @@
           </div>
         </div>
 
-        <!-- Power County Businesses Sidebar -->
-        <aside class="business-sidebar press-side">
-          <div class="business-sidebar-header">
-            <h3>Power County Businesses</h3>
-            <span>Support Local</span>
+        <!-- Press Sidebar -->
+        <aside>
+          <!-- Daily Historical Weather Box (Press) -->
+          <div class="weather-widget press-weather">
+            <div class="weather-widget-header">
+              <h4>⛅ Weather Almanac</h4>
+              <span class="weather-date-badge" id="weatherDatePress">Today in History</span>
+            </div>
+            <div class="weather-stats-row">
+              <div class="weather-stat-col">
+                <span class="weather-stat-label">Rec. High</span>
+                <span class="weather-stat-val" id="weatherHighPress">--</span>
+              </div>
+              <div class="weather-stat-col">
+                <span class="weather-stat-label">Rec. Low</span>
+                <span class="weather-stat-val" id="weatherLowPress">--</span>
+              </div>
+              <div class="weather-stat-col">
+                <span class="weather-stat-label">Rain/Snow</span>
+                <span class="weather-stat-val" id="weatherPrecipPress">--</span>
+              </div>
+            </div>
+            <p class="weather-note" id="weatherNotePress">Loading historical weather records for Power County...</p>
           </div>
 
-          <div class="biz-list">
-            <!-- Business 1: Power County Press -->
-            <div class="biz-card highlight">
-              <div class="biz-name">The Power County Press</div>
-              <div class="biz-tagline">Since 1902 • American Falls, ID</div>
+          <!-- Business Directory -->
+          <div class="business-sidebar press-side">
+            <div class="business-sidebar-header">
+              <h3>Power County Businesses</h3>
+              <span>Support Local</span>
             </div>
-
-            <!-- Empty Sponsored Business Slots -->
-            <div class="biz-ad-slot">
-              <p><strong>Your Business Here</strong><br>Reach every local reader in Power County</p>
-              <button onclick="openSubmissionForm('Power County Business Directory Listing')">Feature Your Business Here</button>
+            <div class="biz-list">
+              <div class="biz-card highlight">
+                <div class="biz-name">The Power County Press</div>
+                <div class="biz-tagline">Since 1902 • American Falls, ID</div>
+              </div>
+              <div class="biz-ad-slot">
+                <p><strong>Your Business Here</strong><br>Reach every local reader in Power County</p>
+                <button onclick="openSubmissionForm('Power County Business Directory Listing')">Feature Your Business Here</button>
+              </div>
             </div>
           </div>
         </aside>
@@ -895,7 +943,7 @@
     </div>
 
     <!-- =============================================
-         SECTION 2: THE ABERDEEN TIMES DESK & BUSINESSES
+         SECTION 2: THE ABERDEEN TIMES DESK & SIDEBAR
     ============================================= -->
     <div class="desk-section-container" id="timesSection">
       <div class="section-header">
@@ -927,28 +975,97 @@
           </div>
         </div>
 
-        <!-- Aberdeen Businesses Sidebar -->
-        <aside class="business-sidebar times-side">
-          <div class="business-sidebar-header">
-            <h3>Aberdeen Businesses</h3>
-            <span>Support Local</span>
+        <!-- Times Sidebar -->
+        <aside>
+          <!-- Daily Historical Weather Box (Times) -->
+          <div class="weather-widget times-weather">
+            <div class="weather-widget-header">
+              <h4>⛅ Weather Almanac</h4>
+              <span class="weather-date-badge" id="weatherDateTimes">Today in History</span>
+            </div>
+            <div class="weather-stats-row">
+              <div class="weather-stat-col">
+                <span class="weather-stat-label">Rec. High</span>
+                <span class="weather-stat-val" id="weatherHighTimes">--</span>
+              </div>
+              <div class="weather-stat-col">
+                <span class="weather-stat-label">Rec. Low</span>
+                <span class="weather-stat-val" id="weatherLowTimes">--</span>
+              </div>
+              <div class="weather-stat-col">
+                <span class="weather-stat-label">Rain/Snow</span>
+                <span class="weather-stat-val" id="weatherPrecipTimes">--</span>
+              </div>
+            </div>
+            <p class="weather-note" id="weatherNoteTimes">Loading historical weather records for Bingham County...</p>
           </div>
 
-          <div class="biz-list">
-            <!-- Business 1: The Aberdeen Times -->
-            <div class="biz-card highlight">
-              <div class="biz-name">The Aberdeen Times</div>
-              <div class="biz-tagline">Aberdeen, ID</div>
+          <!-- Business Directory -->
+          <div class="business-sidebar times-side">
+            <div class="business-sidebar-header">
+              <h3>Aberdeen Businesses</h3>
+              <span>Support Local</span>
             </div>
-
-            <!-- Empty Sponsored Business Slots -->
-            <div class="biz-ad-slot">
-              <p><strong>Your Business Here</strong><br>Reach every local reader in Aberdeen</p>
-              <button onclick="openSubmissionForm('Aberdeen Business Directory Listing')">Feature Your Business Here</button>
+            <div class="biz-list">
+              <div class="biz-card highlight">
+                <div class="biz-name">The Aberdeen Times</div>
+                <div class="biz-tagline">Since 1911 • Aberdeen, ID</div>
+              </div>
+              <div class="biz-ad-slot">
+                <p><strong>Your Business Here</strong><br>Reach every local reader in Aberdeen</p>
+                <button onclick="openSubmissionForm('Aberdeen Business Directory Listing')">Feature Your Business Here</button>
+              </div>
             </div>
           </div>
         </aside>
       </div>
+    </div>
+
+    <!-- =============================================
+         ADMIN DEMO: PRE-LOAD / SCHEDULE WEATHER DATA
+    ============================================= -->
+    <div class="admin-preload-box" id="weatherAdmin">
+      <h3><span>📅</span> Staff Demonstration: Pre-Load Daily Historical Weather</h3>
+      <p style="font-size: 0.88rem; color: #15803d; margin-bottom: 1.25rem;">
+        <em>For Newsroom Staff:</em> On the final WordPress site, you can upload a full month or year of historical weather data via spreadsheet or dashboard form. Test scheduling or updating today's numbers below:
+      </p>
+
+      <form onsubmit="event.preventDefault(); adminSaveWeather();" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem;">
+        <div>
+          <label style="font-size: 0.75rem; font-weight: bold; color: #166534;">Target Paper:</label>
+          <select id="admWeatherPaper" style="width: 100%; padding: 0.5rem; border: 1px solid #86efac; border-radius: 4px; font-family: inherit;">
+            <option value="both">Both Newspapers</option>
+            <option value="press">The Power County Press</option>
+            <option value="times">The Aberdeen Times</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-size: 0.75rem; font-weight: bold; color: #166534;">Record High:</label>
+          <input type="text" id="admHigh" placeholder="e.g. 88°F (1990)" required style="width: 100%; padding: 0.5rem; border: 1px solid #86efac; border-radius: 4px; font-family: inherit;" />
+        </div>
+
+        <div>
+          <label style="font-size: 0.75rem; font-weight: bold; color: #166534;">Record Low:</label>
+          <input type="text" id="admLow" placeholder="e.g. 31°F (1965)" required style="width: 100%; padding: 0.5rem; border: 1px solid #86efac; border-radius: 4px; font-family: inherit;" />
+        </div>
+
+        <div>
+          <label style="font-size: 0.75rem; font-weight: bold; color: #166534;">Precipitation:</label>
+          <input type="text" id="admPrecip" placeholder="e.g. 0.24 in (1986)" required style="width: 100%; padding: 0.5rem; border: 1px solid #86efac; border-radius: 4px; font-family: inherit;" />
+        </div>
+
+        <div style="grid-column: 1 / -1;">
+          <label style="font-size: 0.75rem; font-weight: bold; color: #166534;">Historical Memory / Agricultural Impact:</label>
+          <input type="text" id="admNote" placeholder="e.g. Early freeze across the reservoir basin ended late tomato harvest." required style="width: 100%; padding: 0.5rem; border: 1px solid #86efac; border-radius: 4px; font-family: inherit;" />
+        </div>
+
+        <div style="grid-column: 1 / -1;">
+          <button type="submit" class="plan-button" style="background: #166534; width: auto; padding: 0.55rem 1.5rem; font-size: 0.85rem;">
+            Update Today's Weather Almanac
+          </button>
+        </div>
+      </form>
     </div>
 
     <!-- OBITUARIES (FREE) -->
@@ -1009,7 +1126,7 @@
       <div class="archive-preview-box">
         <h3 style="color: #0f172a; margin-bottom: 0.5rem; font-size: 1.15rem;">Over 100 Years of Community History at Your Fingertips</h3>
         <p style="color: #475569; font-size: 0.9rem; max-width: 700px; margin: 0 auto;">
-          Digital subscribers will soon have complete, on-demand access to searchable PDF archives of past editions dating back to 1911.[cite: 2]
+          Digital subscribers will soon have complete, on-demand access to searchable PDF archives of past editions dating back to 1911.
         </p>
       </div>
     </section>
@@ -1224,10 +1341,6 @@
           </label>
         </div>
 
-        <div class="device-policy-note">
-          🤝 <strong>Supporting Our Small-Town Newsrooms:</strong> Accounts are intended for single households (up to 2 active devices). Excess simultaneous logins will automatically sign out older sessions.
-        </div>
-
         <button type="submit" class="plan-button" style="background: var(--ink); margin-top: 0.5rem;">Log In to Account</button>
       </form>
       <button style="margin-top: 12px; background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 0.85rem;" onclick="closeLoginModal()">Cancel</button>
@@ -1254,21 +1367,6 @@
           <div style="display: flex; gap: 0.5rem; margin-top: 6px;">
             <input type="text" placeholder="MM/YY" required style="width: 50%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
             <input type="text" placeholder="CVC" required style="width: 50%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
-          </div>
-        </div>
-
-        <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 4px; padding: 0.75rem; font-size: 0.85rem; margin-top: 0.5rem;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
-            <span>Annual Subscription Rate:</span>
-            <strong id="summaryBasePrice">$65.00</strong>
-          </div>
-          <div style="display: flex; justify-content: space-between; color: var(--muted); margin-bottom: 0.4rem;">
-            <span>Card Processing Surcharge:</span>
-            <span>$2.19</span>
-          </div>
-          <div style="border-top: 1px solid var(--border); padding-top: 0.4rem; display: flex; justify-content: space-between; font-weight: bold; color: var(--ink);">
-            <span>Total Charged:</span>
-            <span id="summaryTotalPrice">$67.19</span>
           </div>
         </div>
 
@@ -1306,7 +1404,7 @@
         <input type="text" placeholder="Your Name or Business Name" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
         <input type="tel" placeholder="Phone Number" style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
         <input type="email" placeholder="Email Address" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
-        <textarea rows="4" placeholder="Enter business details, ad inquiry, or story details..." required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;"></textarea>
+        <textarea rows="4" placeholder="Enter business details, ad inquiry, or story details..." required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
         <button type="submit" class="plan-button" style="background: var(--ink);">Submit Details</button>
         <button type="button" style="background: transparent; border: none; color: var(--muted); cursor: pointer; margin-top: 5px;" onclick="closeSubmitModal()">Cancel</button>
       </form>
@@ -1317,6 +1415,119 @@
     let isLoggedIn = false;
     let currentUserEmail = '';
 
+    /* =========================================================
+       TWO SEPARATE PRE-LOADED DATA STORES:
+       One calendar dictionary for The Press, one for The Times.
+       Key format: "M-D" (e.g. "9-22" for September 22)
+    ========================================================= */
+    const pressWeatherCalendar = {
+      "9-22": {
+        high: "88°F (1990)",
+        low: "31°F (1965)",
+        precip: "0.24 in (1986)",
+        note: "In 1986, an early cold front brought freezing night temperatures and sleet to the American Falls reservoir basin."
+      },
+      "9-23": {
+        high: "86°F (1977)",
+        low: "29°F (1983)",
+        precip: "0.15 in (1994)",
+        note: "In 1983, a hard freeze hit the Snake River plain, officially ending the home garden growing season."
+      },
+      "9-24": {
+        high: "85°F (1992)",
+        low: "32°F (2000)",
+        precip: "0.30 in (1982)",
+        note: "In 1982, steady autumn rains soaked American Falls, giving winter wheat seedings an ideal start."
+      }
+    };
+
+    const timesWeatherCalendar = {
+      "9-22": {
+        high: "87°F (1990)",
+        low: "30°F (1972)",
+        precip: "0.18 in (1986)",
+        note: "In 1990, record late-summer heat allowed Bingham County sugar beet and potato growers an extended dry harvest window."
+      },
+      "9-23": {
+        high: "85°F (1977)",
+        low: "28°F (1983)",
+        precip: "0.10 in (1994)",
+        note: "In 1977, unseasonably warm south winds pushed afternoon temperatures well into the mid-80s across Aberdeen."
+      },
+      "9-24": {
+        high: "84°F (1992)",
+        low: "31°F (2000)",
+        precip: "0.25 in (1982)",
+        note: "In 2000, morning frost settled across Aberdeen fields as autumn weather arrived right on schedule."
+      }
+    };
+
+    // Automatically detect today's date and swap data
+    function renderDailyHistoricalWeather() {
+      const now = new Date();
+      const month = now.getMonth() + 1;
+      const day = now.getDate();
+      const key = `${month}-${day}`;
+
+      const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+      // Fallback template if a day hasn't been pre-loaded yet
+      const pressEntry = pressWeatherCalendar[key] || {
+        high: "75°F (Avg)",
+        low: "41°F (Avg)",
+        precip: "0.00 in",
+        note: `Average historical climate readings for ${dateStr} in American Falls & Power County.`
+      };
+
+      const timesEntry = timesWeatherCalendar[key] || {
+        high: "74°F (Avg)",
+        low: "40°F (Avg)",
+        precip: "0.00 in",
+        note: `Average historical climate readings for ${dateStr} in Aberdeen & Bingham County.`
+      };
+
+      // Set Press Box
+      document.getElementById('weatherDatePress').innerText = `${dateStr} in History`;
+      document.getElementById('weatherHighPress').innerText = pressEntry.high;
+      document.getElementById('weatherLowPress').innerText = pressEntry.low;
+      document.getElementById('weatherPrecipPress').innerText = pressEntry.precip;
+      document.getElementById('weatherNotePress').innerText = pressEntry.note;
+
+      // Set Times Box
+      document.getElementById('weatherDateTimes').innerText = `${dateStr} in History`;
+      document.getElementById('weatherHighTimes').innerText = timesEntry.high;
+      document.getElementById('weatherLowTimes').innerText = timesEntry.low;
+      document.getElementById('weatherPrecipTimes').innerText = timesEntry.precip;
+      document.getElementById('weatherNoteTimes').innerText = timesEntry.note;
+    }
+
+    // Interactive Admin Simulation: Saves entries immediately for demonstration
+    function adminSaveWeather() {
+      const now = new Date();
+      const key = `${now.getMonth() + 1}-${now.getDate()}`;
+
+      const target = document.getElementById('admWeatherPaper').value;
+      const high = document.getElementById('admHigh').value;
+      const low = document.getElementById('admLow').value;
+      const precip = document.getElementById('admPrecip').value;
+      const note = document.getElementById('admNote').value;
+
+      const newEntry = { high, low, precip, note };
+
+      if (target === 'press' || target === 'both') {
+        pressWeatherCalendar[key] = newEntry;
+      }
+      if (target === 'times' || target === 'both') {
+        timesWeatherCalendar[key] = newEntry;
+      }
+
+      renderDailyHistoricalWeather();
+      alert(`Weather records updated for today (${key})!\n\nCheck the sidebar widgets above to see your entries live.`);
+    }
+
+    window.addEventListener('DOMContentLoaded', renderDailyHistoricalWeather);
+
+    // Site Search Database
     const siteIndex = [
       {
         title: "American Falls Beavers Clinch Conference Title With Fourth-Quarter Defensive Stand",
@@ -1535,6 +1746,13 @@
       }
     }
 
+    function scrollToDesk(sectionId) {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
     function openSubmissionForm(formType) {
       document.getElementById('submitModalTitle').innerText = formType;
       document.getElementById('submitModal').style.display = 'flex';
@@ -1545,3 +1763,4 @@
   </script>
 </body>
 </html>
+        
