@@ -7,13 +7,13 @@
   <style>
     :root {
       --ink: #111827;
-      --press-red: #d32027;
-      --river-blue: #1c5ba6;
-      --gold: #d97706;
-      --bg-warm: #f9fafb;
+      --press-red: #c81e2b;
+      --times-orange: #c25e00;
+      --times-orange-light: #fff7ed;
+      --bg-warm: #fafaf9;
       --card-bg: #ffffff;
-      --border: #e5e7eb;
-      --muted: #6b7280;
+      --border: #e7e5e4;
+      --muted: #78716c;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -29,50 +29,38 @@
       border-bottom: 3px solid var(--ink);
       padding: 1.25rem 1rem 0.5rem;
       text-align: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
     .masthead-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
+      gap: 2.5rem;
       flex-wrap: wrap;
       margin-bottom: 0.5rem;
     }
-    .masthead-logo {
+    .masthead-logo-press {
+      max-height: 80px;
+      width: auto;
       max-width: 440px;
-      width: 100%;
-      height: auto;
       display: block;
+      object-fit: contain;
+    }
+    .masthead-logo-times {
+      max-height: 80px;
+      width: auto;
+      max-width: 380px;
+      display: block;
+      object-fit: contain;
     }
     .masthead-divider {
       width: 1px;
-      height: 65px;
+      height: 70px;
       background-color: var(--border);
       display: none;
     }
     @media (min-width: 768px) {
       .masthead-divider { display: block; }
-    }
-    .masthead-text-logo {
-      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-      text-align: center;
-    }
-    .masthead-text-logo h1 {
-      font-size: 2.1rem;
-      letter-spacing: -0.5px;
-      line-height: 1.1;
-      color: var(--ink);
-    }
-    .masthead-text-logo .sub {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      border-top: 1px solid var(--press-red);
-      margin-top: 4px;
-      padding-top: 2px;
-      display: block;
     }
 
     header p.tagline {
@@ -81,16 +69,16 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       font-weight: 600;
-      margin-top: 0.25rem;
+      margin-top: 0.35rem;
     }
 
-    /* Main Navigation */
+    /* Navigation */
     nav {
       margin-top: 1rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.75rem;
       border-top: 1px solid var(--border);
       padding-top: 0.65rem;
       flex-wrap: wrap;
@@ -104,14 +92,14 @@
     }
     nav a:hover { color: var(--press-red); }
     .nav-cta {
-      background: var(--press-red);
+      background: var(--ink);
       color: #fff !important;
-      padding: 0.35rem 0.85rem;
+      padding: 0.35rem 0.9rem;
       border-radius: 4px;
       font-size: 0.85rem;
       transition: background 0.15s ease;
     }
-    .nav-cta:hover { background: #b91c1c !important; }
+    .nav-cta:hover { background: var(--press-red) !important; }
 
     .container { max-width: 1040px; margin: 2rem auto; padding: 0 1rem; }
 
@@ -128,20 +116,22 @@
     .paper-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-top: 4px solid var(--river-blue);
       border-radius: 6px;
-      padding: 1.25rem;
+      padding: 1.5rem;
       text-align: center;
       box-shadow: 0 1px 2px rgba(0,0,0,0.04);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .paper-card.times-card { border-top-color: var(--press-red); }
+    .paper-card.press-card { border-top: 5px solid var(--press-red); }
+    .paper-card.times-card { border-top: 5px solid var(--times-orange); }
     .paper-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.07);
     }
-    .paper-card h2 { color: var(--ink); font-size: 1.3rem; margin-bottom: 0.25rem; }
-    .paper-card p { color: var(--muted); font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .paper-card h2 { font-size: 1.35rem; margin-bottom: 0.25rem; }
+    .paper-card.press-card h2 { color: var(--press-red); }
+    .paper-card.times-card h2 { color: var(--times-orange); }
+    .paper-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.75rem; }
 
     /* Section Headers */
     .section-header {
@@ -154,7 +144,7 @@
     }
     .section-header h2 { font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.5px; }
 
-    /* Article Feed Grid */
+    /* Article Cards Grid */
     .articles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3.5rem; }
     @media (max-width: 640px) {
       .articles { grid-template-columns: 1fr; }
@@ -173,29 +163,32 @@
       font-size: 0.72rem;
       text-transform: uppercase;
       font-weight: 700;
-      padding: 0.2rem 0.5rem;
+      padding: 0.2rem 0.55rem;
       border-radius: 3px;
       margin-bottom: 0.65rem;
       align-self: flex-start;
     }
-    .badge-free { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
-    .badge-paid { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+    .badge-press { background: #fef2f2; color: var(--press-red); border: 1px solid #fecaca; }
+    .badge-times { background: var(--times-orange-light); color: var(--times-orange); border: 1px solid #fed7aa; }
+
     .article-card .paper-tag {
       font-size: 0.75rem;
-      color: var(--muted);
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 0.5px;
       margin-bottom: 0.25rem;
     }
-    .article-card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; line-height: 1.35; }
-    .article-card p { font-size: 0.92rem; color: #4b5563; }
+    .article-card.press-theme .paper-tag { color: var(--press-red); }
+    .article-card.times-theme .paper-tag { color: var(--times-orange); }
 
-    .btn {
+    .article-card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; line-height: 1.35; }
+    .article-card p { font-size: 0.92rem; color: #44403c; }
+
+    .btn-press {
       display: inline-block;
       margin-top: 1rem;
       padding: 0.5rem 1rem;
-      background: var(--river-blue);
+      background: var(--press-red);
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -204,11 +197,24 @@
       font-weight: 600;
       align-self: flex-start;
     }
-    .btn:hover { background: #164680; }
+    .btn-press:hover { background: #a71822; }
 
-    /* -------------------------------------------
-       SUBSCRIPTION RATES & SERVICES SECTION
-    ------------------------------------------- */
+    .btn-times {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: var(--times-orange);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      align-self: flex-start;
+    }
+    .btn-times:hover { background: #9a4a00; }
+
+    /* Rates & Subscriptions */
     #rates {
       background: #ffffff;
       border: 1px solid var(--border);
@@ -247,8 +253,8 @@
     }
     .plan-card.featured {
       background: #ffffff;
-      border: 2px solid var(--press-red);
-      box-shadow: 0 8px 24px rgba(211, 32, 39, 0.08);
+      border: 2px solid var(--ink);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       transform: scale(1.02);
     }
     @media (max-width: 850px) {
@@ -259,13 +265,13 @@
       top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--press-red);
+      background: var(--ink);
       color: #fff;
       font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      padding: 0.2rem 0.75rem;
+      padding: 0.2rem 0.8rem;
       border-radius: 20px;
     }
     .plan-card h3 { font-size: 1.3rem; margin-bottom: 0.35rem; color: var(--ink); }
@@ -282,7 +288,7 @@
     .plan-features {
       list-style: none;
       font-size: 0.88rem;
-      color: #374151;
+      color: #44403c;
       margin-bottom: 1.5rem;
       display: flex;
       flex-direction: column;
@@ -298,7 +304,7 @@
 
     .plan-button {
       width: 100%;
-      padding: 0.7rem;
+      padding: 0.75rem;
       background: var(--ink);
       color: #fff;
       border: none;
@@ -306,11 +312,9 @@
       font-weight: 700;
       cursor: pointer;
       font-size: 0.9rem;
-      transition: background 0.15s ease;
+      transition: opacity 0.15s ease;
     }
-    .plan-button:hover { background: #374151; }
-    .plan-button.primary { background: var(--press-red); }
-    .plan-button.primary:hover { background: #b91c1c; }
+    .plan-button:hover { opacity: 0.9; }
 
     /* Contact Form */
     .contact-section {
@@ -331,7 +335,7 @@
       font-size: 0.95rem;
     }
 
-    /* Modal */
+    /* Paywall Modal */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -349,10 +353,10 @@
       max-width: 440px;
       width: 90%;
       text-align: center;
-      border-top: 5px solid var(--press-red);
+      border-top: 5px solid var(--ink);
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
-    .modal-box h3 { color: var(--press-red); margin-bottom: 0.5rem; font-size: 1.4rem; }
+    .modal-box h3 { margin-bottom: 0.5rem; font-size: 1.4rem; }
     .modal-box p { font-size: 0.95rem; color: #4b5563; margin-bottom: 1.5rem; }
   </style>
 </head>
@@ -361,15 +365,12 @@
   <header>
     <div class="masthead-wrapper">
       <!-- Power County Press Logo -->
-      <img src="press-logo.jpg" alt="The Power County Press - Published in American Falls, Idaho" class="masthead-logo" />
+      <img src="press-logo.jpg" alt="The Power County Press - Published in American Falls, Idaho" class="masthead-logo-press" />
       
       <div class="masthead-divider"></div>
       
-      <!-- The Aberdeen Times Masthead -->
-      <div class="masthead-text-logo">
-        <h1>The Aberdeen Times</h1>
-        <span class="sub">Serving Aberdeen & Bingham County</span>
-      </div>
+      <!-- The Aberdeen Times Clean Logo -->
+      <img src="times-logo.png" alt="The Aberdeen Times - Serving Aberdeen and Bingham County" class="masthead-logo-times" />
     </div>
 
     <p class="tagline">Local News • Public Notices • Community Reporting</p>
@@ -385,15 +386,15 @@
   <div class="container">
     <!-- Publication Selector Cards -->
     <div id="papers" class="paper-hub">
-      <div class="paper-card">
+      <div class="paper-card press-card">
         <h2>The Power County Press</h2>
         <p>Serving American Falls and Power County, Idaho</p>
-        <button class="btn">View Press Stories</button>
+        <button class="btn-press">View Press Stories</button>
       </div>
       <div class="paper-card times-card">
         <h2>The Aberdeen Times</h2>
-        <p>Serving Aberdeen and Bingham County, Idaho</p>
-        <button class="btn" style="background: var(--press-red);">View Times Stories</button>
+        <p>Serving Aberdeen and Bingham County since 1911</p>
+        <button class="btn-times">View Times Stories</button>
       </div>
     </div>
 
@@ -405,41 +406,39 @@
 
     <div class="articles">
       <!-- Free Story: Press -->
-      <div class="article-card">
+      <div class="article-card press-theme">
         <div>
-          <div class="paper-tag">Power County Press</div>
-          <span class="badge badge-free">Free Story</span>
+          <div class="paper-tag">The Power County Press</div>
+          <span class="badge badge-press">Free Public Story</span>
           <h3>American Falls Library District Extends Fall Operating Hours</h3>
           <p>The library board announced expanded weekend availability and new community computer lab access starting next week...</p>
         </div>
-        <button class="btn">Read Free</button>
+        <button class="btn-press">Read Free</button>
       </div>
 
       <!-- Paid Story: Times -->
-      <div class="article-card">
+      <div class="article-card times-theme">
         <div>
-          <div class="paper-tag">Aberdeen Times</div>
-          <span class="badge badge-paid">Subscribers Only</span>
+          <div class="paper-tag">The Aberdeen Times</div>
+          <span class="badge badge-times">Subscribers Only</span>
           <h3>Aberdeen City Council Approves Downtown Revitalization Grants</h3>
           <p>A full breakdown of the commercial improvement incentives, street repair schedules, and funded local projects...</p>
         </div>
-        <button class="btn" style="background: var(--press-red);" onclick="openPaywall('The Aberdeen Times')">Read Article</button>
+        <button class="btn-times" onclick="openPaywall('The Aberdeen Times', 'var(--times-orange)')">Read Full Story</button>
       </div>
     </div>
 
-    <!-- =============================================
-         RATES & SUBSCRIPTION SERVICES SECTION
-    ============================================= -->
+    <!-- RATES & SUBSCRIPTIONS -->
     <section id="rates">
       <div class="rates-heading">
         <h2>Subscription Rates & Services</h2>
-        <p>Stay connected to your community. Tax is included on all subscriptions. Digital access includes next-day coverage for local games and events.</p>
+        <p>Support independent local journalism in Southern Idaho. Tax is included on all subscriptions. Digital subscribers receive next-day game coverage and breaking alerts.</p>
       </div>
 
       <div class="pricing-grid">
-        <!-- 1. Digital All-Access (Featured) -->
+        <!-- 1. Digital All-Access -->
         <div class="plan-card featured">
-          <span class="plan-badge">Best Digital Value</span>
+          <span class="plan-badge">Best Online Value</span>
           <div>
             <h3>Online All-Access</h3>
             <p class="plan-desc">Unlimited digital access to <strong>both</strong> The Press and The Times.</p>
@@ -448,30 +447,30 @@
               <span class="period">/ 1 Year (or $6.99/mo)</span>
             </div>
             <ul class="plan-features">
-              <li><strong>Both newspapers included</strong> for one rate</li>
-              <li>Next-day scores & game coverage</li>
-              <li>Breaking local event updates</li>
-              <li>Multi-year options: $120 (2-yr) / $175 (3-yr)</li>
-              <li>Same price anywhere (In or Out of Idaho)</li>
+              <li><strong>Both newspapers included</strong> for one fee</li>
+              <li>Next-day scores & game recaps</li>
+              <li>Early access before the print edition drops</li>
+              <li>Multi-year rates: $120 (2-yr) / $175 (3-yr)</li>
+              <li>Same rate everywhere (In or Out of Idaho)</li>
             </ul>
           </div>
-          <button class="plan-button primary" onclick="alert('Proceeding to Digital checkout preview...')">Choose Online Access</button>
+          <button class="plan-button" style="background: var(--ink);" onclick="alert('Proceeding to Digital checkout preview...')">Subscribe Online</button>
         </div>
 
         <!-- 2. Print + Digital Combo -->
         <div class="plan-card">
           <div>
             <h3>All-Access Combo</h3>
-            <p class="plan-desc">Print home delivery plus full online access to both papers.</p>
+            <p class="plan-desc">Mailed print home delivery plus full online access to both papers.</p>
             <div class="plan-price">
               <span class="amount">$75</span>
               <span class="period">/ 1 Year (In Idaho)</span>
             </div>
             <ul class="plan-features">
-              <li>Weekly mailed print edition</li>
+              <li>Mailed paper of your choice</li>
               <li>Full digital access to <strong>both</strong> papers</li>
-              <li>Next-day sports & breaking news</li>
-              <li>$95/year to get both printed papers mailed</li>
+              <li>Next-day sports & event coverage</li>
+              <li>$95/year for both papers mailed + web</li>
               <li>Out of Idaho mailed combo: $90/year</li>
             </ul>
           </div>
@@ -482,7 +481,7 @@
         <div class="plan-card">
           <div>
             <h3>Print Edition Only</h3>
-            <p class="plan-desc">Traditional physical delivery of your choice of newspaper.</p>
+            <p class="plan-desc">Traditional physical delivery of your selected newspaper.</p>
             <div class="plan-price">
               <span class="amount">$60</span>
               <span class="period">/ 1 Year (In Idaho)</span>
@@ -492,7 +491,7 @@
               <li>2-Year Idaho rate: $115</li>
               <li>3-Year Idaho rate: $170</li>
               <li>Out of Idaho: $75 (1-yr) / $145 (2-yr) / $215 (3-yr)</li>
-              <li>Mailed weekly to your address</li>
+              <li>Delivered weekly by USPS</li>
             </ul>
           </div>
           <button class="plan-button" onclick="alert('Proceeding to Print subscription preview...')">Choose Print Only</button>
@@ -504,7 +503,7 @@
     <div id="contact" class="contact-section">
       <h2 style="font-size: 1.3rem; margin-bottom: 0.35rem; color: var(--ink);">Contact Our Newsrooms</h2>
       <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.25rem;">
-        Submit news tips, community calendar events, classifieds, or renewal inquiries.
+        Submit news tips, announcements, letters to the editor, or circulation inquiries.
       </p>
       <form onsubmit="event.preventDefault(); alert('Message sent! (Prototype demo)');">
         <select required>
@@ -515,27 +514,31 @@
         </select>
         <input type="text" placeholder="Your Full Name" required />
         <input type="email" placeholder="Your Email Address" required />
-        <textarea rows="4" placeholder="Your Message, News Tip, or Subscription Question" required></textarea>
-        <button type="submit" class="btn" style="align-self: flex-start; background: var(--ink);">Send Message</button>
+        <textarea rows="4" placeholder="Your Message or Tip" required></textarea>
+        <button type="submit" class="plan-button" style="align-self: flex-start; width: auto; padding: 0.65rem 1.5rem;">Send Message</button>
       </form>
     </div>
   </div>
 
-  <!-- Interactive Paywall Modal -->
+  <!-- Paywall Modal -->
   <div id="paywallModal" class="modal-overlay">
-    <div class="modal-box">
+    <div class="modal-box" id="modalBox">
       <h3 id="paywallTitle">Subscriber Exclusive</h3>
-      <p>This in-depth reporting is supported entirely by our subscribers. Join today for full digital access to both newspapers.</p>
-      <button class="plan-button primary" onclick="closePaywall(); window.location.href='#rates';">View Plans & Rates (From $65/yr)</button>
+      <p>This reporting is supported directly by our subscribers. Join today for full digital access to both newspapers.</p>
+      <button class="plan-button" id="modalBtn" onclick="closePaywall(); window.location.href='#rates';">View Plans & Rates (From $65/yr)</button>
       <br />
-      <button style="margin-top: 10px; background: transparent; border: none; color: var(--muted); cursor: pointer;" onclick="closePaywall()">Close Preview</button>
+      <button style="margin-top: 12px; background: transparent; border: none; color: var(--muted); cursor: pointer;" onclick="closePaywall()">Close Preview</button>
     </div>
   </div>
 
   <script>
-    function openPaywall(paperName) {
+    function openPaywall(paperName, accentColor) {
       if (paperName) {
         document.getElementById('paywallTitle').innerText = paperName + ' Exclusive';
+      }
+      if (accentColor) {
+        document.getElementById('modalBox').style.borderTopColor = accentColor;
+        document.getElementById('paywallTitle').style.color = accentColor;
       }
       document.getElementById('paywallModal').style.display = 'flex';
     }
