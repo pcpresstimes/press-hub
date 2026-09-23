@@ -9,6 +9,7 @@
       --ink: #111827;
       --press-red: #d32027;
       --river-blue: #1c5ba6;
+      --gold: #d97706;
       --bg-warm: #f9fafb;
       --card-bg: #ffffff;
       --border: #e5e7eb;
@@ -26,7 +27,7 @@
     header {
       background-color: #ffffff;
       border-bottom: 3px solid var(--ink);
-      padding: 1.5rem 1rem 0.75rem;
+      padding: 1.25rem 1rem 0.5rem;
       text-align: center;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
@@ -36,17 +37,17 @@
       justify-content: center;
       gap: 2rem;
       flex-wrap: wrap;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
     .masthead-logo {
-      max-width: 480px;
+      max-width: 440px;
       width: 100%;
       height: auto;
       display: block;
     }
     .masthead-divider {
       width: 1px;
-      height: 70px;
+      height: 65px;
       background-color: var(--border);
       display: none;
     }
@@ -58,7 +59,7 @@
       text-align: center;
     }
     .masthead-text-logo h1 {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       letter-spacing: -0.5px;
       line-height: 1.1;
       color: var(--ink);
@@ -80,15 +81,19 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       font-weight: 600;
-      margin-top: 0.5rem;
+      margin-top: 0.25rem;
     }
+
+    /* Main Navigation */
     nav {
       margin-top: 1rem;
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      align-items: center;
+      gap: 1.5rem;
       border-top: 1px solid var(--border);
-      padding-top: 0.75rem;
+      padding-top: 0.65rem;
+      flex-wrap: wrap;
     }
     nav a {
       text-decoration: none;
@@ -98,6 +103,15 @@
       transition: color 0.15s ease;
     }
     nav a:hover { color: var(--press-red); }
+    .nav-cta {
+      background: var(--press-red);
+      color: #fff !important;
+      padding: 0.35rem 0.85rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      transition: background 0.15s ease;
+    }
+    .nav-cta:hover { background: #b91c1c !important; }
 
     .container { max-width: 1040px; margin: 2rem auto; padding: 0 1rem; }
 
@@ -116,22 +130,20 @@
       border: 1px solid var(--border);
       border-top: 4px solid var(--river-blue);
       border-radius: 6px;
-      padding: 1.5rem;
+      padding: 1.25rem;
       text-align: center;
       box-shadow: 0 1px 2px rgba(0,0,0,0.04);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .paper-card.times-card {
-      border-top-color: var(--press-red);
-    }
+    .paper-card.times-card { border-top-color: var(--press-red); }
     .paper-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.07);
     }
-    .paper-card h2 { color: var(--ink); font-size: 1.35rem; margin-bottom: 0.35rem; }
-    .paper-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .paper-card h2 { color: var(--ink); font-size: 1.3rem; margin-bottom: 0.25rem; }
+    .paper-card p { color: var(--muted); font-size: 0.88rem; margin-bottom: 0.5rem; }
 
-    /* Section Headings */
+    /* Section Headers */
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -143,7 +155,7 @@
     .section-header h2 { font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.5px; }
 
     /* Article Feed Grid */
-    .articles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+    .articles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3.5rem; }
     @media (max-width: 640px) {
       .articles { grid-template-columns: 1fr; }
     }
@@ -158,29 +170,30 @@
     }
     .badge {
       display: inline-block;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
       font-weight: 700;
       padding: 0.2rem 0.5rem;
       border-radius: 3px;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
       align-self: flex-start;
     }
     .badge-free { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
     .badge-paid { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
     .article-card .paper-tag {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--muted);
       text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.25rem;
     }
-    .article-card h3 { margin-bottom: 0.5rem; font-size: 1.2rem; line-height: 1.35; }
-    .article-card p { font-size: 0.95rem; color: #4b5563; }
+    .article-card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; line-height: 1.35; }
+    .article-card p { font-size: 0.92rem; color: #4b5563; }
 
     .btn {
       display: inline-block;
-      margin-top: 1.25rem;
+      margin-top: 1rem;
       padding: 0.5rem 1rem;
       background: var(--river-blue);
       color: #fff;
@@ -193,7 +206,132 @@
     }
     .btn:hover { background: #164680; }
 
-    /* Interactive Modal */
+    /* -------------------------------------------
+       SUBSCRIPTION RATES & SERVICES SECTION
+    ------------------------------------------- */
+    #rates {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem 1.5rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .rates-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 2rem;
+    }
+    .rates-heading h2 { font-size: 1.8rem; color: var(--ink); margin-bottom: 0.5rem; }
+    .rates-heading p { color: var(--muted); font-size: 0.95rem; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    @media (max-width: 850px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    .plan-card {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .plan-card.featured {
+      background: #ffffff;
+      border: 2px solid var(--press-red);
+      box-shadow: 0 8px 24px rgba(211, 32, 39, 0.08);
+      transform: scale(1.02);
+    }
+    @media (max-width: 850px) {
+      .plan-card.featured { transform: none; }
+    }
+    .plan-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--press-red);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.2rem 0.75rem;
+      border-radius: 20px;
+    }
+    .plan-card h3 { font-size: 1.3rem; margin-bottom: 0.35rem; color: var(--ink); }
+    .plan-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.25rem; min-height: 40px; }
+
+    .plan-price {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .plan-price .amount { font-size: 2.2rem; font-weight: 800; color: var(--ink); }
+    .plan-price .period { font-size: 0.85rem; color: var(--muted); }
+
+    .plan-features {
+      list-style: none;
+      font-size: 0.88rem;
+      color: #374151;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: left;
+    }
+    .plan-features li::before {
+      content: "✓";
+      color: #059669;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .plan-button {
+      width: 100%;
+      padding: 0.7rem;
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.15s ease;
+    }
+    .plan-button:hover { background: #374151; }
+    .plan-button.primary { background: var(--press-red); }
+    .plan-button.primary:hover { background: #b91c1c; }
+
+    /* Contact Form */
+    .contact-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .contact-section form { display: flex; flex-direction: column; gap: 0.85rem; }
+    .contact-section input, .contact-section select, .contact-section textarea {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    /* Modal */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -216,45 +354,6 @@
     }
     .modal-box h3 { color: var(--press-red); margin-bottom: 0.5rem; font-size: 1.4rem; }
     .modal-box p { font-size: 0.95rem; color: #4b5563; margin-bottom: 1.5rem; }
-    .subscribe-btn {
-      background: var(--press-red);
-      color: #fff;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1rem;
-    }
-    .subscribe-btn:hover { background: #b91c1c; }
-    .close-btn {
-      margin-top: 0.85rem;
-      background: transparent;
-      border: none;
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-
-    /* Contact Form */
-    .contact-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 2rem;
-      max-width: 650px;
-      margin: 0 auto;
-    }
-    .contact-section form { display: flex; flex-direction: column; gap: 0.85rem; }
-    .contact-section input, .contact-section select, .contact-section textarea {
-      width: 100%;
-      padding: 0.7rem;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 0.95rem;
-    }
   </style>
 </head>
 <body>
@@ -266,7 +365,7 @@
       
       <div class="masthead-divider"></div>
       
-      <!-- The Aberdeen Times Typography Display -->
+      <!-- The Aberdeen Times Masthead -->
       <div class="masthead-text-logo">
         <h1>The Aberdeen Times</h1>
         <span class="sub">Serving Aberdeen & Bingham County</span>
@@ -278,6 +377,7 @@
     <nav>
       <a href="#papers">Publications</a>
       <a href="#latest">Headlines</a>
+      <a href="#rates" class="nav-cta">Subscribe / Rates</a>
       <a href="#contact">Contact Newsrooms</a>
     </nav>
   </header>
@@ -327,11 +427,84 @@
       </div>
     </div>
 
+    <!-- =============================================
+         RATES & SUBSCRIPTION SERVICES SECTION
+    ============================================= -->
+    <section id="rates">
+      <div class="rates-heading">
+        <h2>Subscription Rates & Services</h2>
+        <p>Stay connected to your community. Tax is included on all subscriptions. Digital access includes next-day coverage for local games and events.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- 1. Digital All-Access (Featured) -->
+        <div class="plan-card featured">
+          <span class="plan-badge">Best Digital Value</span>
+          <div>
+            <h3>Online All-Access</h3>
+            <p class="plan-desc">Unlimited digital access to <strong>both</strong> The Press and The Times.</p>
+            <div class="plan-price">
+              <span class="amount">$65</span>
+              <span class="period">/ 1 Year (or $6.99/mo)</span>
+            </div>
+            <ul class="plan-features">
+              <li><strong>Both newspapers included</strong> for one rate</li>
+              <li>Next-day scores & game coverage</li>
+              <li>Breaking local event updates</li>
+              <li>Multi-year options: $120 (2-yr) / $175 (3-yr)</li>
+              <li>Same price anywhere (In or Out of Idaho)</li>
+            </ul>
+          </div>
+          <button class="plan-button primary" onclick="alert('Proceeding to Digital checkout preview...')">Choose Online Access</button>
+        </div>
+
+        <!-- 2. Print + Digital Combo -->
+        <div class="plan-card">
+          <div>
+            <h3>All-Access Combo</h3>
+            <p class="plan-desc">Print home delivery plus full online access to both papers.</p>
+            <div class="plan-price">
+              <span class="amount">$75</span>
+              <span class="period">/ 1 Year (In Idaho)</span>
+            </div>
+            <ul class="plan-features">
+              <li>Weekly mailed print edition</li>
+              <li>Full digital access to <strong>both</strong> papers</li>
+              <li>Next-day sports & breaking news</li>
+              <li>$95/year to get both printed papers mailed</li>
+              <li>Out of Idaho mailed combo: $90/year</li>
+            </ul>
+          </div>
+          <button class="plan-button" onclick="alert('Proceeding to Combo checkout preview...')">Choose Combo</button>
+        </div>
+
+        <!-- 3. Print Only -->
+        <div class="plan-card">
+          <div>
+            <h3>Print Edition Only</h3>
+            <p class="plan-desc">Traditional physical delivery of your choice of newspaper.</p>
+            <div class="plan-price">
+              <span class="amount">$60</span>
+              <span class="period">/ 1 Year (In Idaho)</span>
+            </div>
+            <ul class="plan-features">
+              <li>Choice of The Press OR The Times</li>
+              <li>2-Year Idaho rate: $115</li>
+              <li>3-Year Idaho rate: $170</li>
+              <li>Out of Idaho: $75 (1-yr) / $145 (2-yr) / $215 (3-yr)</li>
+              <li>Mailed weekly to your address</li>
+            </ul>
+          </div>
+          <button class="plan-button" onclick="alert('Proceeding to Print subscription preview...')">Choose Print Only</button>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Form -->
     <div id="contact" class="contact-section">
       <h2 style="font-size: 1.3rem; margin-bottom: 0.35rem; color: var(--ink);">Contact Our Newsrooms</h2>
       <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.25rem;">
-        Submit news tips, community calendar events, classifieds, or reach circulation.
+        Submit news tips, community calendar events, classifieds, or renewal inquiries.
       </p>
       <form onsubmit="event.preventDefault(); alert('Message sent! (Prototype demo)');">
         <select required>
@@ -342,7 +515,7 @@
         </select>
         <input type="text" placeholder="Your Full Name" required />
         <input type="email" placeholder="Your Email Address" required />
-        <textarea rows="4" placeholder="Your Message, News Tip, or Notice" required></textarea>
+        <textarea rows="4" placeholder="Your Message, News Tip, or Subscription Question" required></textarea>
         <button type="submit" class="btn" style="align-self: flex-start; background: var(--ink);">Send Message</button>
       </form>
     </div>
@@ -352,10 +525,10 @@
   <div id="paywallModal" class="modal-overlay">
     <div class="modal-box">
       <h3 id="paywallTitle">Subscriber Exclusive</h3>
-      <p>Keep independent local journalism strong in Power & Bingham counties. Subscribe today for full digital access to both newspapers.</p>
-      <button class="subscribe-btn" onclick="alert('Demo: Redirecting to Stripe checkout...')">Subscribe for $5 / Month</button>
+      <p>This in-depth reporting is supported entirely by our subscribers. Join today for full digital access to both newspapers.</p>
+      <button class="plan-button primary" onclick="closePaywall(); window.location.href='#rates';">View Plans & Rates (From $65/yr)</button>
       <br />
-      <button class="close-btn" onclick="closePaywall()">Close Preview</button>
+      <button style="margin-top: 10px; background: transparent; border: none; color: var(--muted); cursor: pointer;" onclick="closePaywall()">Close Preview</button>
     </div>
   </div>
 
