@@ -29,17 +29,26 @@
       line-height: 1.6;
     }
 
-    /* Top Dateline Bar */
+    /* Top Dateline Bar & User Status */
     .top-bar {
       background: #1e293b;
       color: #cbd5e1;
       font-size: 0.78rem;
-      padding: 0.4rem 1rem;
+      padding: 0.4rem 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
     .top-bar span { font-weight: 500; }
+    .auth-status-link {
+      color: #38bdf8;
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .auth-status-link:hover { text-decoration: underline; }
 
     /* Dual Masthead Header */
     header {
@@ -96,7 +105,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.25rem;
+      gap: 1.15rem;
       border-top: 1px solid var(--border);
       padding-top: 0.65rem;
       flex-wrap: wrap;
@@ -105,7 +114,7 @@
       text-decoration: none;
       color: var(--ink);
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       transition: color 0.15s ease;
     }
     nav a:hover { color: var(--press-red); }
@@ -121,6 +130,15 @@
       border-bottom: 2px solid var(--legal-gold);
       padding-bottom: 2px;
     }
+    .nav-login {
+      background: #f1f5f9;
+      color: var(--ink) !important;
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+      font-weight: 700;
+      cursor: pointer;
+    }
     .nav-cta {
       background: var(--ink);
       color: #fff !important;
@@ -132,6 +150,38 @@
     .nav-cta:hover { background: var(--press-red) !important; }
 
     .container { max-width: 1040px; margin: 2rem auto; padding: 0 1rem; }
+
+    /* Search Bar */
+    .search-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .search-input {
+      flex: 1;
+      border: 1px solid var(--border);
+      padding: 0.6rem 0.85rem;
+      border-radius: 4px;
+      font-size: 0.92rem;
+      font-family: inherit;
+    }
+    .search-btn {
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      padding: 0.65rem 1.25rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+    .search-btn:hover { background: #374151; }
 
     /* Desk Selector Bar */
     .desk-selector-box {
@@ -168,21 +218,9 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
-    .filter-btn.active-all {
-      background: var(--ink);
-      color: #fff;
-      border-color: var(--ink);
-    }
-    .filter-btn.active-press {
-      background: var(--press-red);
-      color: #fff;
-      border-color: var(--press-red);
-    }
-    .filter-btn.active-times {
-      background: var(--times-orange);
-      color: #fff;
-      border-color: var(--times-orange);
-    }
+    .filter-btn.active-all { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .filter-btn.active-press { background: var(--press-red); color: #fff; border-color: var(--press-red); }
+    .filter-btn.active-times { background: var(--times-orange); color: #fff; border-color: var(--times-orange); }
 
     /* Section Headers */
     .section-header {
@@ -434,6 +472,57 @@
     }
     .btn-legal-read:hover { background: #ca8a04; color: #fff; }
 
+    /* CONTACT & OFFICES SECTION */
+    #offices { margin-bottom: 3.5rem; }
+    .deadline-banner {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-left: 5px solid var(--press-red);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .deadline-banner strong { color: #991b1b; }
+
+    .offices-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .offices-grid { grid-template-columns: 1fr; }
+    }
+    .office-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .office-card.press-office { border-top: 5px solid var(--press-red); }
+    .office-card.times-office { border-top: 5px solid var(--times-orange); }
+    .office-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--ink); }
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.9rem;
+      font-size: 0.92rem;
+    }
+    .contact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.15rem;
+    }
+    .contact-value { color: var(--ink); font-weight: 500; }
+    .contact-value a { color: var(--ink); text-decoration: none; font-weight: 700; }
+    .contact-value a:hover { text-decoration: underline; }
+
     /* RATES & SUBSCRIPTIONS */
     #rates {
       background: #ffffff;
@@ -452,6 +541,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
       align-items: stretch;
+      margin-bottom: 2rem;
     }
     @media (max-width: 850px) {
       .pricing-grid { grid-template-columns: 1fr; }
@@ -517,72 +607,28 @@
       font-size: 0.9rem;
     }
 
-    /* -------------------------------------------
-       CONTACT & OFFICES SECTION (DETAILED)
-    ------------------------------------------- */
-    #offices {
-      margin-bottom: 3.5rem;
-    }
-    .deadline-banner {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      border-left: 5px solid var(--press-red);
+    /* Community Support Callout Box */
+    .community-support-banner {
+      background: #fafaf9;
+      border: 1px solid #e7e5e4;
+      border-left: 4px solid var(--ink);
       border-radius: 6px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.75rem;
+      padding: 1.5rem;
+      text-align: left;
+      font-size: 0.9rem;
+      color: #374151;
+      line-height: 1.6;
+    }
+    .community-support-banner h4 {
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
-    }
-    .deadline-banner strong { color: #991b1b; }
-
-    .offices-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    @media (max-width: 768px) {
-      .offices-grid { grid-template-columns: 1fr; }
-    }
-    .office-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.75rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-    }
-    .office-card.press-office { border-top: 5px solid var(--press-red); }
-    .office-card.times-office { border-top: 5px solid var(--times-orange); }
-
-    .office-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--ink); }
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 0.9rem;
-      font-size: 0.92rem;
-    }
-    .contact-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--muted);
-      letter-spacing: 0.5px;
-      margin-bottom: 0.15rem;
-    }
-    .contact-value {
-      color: var(--ink);
-      font-weight: 500;
-    }
-    .contact-value a {
-      color: var(--ink);
-      text-decoration: none;
-      font-weight: 700;
-    }
-    .contact-value a:hover {
-      text-decoration: underline;
+      gap: 0.5rem;
     }
 
-    /* Modal Styling */
+    /* Modal Base Styling */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -604,15 +650,47 @@
       text-align: left;
       border-top: 5px solid var(--ink);
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    /* Teaser / Blur Box on Paid Stories */
+    .paywall-blur-box {
+      position: relative;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+    }
+    .teaser-locked-curtain {
+      background: linear-gradient(to bottom, rgba(255,255,255,0.2), #ffffff 80%);
+      padding: 2rem 1.5rem 1rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-top: 0.5rem;
+    }
+
+    /* Device Security Note in Modal */
+    .device-policy-note {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 0.75rem 0.95rem;
+      font-size: 0.8rem;
+      color: #334155;
+      margin-top: 1rem;
+      line-height: 1.5;
+      text-align: left;
     }
   </style>
 </head>
 <body>
 
-  <!-- Dateline Bar -->
+  <!-- Dateline & Dynamic Login Status Bar -->
   <div class="top-bar">
-    <span>Published in American Falls & Aberdeen, Idaho</span>
-    <span>Tuesday, September 22, 2026</span>
+    <span>Published in American Falls & Aberdeen, Idaho • Tuesday, September 22, 2026</span>
+    <span id="userAuthDisplay">
+      Are you a subscriber? <a class="auth-status-link" onclick="openLoginModal()">Log In Here</a>
+    </span>
   </div>
 
   <header>
@@ -635,11 +713,19 @@
       <a href="#archives">Historical Archives</a>
       <a href="#submissions">Community Submissions</a>
       <a href="#offices">Offices & Contact</a>
+      <button class="nav-login" id="navLoginBtn" onclick="openLoginModal()">Subscriber Log In</button>
       <a href="#rates" class="nav-cta">Subscribe / Rates</a>
     </nav>
   </header>
 
   <div class="container">
+
+    <!-- SITE-WIDE SEARCH BAR -->
+    <div class="search-wrapper">
+      <span style="font-size: 1.2rem;">🔍</span>
+      <input type="text" id="siteSearchInput" class="search-input" placeholder="Search entire website (e.g. 'Beavers', 'Irrigation', 'Council')..." onkeydown="if(event.key==='Enter') executeSiteSearch();" />
+      <button class="search-btn" onclick="executeSiteSearch()">Search Website</button>
+    </div>
 
     <!-- DESK / PUBLICATION FILTER -->
     <div class="desk-selector-box" id="coverage">
@@ -654,47 +740,58 @@
     <!-- Stories Grid -->
     <div class="section-header">
       <h2 id="streamHeading">Recent News Coverage</h2>
-      <span style="font-size: 0.85rem; color: var(--muted);">Click paid story to test paywall</span>
+      <span style="font-size: 0.85rem; color: var(--muted);">Click paid story to test teaser & paywall</span>
     </div>
 
     <div class="articles" id="articleStream">
-      <!-- Story 1: Press Only -->
+      
+      <!-- Story 1: American Falls Beavers (PAID FEATURE STORY) -->
       <div class="article-card press-theme" data-desk="press">
         <div>
-          <div class="paper-tag">The Power County Press</div>
-          <span class="badge badge-press">Free Public Story</span>
-          <h3>American Falls Library District Extends Fall Operating Hours</h3>
-          <p>The library board announced expanded weekend availability and new community computer lab access starting next week...</p>
+          <div class="paper-tag">The Power County Press • Sports</div>
+          <span class="badge badge-press">Subscribers Only</span>
+          <h3>American Falls Beavers Clinch Conference Title With Fourth-Quarter Defensive Stand</h3>
+          <p>AMERICAN FALLS — Under Friday night stadium lights, the American Falls Beavers cemented their playoff berth with a thrilling goal-line stop with only 18 seconds remaining on the clock...</p>
         </div>
-        <button class="btn-press">Read Free</button>
+        <button class="btn-press" onclick="openArticleViewer('American Falls Beavers Clinch Conference Title With Fourth-Quarter Defensive Stand', 'The Power County Press', 'Sep 22, 2026', 'AMERICAN FALLS — Under Friday night stadium lights, the American Falls Beavers cemented their playoff berth with a thrilling goal-line stop with only 18 seconds remaining on the clock.', 'Senior running back Marcus Vance racked up 168 yards on 22 carries, scoring two crucial touchdowns before the Beaver defensive line held firm on fourth-and-goal at the 2-yard line. Head Coach Miller praised the unit\'s resilience during post-game interviews, calling it one of the grittiest fourth quarters played at Beaver Stadium in a decade. Full game photo gallery, individual offensive stats, and upcoming regional playoff brackets are detailed below for subscribers.', true)">Read Story</button>
       </div>
 
-      <!-- Story 2: Times Only -->
+      <!-- Story 2: Aberdeen Times (Subscribers Only) -->
       <div class="article-card times-theme" data-desk="times">
         <div>
-          <div class="paper-tag">The Aberdeen Times</div>
+          <div class="paper-tag">The Aberdeen Times • Local Government</div>
           <span class="badge badge-times">Subscribers Only</span>
           <h3>Aberdeen City Council Approves Downtown Revitalization Grants</h3>
-          <p>A full breakdown of the commercial improvement incentives, street repair schedules, and funded local projects...</p>
+          <p>ABERDEEN — In a unanimous 5-0 decision Tuesday evening, the Aberdeen City Council approved a comprehensive commercial facade improvement program aimed at downtown retailers...</p>
         </div>
-        <button class="btn-times" onclick="openPaywall('The Aberdeen Times', 'var(--times-orange)')">Read Full Story</button>
+        <button class="btn-times" onclick="openArticleViewer('Aberdeen City Council Approves Downtown Revitalization Grants', 'The Aberdeen Times', 'Sep 20, 2026', 'ABERDEEN — In a unanimous 5-0 decision Tuesday evening, the Aberdeen City Council approved a comprehensive commercial facade improvement program aimed at downtown retailers.', 'The incentive matching funds will cover up to 50 percent of approved exterior renovations, storefront signage, and historic brick repairs along South Main Street. Funding allocations begin on November 1st, with priority given to locally owned agricultural supply vendors and legacy family businesses.', true)">Read Story</button>
       </div>
 
-      <!-- Story 3: Both Publications -->
+      <!-- Story 3: Press Free Story -->
+      <div class="article-card press-theme" data-desk="press">
+        <div>
+          <div class="paper-tag">The Power County Press • Community</div>
+          <span class="badge badge-press">Free Public Story</span>
+          <h3>American Falls Library District Extends Fall Operating Hours</h3>
+          <p>The library board announced expanded weekend availability and new community computer lab access starting next week for all residents...</p>
+        </div>
+        <button class="btn-press" onclick="openArticleViewer('American Falls Library District Extends Fall Operating Hours', 'The Power County Press', 'Sep 19, 2026', 'The library board announced expanded weekend availability and new community computer lab access starting next week for all residents.', 'Patrons will now have access to the main reference room, children\'s reading corner, and printing stations until 7:00 PM on Thursdays and Fridays, along with new Saturday hours from 10:00 AM to 2:00 PM. No membership fee or subscription is required to use public library terminals.', false)">Read Free</button>
+      </div>
+
+      <!-- Story 4: Both Papers Free Regional Story -->
       <div class="article-card both-theme" data-desk="both">
         <div>
           <div class="paper-tag">Published in Both Newspapers</div>
           <span class="badge badge-both">Regional News • Free</span>
           <h3>Snake River Water District Issues Seasonal Irrigation Shutoff Schedule</h3>
-          <p>Canal flow reductions will begin across Power and Bingham counties on October 15th to facilitate scheduled canal bank maintenance...</p>
+          <p>Canal flow reductions will begin across Power and Bingham counties on October 15th to facilitate scheduled canal bank maintenance and winter storage...</p>
         </div>
-        <button class="btn-press" style="background: var(--ink);">Read Full Report</button>
+        <button class="btn-press" style="background: var(--ink);" onclick="openArticleViewer('Snake River Water District Issues Seasonal Irrigation Shutoff Schedule', 'Published in Both Newspapers', 'Sep 18, 2026', 'Canal flow reductions will begin across Power and Bingham counties on October 15th to facilitate scheduled canal bank maintenance and winter storage.', 'Growers and canal ditch riders are instructed to conclude secondary water diversions prior to 5:00 PM on October 14th. Maintenance crews will begin inspecting headgates and concrete canal liners immediately following water drawdown.', false)">Read Free</button>
       </div>
+
     </div>
 
-    <!-- =============================================
-         COMMUNITY OBITUARIES (PERMANENTLY FREE)
-    ============================================= -->
+    <!-- OBITUARIES (FREE) -->
     <section id="obituaries">
       <div class="obit-header">
         <div>
@@ -707,35 +804,27 @@
       </div>
 
       <div class="obit-grid">
-        <!-- Sample Obituary 1 -->
         <div class="obit-card">
           <div>
             <div class="obit-name">Evelyn Rose Miller (88)</div>
             <div class="obit-dates">November 14, 1937 – September 18, 2026 • American Falls, Idaho</div>
-            <p class="obit-text">
-              Evelyn was a beloved educator in the Power County School District for 34 years and an active volunteer at the community center. Memorial services will be held on Saturday...
-            </p>
+            <p class="obit-text">Evelyn was a beloved educator in the Power County School District for 34 years and an active volunteer at the community center...</p>
           </div>
-          <button class="btn-legal-read" style="border-color: #64748b; color: #334155;" onclick="openObitModal('Evelyn Rose Miller', 'November 14, 1937 – September 18, 2026', 'American Falls, ID', 'Full service details: Services will be conducted at 11:00 AM on Saturday, September 26, 2026 at the American Falls Community Church. Interment will follow at Falls View Cemetery.')">Read Full Obituary</button>
+          <button class="btn-legal-read" style="border-color: #64748b; color: #334155;" onclick="alert('Viewing full obituary for Evelyn Rose Miller (Free)')">Read Full Obituary</button>
         </div>
 
-        <!-- Sample Obituary 2 -->
         <div class="obit-card">
           <div>
             <div class="obit-name">Dale Kenneth Wahlen (74)</div>
             <div class="obit-dates">March 2, 1952 – September 15, 2026 • Aberdeen, Idaho</div>
-            <p class="obit-text">
-              A lifelong Aberdeen farmer and dedicated community leader who served on the canal board and supported high school athletics throughout his life...
-            </p>
+            <p class="obit-text">A lifelong Aberdeen farmer and dedicated community leader who served on the canal board and supported high school athletics...</p>
           </div>
-          <button class="btn-legal-read" style="border-color: #64748b; color: #334155;" onclick="openObitModal('Dale Kenneth Wahlen', 'March 2, 1952 – September 15, 2026', 'Aberdeen, ID', 'Full service details: Family visitation will be held Friday evening from 6:00 to 8:00 PM. Graveside dedication will take place at the Aberdeen Cemetery on Saturday morning.')">Read Full Obituary</button>
+          <button class="btn-legal-read" style="border-color: #64748b; color: #334155;" onclick="alert('Viewing full obituary for Dale Kenneth Wahlen (Free)')">Read Full Obituary</button>
         </div>
       </div>
     </section>
 
-    <!-- =============================================
-         COMMUNITY SUBMISSIONS HUB
-    ============================================= -->
+    <!-- COMMUNITY SUBMISSIONS HUB -->
     <section id="submissions" class="community-actions-hub">
       <h2>Community Submissions & Newsroom Desk</h2>
       <p>Local news relies on our readers. Send us your stories, events, scores, and life milestones to be published in print and online.</p>
@@ -752,20 +841,15 @@
     <section id="archives">
       <div class="archive-header">
         <div>
-          <h2 style="color: var(--archive-navy); font-size: 1.5rem; margin-bottom: 0.25rem;">
-            Searchable Historical Newspaper Archives
-          </h2>
-          <p style="color: #334155; font-size: 0.92rem;">
-            Digitizing over a century of local history from American Falls, Aberdeen, and Bingham County.
-          </p>
+          <h2 style="color: var(--archive-navy); font-size: 1.5rem; margin-bottom: 0.25rem;">Searchable Historical Newspaper Archives</h2>
+          <p style="color: #334155; font-size: 0.92rem;">Digitizing over a century of local history from American Falls, Aberdeen, and Bingham County.</p>
         </div>
         <span class="archive-badge">Coming Soon • Subscriber Perk</span>
       </div>
-
       <div class="archive-preview-box">
         <h3 style="color: #0f172a; margin-bottom: 0.5rem; font-size: 1.15rem;">Over 100 Years of Community History at Your Fingertips</h3>
         <p style="color: #475569; font-size: 0.9rem; max-width: 700px; margin: 0 auto;">
-          Digital subscribers will soon have complete, on-demand access to searchable PDF archives of past editions of both <strong>The Power County Press</strong> and <strong>The Aberdeen Times</strong>. Search by family name, historical event, obituary date, or high school sports records.
+          Digital subscribers will soon have complete, on-demand access to searchable PDF archives of past editions dating back to 1911.
         </p>
       </div>
     </section>
@@ -790,16 +874,13 @@
             </div>
             <div style="font-weight: 700; color: var(--ink);">Notice of Public Hearing: American Falls Zoning Ordinance Revision</div>
           </div>
-          <button class="btn-legal-read" onclick="alert('Displaying sample legal notice...')">Read Notice</button>
+          <button class="btn-legal-read" onclick="alert('Viewing official public notice (Free)')">Read Notice</button>
         </div>
       </div>
     </section>
 
-    <!-- =============================================
-         NEWSROOM OFFICES & CONTACT DETAILS
-    ============================================= -->
+    <!-- OFFICES & CONTACT -->
     <section id="offices">
-      <!-- Universal Deadlines Notice -->
       <div class="deadline-banner">
         <div style="font-size: 1.4rem;">⏰</div>
         <div>
@@ -810,20 +891,16 @@
       </div>
 
       <div class="offices-grid">
-        <!-- Office 1: The Power County Press -->
         <div class="office-card press-office">
           <h3 style="color: var(--press-red);">The Power County Press</h3>
-          
           <div class="contact-item">
             <span class="contact-label">Physical & Mailing Address</span>
             <span class="contact-value">174 Idaho Street<br>American Falls, Idaho 83211</span>
           </div>
-
           <div class="contact-item">
             <span class="contact-label">Phone Number</span>
             <span class="contact-value"><a href="tel:2082265294">208-226-5294</a></span>
           </div>
-
           <div class="contact-item">
             <span class="contact-label">Office Hours</span>
             <span class="contact-value">
@@ -833,20 +910,16 @@
           </div>
         </div>
 
-        <!-- Office 2: The Aberdeen Times -->
         <div class="office-card times-office">
           <h3 style="color: var(--times-orange);">The Aberdeen Times</h3>
-          
           <div class="contact-item">
             <span class="contact-label">Physical & Mailing Address</span>
             <span class="contact-value">31 S. Main Street<br>Aberdeen, Idaho 83210</span>
           </div>
-
           <div class="contact-item">
             <span class="contact-label">Phone Number</span>
             <span class="contact-value"><a href="tel:2083974440">208-397-4440</a></span>
           </div>
-
           <div class="contact-item">
             <span class="contact-label">Office Hours</span>
             <span class="contact-value">By Appointment</span>
@@ -859,7 +932,7 @@
     <section id="rates">
       <div class="rates-heading">
         <h2>Subscription Rates & Services</h2>
-        <p>Support independent local journalism in Southern Idaho. Tax is included on all subscriptions. Digital subscribers receive next-day game coverage, breaking alerts, and upcoming archive access.</p>
+        <p>Tax is included on all subscriptions. Digital subscribers receive next-day game recaps, breaking alerts, and upcoming archive access.</p>
       </div>
 
       <div class="pricing-grid">
@@ -876,13 +949,12 @@
             <ul class="plan-features">
               <li><strong>Both newspapers included</strong> for one fee</li>
               <li>Next-day scores & game recaps</li>
-              <li>Early access before the print edition drops</li>
+              <li>Early access before print hits mailboxes</li>
               <li>Coming Soon: Searchable PDF historical archives</li>
               <li>Multi-year rates: $120 (2-yr) / $175 (3-yr)</li>
-              <li>Same rate everywhere (In or Out of Idaho)</li>
             </ul>
           </div>
-          <button class="plan-button" onclick="alert('Proceeding to Digital checkout preview...')">Subscribe Online</button>
+          <button class="plan-button" onclick="openCheckoutModal('Online All-Access', '$65.00')">Subscribe Online</button>
         </div>
 
         <!-- Combo -->
@@ -900,10 +972,9 @@
               <li>Next-day sports & event coverage</li>
               <li>Searchable historical PDF archives access</li>
               <li>$95/year for both papers mailed + web</li>
-              <li>Out of Idaho mailed combo: $90/year</li>
             </ul>
           </div>
-          <button class="plan-button" onclick="alert('Proceeding to Combo checkout preview...')">Choose Combo</button>
+          <button class="plan-button" onclick="openCheckoutModal('All-Access Combo', '$75.00')">Choose Combo</button>
         </div>
 
         <!-- Print Only -->
@@ -923,24 +994,156 @@
               <li>Delivered weekly by USPS</li>
             </ul>
           </div>
-          <button class="plan-button" onclick="alert('Proceeding to Print subscription preview...')">Choose Print Only</button>
+          <button class="plan-button" onclick="openCheckoutModal('Print Edition Only', '$60.00')">Choose Print Only</button>
         </div>
+      </div>
+
+      <!-- DRESSED-UP COMMUNITY & INTEGRITY POLICY NOTE -->
+      <div class="community-support-banner">
+        <h4>📰 Keeping Honest, Small-Town News Alive</h4>
+        <p style="margin-bottom: 0.6rem;">
+          In a media landscape filled with distant conglomerates that overlook rural communities—and often spread unverified sensationalism—<em>The Power County Press</em> and <em>The Aberdeen Times</em> remain committed to factual, truthful, and verified reporting on what matters to Power and Bingham counties.
+        </p>
+        <p style="font-size: 0.85rem; color: var(--muted);">
+          <strong>Account & Household Policy:</strong> To ensure our independent newsrooms remain sustainable, online subscriptions are designed for <strong>single-household use (up to two simultaneous active devices, such as your mobile phone and home computer)</strong>. Subscribers stay logged in automatically on their primary devices. We simply ask that you support local journalism by not sharing account credentials with multiple households.
+        </p>
       </div>
     </section>
   </div>
 
-  <!-- Paywall Modal -->
-  <div id="paywallModal" class="modal-overlay">
-    <div class="modal-box" id="modalBox" style="text-align: center;">
-      <h3 id="paywallTitle">Subscriber Exclusive</h3>
-      <p>This reporting is supported directly by our subscribers. Join today for full digital access to both newspapers.</p>
-      <button class="plan-button" onclick="closePaywall(); window.location.href='#rates';">View Plans & Rates (From $65/yr)</button>
-      <br />
-      <button style="margin-top: 12px; background: transparent; border: none; color: var(--muted); cursor: pointer;" onclick="closePaywall()">Close Preview</button>
+  <!-- ARTICLE VIEWER MODAL (TEASER & PAYWALL) -->
+  <div id="articleModal" class="modal-overlay">
+    <div class="modal-box" id="articleModalBox">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+        <span id="modalArticlePaper" style="font-size: 0.8rem; font-weight: bold; text-transform: uppercase;"></span>
+        <span id="modalArticleBadge" class="badge"></span>
+      </div>
+      <h2 id="modalArticleTitle" style="font-size: 1.35rem; margin-bottom: 0.35rem; line-height: 1.3;"></h2>
+      <p id="modalArticleDate" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem;"></p>
+      
+      <!-- First Sentence Teaser -->
+      <p id="modalArticleTeaser" style="font-family: Georgia, serif; font-size: 1rem; color: #1f2937; line-height: 1.7; font-weight: 500;"></p>
+      
+      <!-- Content Container -->
+      <div id="modalArticleRestContainer" class="paywall-blur-box">
+        <p id="modalArticleRest" style="font-family: Georgia, serif; font-size: 0.95rem; color: #374151; line-height: 1.7;"></p>
+        
+        <!-- Paywall Curtain -->
+        <div id="paywallCurtain" class="teaser-locked-curtain">
+          <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🔒</div>
+          <h4 style="font-size: 1.15rem; color: var(--ink); margin-bottom: 0.25rem;">Subscriber Exclusive Content</h4>
+          <p style="font-size: 0.85rem; color: var(--muted); max-width: 380px; margin: 0 auto 1rem;">
+            You have read the preview sentence. To read the remainder of this article and view the photo gallery, please log in or subscribe.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="plan-button" style="width: auto; padding: 0.5rem 1.25rem;" onclick="closeArticleViewer(); openLoginModal();">Log In to Read</button>
+            <button class="plan-button" style="width: auto; padding: 0.5rem 1.25rem; background: var(--press-red);" onclick="closeArticleViewer(); window.location.href='#rates';">Subscribe (From $65/yr)</button>
+          </div>
+        </div>
+      </div>
+
+      <button style="margin-top: 1.5rem; background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 0.85rem; display: block; width: 100%; text-align: center;" onclick="closeArticleViewer()">Close Article</button>
     </div>
   </div>
 
-  <!-- Submission Modal -->
+  <!-- SUBSCRIBER LOGIN MODAL (WITH PERSISTENCE & HOUSEHOLD POLICY) -->
+  <div id="loginModal" class="modal-overlay">
+    <div class="modal-box" style="max-width: 440px; text-align: center;">
+      <h3 style="font-size: 1.35rem; color: var(--ink); margin-bottom: 0.35rem;">Subscriber Account Login</h3>
+      <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.25rem;">
+        Sign in to read full local stories, game photos, and public records.
+      </p>
+      
+      <form onsubmit="event.preventDefault(); simulateLogin();" style="display: flex; flex-direction: column; gap: 0.85rem; text-align: left;">
+        <div>
+          <label style="font-size: 0.78rem; font-weight: bold;">Email Address / Username</label>
+          <input type="email" id="loginEmail" value="subscriber@example.com" required style="width: 100%; padding: 0.65rem; border: 1px solid var(--border); border-radius: 4px;" />
+        </div>
+        <div>
+          <label style="font-size: 0.78rem; font-weight: bold;">Password</label>
+          <input type="password" value="demo1234" required style="width: 100%; padding: 0.65rem; border: 1px solid var(--border); border-radius: 4px;" />
+        </div>
+
+        <!-- Remember Me Checkbox -->
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 2px;">
+          <input type="checkbox" id="rememberMe" checked style="width: 16px; height: 16px; cursor: pointer;" />
+          <label for="rememberMe" style="font-size: 0.82rem; color: #374151; cursor: pointer; font-weight: 500;">
+            Keep me logged in on this device
+          </label>
+        </div>
+
+        <!-- Account Sharing Protection Notice -->
+        <div class="device-policy-note">
+          🤝 <strong>Supporting Our Small-Town Newsrooms:</strong> Unlike national media corporations, our reporters live and work right here in your community. To ensure local reporting remains sustainable, accounts are intended for single households (up to 2 active devices). Excess simultaneous logins will automatically sign out older sessions.
+        </div>
+
+        <button type="submit" class="plan-button" style="background: var(--ink); margin-top: 0.5rem;">Log In to Account</button>
+      </form>
+      <button style="margin-top: 12px; background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 0.85rem;" onclick="closeLoginModal()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT & ACCOUNT REGISTRATION MODAL -->
+  <div id="checkoutModal" class="modal-overlay">
+    <div class="modal-box" style="max-width: 500px;">
+      <h3 style="font-size: 1.35rem; color: var(--ink); margin-bottom: 0.25rem;">Subscribe & Activate Account</h3>
+      <p id="checkoutPlanSummary" style="font-size: 0.88rem; color: var(--muted); margin-bottom: 1.25rem;"></p>
+      
+      <form onsubmit="event.preventDefault(); simulateRegistration();" style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div>
+          <label style="font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">1. Account Details (For Newsroom Records)</label>
+          <input type="text" id="regName" placeholder="Full Name" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 4px;" />
+          <input type="email" id="regEmail" placeholder="Email Address (Used for your login & renewal notices)" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 6px;" />
+          <input type="password" id="regPass" placeholder="Create Account Password" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 6px;" />
+        </div>
+
+        <div style="margin-top: 0.5rem;">
+          <label style="font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">2. Payment Information (Secure Stripe Checkout)</label>
+          <input type="text" placeholder="Card Number •••• •••• •••• 4242" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 4px;" />
+          <div style="display: flex; gap: 0.5rem; margin-top: 6px;">
+            <input type="text" placeholder="MM/YY" required style="width: 50%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
+            <input type="text" placeholder="CVC" required style="width: 50%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
+          </div>
+        </div>
+
+        <!-- Transparent Surcharge Line Item -->
+        <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 4px; padding: 0.75rem; font-size: 0.85rem; margin-top: 0.5rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+            <span>Annual Subscription Rate:</span>
+            <strong id="summaryBasePrice">$65.00</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; color: var(--muted); margin-bottom: 0.4rem;">
+            <span>Card Processing Surcharge:</span>
+            <span>$2.19</span>
+          </div>
+          <div style="border-top: 1px solid var(--border); padding-top: 0.4rem; display: flex; justify-content: space-between; font-weight: bold; color: var(--ink);">
+            <span>Total Charged:</span>
+            <span id="summaryTotalPrice">$67.19</span>
+          </div>
+        </div>
+
+        <!-- Household Note on Checkout -->
+        <div class="device-policy-note" style="margin-top: 0.5rem;">
+          🌱 <strong>Thank you for investing in honest local journalism.</strong> Subscriptions are tailored for single-household access (up to 2 active devices). Your browser will remember your login automatically.
+        </div>
+
+        <button type="submit" class="plan-button" style="background: var(--press-red); margin-top: 0.5rem;">Complete Subscription & Activate Account</button>
+        <button type="button" style="background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 0.85rem;" onclick="closeCheckoutModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SEARCH RESULTS MODAL -->
+  <div id="searchModal" class="modal-overlay">
+    <div class="modal-box" style="max-width: 580px;">
+      <h3 style="font-size: 1.35rem; margin-bottom: 0.25rem;">Search Results</h3>
+      <p id="searchQueryLabel" style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.25rem;"></p>
+      <div id="searchResultsList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+      <button class="plan-button" style="margin-top: 1.25rem; background: var(--ink);" onclick="closeSearchModal()">Close Results</button>
+    </div>
+  </div>
+
+  <!-- COMMUNITY SUBMISSION MODAL -->
   <div id="submitModal" class="modal-overlay">
     <div class="modal-box">
       <h3 id="submitModalTitle">Submit to Our Newsroom</h3>
@@ -961,20 +1164,202 @@
     </div>
   </div>
 
-  <!-- Free Obituary Modal -->
-  <div id="obitModal" class="modal-overlay">
-    <div class="modal-box" style="border-top: 5px solid var(--obit-slate);">
-      <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: bold; color: var(--muted);">Free Community Remembrance</span>
-      <h3 id="obitModalName" style="font-size: 1.4rem; margin-top: 0.35rem; font-family: Georgia, serif;"></h3>
-      <p id="obitModalDates" style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem;"></p>
-      <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 1rem;" />
-      <p id="obitModalBody" style="line-height: 1.7; font-size: 0.95rem; color: #334155; font-family: Georgia, serif;"></p>
-      <button class="btn-legal-read" style="margin-top: 1.25rem; width: 100%; border-color: #64748b; color: #334155;" onclick="closeObitModal()">Close Obituary</button>
-    </div>
-  </div>
-
   <script>
-    // Publication Desk Filtering
+    let isLoggedIn = false;
+    let currentUserEmail = '';
+
+    const siteIndex = [
+      {
+        title: "American Falls Beavers Clinch Conference Title With Fourth-Quarter Defensive Stand",
+        paper: "The Power County Press",
+        date: "Sep 22, 2026",
+        isPaid: true,
+        teaser: "AMERICAN FALLS — Under Friday night stadium lights, the American Falls Beavers cemented their playoff berth with a thrilling goal-line stop with only 18 seconds remaining on the clock.",
+        rest: "Senior running back Marcus Vance racked up 168 yards on 22 carries, scoring two crucial touchdowns before the Beaver defensive line held firm on fourth-and-goal at the 2-yard line. Head Coach Miller praised the unit's resilience during post-game interviews, calling it one of the grittiest fourth quarters played at Beaver Stadium in a decade.",
+        keywords: "beavers american falls football sports conference championship title defense"
+      },
+      {
+        title: "Aberdeen City Council Approves Downtown Revitalization Grants",
+        paper: "The Aberdeen Times",
+        date: "Sep 20, 2026",
+        isPaid: true,
+        teaser: "ABERDEEN — In a unanimous 5-0 decision Tuesday evening, the Aberdeen City Council approved a comprehensive commercial facade improvement program aimed at downtown retailers.",
+        rest: "The incentive matching funds will cover up to 50 percent of approved exterior renovations, storefront signage, and historic brick repairs along South Main Street. Funding allocations begin on November 1st.",
+        keywords: "aberdeen council downtown business revitalization grants main street"
+      },
+      {
+        title: "American Falls Library District Extends Fall Operating Hours",
+        paper: "The Power County Press",
+        date: "Sep 19, 2026",
+        isPaid: false,
+        teaser: "The library board announced expanded weekend availability and new community computer lab access starting next week for all residents.",
+        rest: "Patrons will now have access to the main reference room, children's reading corner, and printing stations until 7:00 PM on Thursdays and Fridays, along with new Saturday hours from 10:00 AM to 2:00 PM.",
+        keywords: "library american falls hours community books free"
+      },
+      {
+        title: "Snake River Water District Issues Seasonal Irrigation Shutoff Schedule",
+        paper: "Published in Both Newspapers",
+        date: "Sep 18, 2026",
+        isPaid: false,
+        teaser: "Canal flow reductions will begin across Power and Bingham counties on October 15th to facilitate scheduled canal bank maintenance and winter storage.",
+        rest: "Growers and canal ditch riders are instructed to conclude secondary water diversions prior to 5:00 PM on October 14th. Maintenance crews will begin inspecting headgates and concrete canal liners immediately.",
+        keywords: "irrigation snake river water canal shutoff farming agriculture"
+      },
+      {
+        title: "Notice of Public Hearing: American Falls Zoning Ordinance Revision",
+        paper: "The Power County Press",
+        date: "Sep 18, 2026",
+        isPaid: false,
+        teaser: "NOTICE IS HEREBY GIVEN that the City of American Falls Planning & Zoning Commission will hold a public hearing on October 14, 2026.",
+        rest: "The purpose of this hearing is to receive public comment regarding proposed updates to Chapter 4 of the Municipal Zoning Code.",
+        keywords: "zoning ordinance hearing legal notice american falls"
+      }
+    ];
+
+    function executeSiteSearch() {
+      const q = document.getElementById('siteSearchInput').value.trim().toLowerCase();
+      if (!q) return;
+
+      const results = siteIndex.filter(item => 
+        item.title.toLowerCase().includes(q) || 
+        item.keywords.toLowerCase().includes(q) ||
+        item.teaser.toLowerCase().includes(q)
+      );
+
+      const listContainer = document.getElementById('searchResultsList');
+      listContainer.innerHTML = '';
+      document.getElementById('searchQueryLabel').innerText = `Showing ${results.length} result(s) for "${q}":`;
+
+      if (results.length === 0) {
+        listContainer.innerHTML = '<p style="color: var(--muted); font-size: 0.9rem;">No articles matched that keyword. Try searching for "Beavers", "Irrigation", or "Council".</p>';
+      } else {
+        results.forEach(item => {
+          const itemDiv = document.createElement('div');
+          itemDiv.style.border = '1px solid var(--border)';
+          itemDiv.style.borderRadius = '6px';
+          itemDiv.style.padding = '0.9rem';
+          itemDiv.style.background = '#fafaf9';
+
+          const lockBadge = item.isPaid 
+            ? '<span style="color: #991b1b; font-size: 0.72rem; font-weight: bold; background: #fee2e2; padding: 2px 6px; border-radius: 3px; margin-left: 6px;">🔒 SUBSCRIBER EXCLUSIVE</span>' 
+            : '<span style="color: #065f46; font-size: 0.72rem; font-weight: bold; background: #d1fae5; padding: 2px 6px; border-radius: 3px; margin-left: 6px;">FREE</span>';
+
+          itemDiv.innerHTML = `
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--muted); font-weight: bold; margin-bottom: 2px;">
+              ${item.paper} • ${item.date} ${lockBadge}
+            </div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 4px; color: var(--ink);">${item.title}</h4>
+            <p style="font-size: 0.85rem; color: #4b5563; margin-bottom: 8px;">${item.teaser}</p>
+            <button class="plan-button" style="width: auto; padding: 0.35rem 0.85rem; font-size: 0.8rem; background: var(--ink);" onclick="closeSearchModal(); openArticleViewer('${item.title.replace(/'/g, "\\'")}', '${item.paper}', '${item.date}', '${item.teaser.replace(/'/g, "\\'")}', '${item.rest.replace(/'/g, "\\'")}', ${item.isPaid});">
+              ${item.isPaid && !isLoggedIn ? 'Read Teaser Preview →' : 'Read Full Article →'}
+            </button>
+          `;
+          listContainer.appendChild(itemDiv);
+        });
+      }
+
+      document.getElementById('searchModal').style.display = 'flex';
+    }
+
+    function closeSearchModal() {
+      document.getElementById('searchModal').style.display = 'none';
+    }
+
+    function openArticleViewer(title, paper, date, teaser, rest, isPaid) {
+      document.getElementById('modalArticleTitle').innerText = title;
+      document.getElementById('modalArticlePaper').innerText = paper;
+      document.getElementById('modalArticleDate').innerText = 'Published: ' + date;
+      document.getElementById('modalArticleTeaser').innerText = teaser;
+      document.getElementById('modalArticleRest').innerText = rest;
+
+      const badge = document.getElementById('modalArticleBadge');
+      const curtain = document.getElementById('paywallCurtain');
+      const restText = document.getElementById('modalArticleRest');
+
+      if (!isPaid) {
+        badge.innerText = 'Free Story';
+        badge.className = 'badge badge-both';
+        curtain.style.display = 'none';
+        restText.style.display = 'block';
+      } else if (isLoggedIn) {
+        badge.innerText = 'Unlocked for Subscriber';
+        badge.className = 'badge badge-press';
+        curtain.style.display = 'none';
+        restText.style.display = 'block';
+      } else {
+        badge.innerText = 'Subscribers Only';
+        badge.className = 'badge badge-times';
+        curtain.style.display = 'block';
+        restText.style.display = 'none';
+      }
+
+      document.getElementById('articleModal').style.display = 'flex';
+    }
+
+    function closeArticleViewer() {
+      document.getElementById('articleModal').style.display = 'none';
+    }
+
+    function openLoginModal() {
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+    function closeLoginModal() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+
+    function simulateLogin() {
+      const email = document.getElementById('loginEmail').value;
+      const remember = document.getElementById('rememberMe').checked;
+      isLoggedIn = true;
+      currentUserEmail = email;
+
+      document.getElementById('userAuthDisplay').innerHTML = `
+        Active Subscriber: <strong>${email}</strong> • <a class="auth-status-link" style="color: #f87171;" onclick="simulateLogout()">Log Out</a>
+      `;
+      document.getElementById('navLoginBtn').innerText = 'My Account (Active)';
+      document.getElementById('navLoginBtn').style.background = '#dcfce7';
+      document.getElementById('navLoginBtn').style.borderColor = '#86efac';
+
+      closeLoginModal();
+      alert(`Welcome back! Logged in as ${email}.\n\n• Session saved: ${remember ? 'Remembered on this device' : 'Active for this visit only'}\n• All subscriber stories unlocked.`);
+    }
+
+    function simulateLogout() {
+      isLoggedIn = false;
+      currentUserEmail = '';
+      document.getElementById('userAuthDisplay').innerHTML = `
+        Are you a subscriber? <a class="auth-status-link" onclick="openLoginModal()">Log In Here</a>
+      `;
+      document.getElementById('navLoginBtn').innerText = 'Subscriber Log In';
+      document.getElementById('navLoginBtn').style.background = '#f1f5f9';
+      document.getElementById('navLoginBtn').style.borderColor = '#cbd5e1';
+      alert('You have logged out.');
+    }
+
+    function openCheckoutModal(planName, price) {
+      document.getElementById('checkoutPlanSummary').innerText = `Selected Tier: ${planName} (${price}/year)`;
+      document.getElementById('summaryBasePrice').innerText = price;
+      document.getElementById('checkoutModal').style.display = 'flex';
+    }
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').style.display = 'none';
+    }
+
+    function simulateRegistration() {
+      const email = document.getElementById('regEmail').value;
+      closeCheckoutModal();
+      isLoggedIn = true;
+      currentUserEmail = email;
+      document.getElementById('userAuthDisplay').innerHTML = `
+        Active Subscriber: <strong>${email}</strong> • <a class="auth-status-link" style="color: #f87171;" onclick="simulateLogout()">Log Out</a>
+      `;
+      document.getElementById('navLoginBtn').innerText = 'My Account (Active)';
+      document.getElementById('navLoginBtn').style.background = '#dcfce7';
+      document.getElementById('navLoginBtn').style.borderColor = '#86efac';
+
+      alert(`Subscription confirmed!\n\n• Account created for: ${email}\n• Added to subscriber database\n• Single-household session active\n• You are now logged in with full access!`);
+    }
+
     function filterDesk(desk) {
       const cards = document.querySelectorAll('.article-card');
       const btnAll = document.getElementById('btnFilterAll');
@@ -1007,34 +1392,12 @@
       });
     }
 
-    // Paywall Modal
-    function openPaywall(paperName, accentColor) {
-      document.getElementById('paywallTitle').innerText = paperName + ' Exclusive';
-      document.getElementById('modalBox').style.borderTopColor = accentColor;
-      document.getElementById('paywallModal').style.display = 'flex';
-    }
-    function closePaywall() {
-      document.getElementById('paywallModal').style.display = 'none';
-    }
-
-    // Submissions Modal
     function openSubmissionForm(formType) {
       document.getElementById('submitModalTitle').innerText = 'Submit: ' + formType;
       document.getElementById('submitModal').style.display = 'flex';
     }
     function closeSubmitModal() {
       document.getElementById('submitModal').style.display = 'none';
-    }
-
-    // Free Obituary Modal
-    function openObitModal(name, dates, location, details) {
-      document.getElementById('obitModalName').innerText = name;
-      document.getElementById('obitModalDates').innerText = dates + ' • ' + location;
-      document.getElementById('obitModalBody').innerText = details;
-      document.getElementById('obitModal').style.display = 'flex';
-    }
-    function closeObitModal() {
-      document.getElementById('obitModal').style.display = 'none';
     }
   </script>
 </body>
