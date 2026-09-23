@@ -3,230 +3,367 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Local News Network | Home</title>
+  <title>The Power County Press & The Aberdeen Times</title>
   <style>
     :root {
-      --primary: #1a365d;
-      --accent: #c53030;
-      --bg: #f7fafc;
-      --text: #2d3748;
+      --ink: #111827;
+      --press-red: #d32027;
+      --river-blue: #1c5ba6;
+      --bg-warm: #f9fafb;
       --card-bg: #ffffff;
-      --border: #e2e8f0;
+      --border: #e5e7eb;
+      --muted: #6b7280;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
-      background-color: var(--bg);
-      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Georgia, serif;
+      background-color: var(--bg-warm);
+      color: var(--ink);
       line-height: 1.6;
     }
+
+    /* Dual Masthead Header */
     header {
-      background-color: #fff;
-      border-bottom: 2px solid var(--border);
-      padding: 1.5rem 1rem;
+      background-color: #ffffff;
+      border-bottom: 3px solid var(--ink);
+      padding: 1.5rem 1rem 0.75rem;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .masthead-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .masthead-logo {
+      max-width: 480px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .masthead-divider {
+      width: 1px;
+      height: 70px;
+      background-color: var(--border);
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .masthead-divider { display: block; }
+    }
+    .masthead-text-logo {
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
       text-align: center;
     }
-    header h1 { font-size: 2rem; color: var(--primary); margin-bottom: 0.25rem; }
-    header p { color: #718096; font-size: 0.95rem; }
+    .masthead-text-logo h1 {
+      font-size: 2.2rem;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    .masthead-text-logo .sub {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      border-top: 1px solid var(--press-red);
+      margin-top: 4px;
+      padding-top: 2px;
+      display: block;
+    }
+
+    header p.tagline {
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
     nav {
       margin-top: 1rem;
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
     }
-    nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.9rem; }
-    nav a:hover { color: var(--accent); }
-    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-    
-    /* Paper Switcher / Branding */
+    nav a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.15s ease;
+    }
+    nav a:hover { color: var(--press-red); }
+
+    .container { max-width: 1040px; margin: 2rem auto; padding: 0 1rem; }
+
+    /* Publication Selector Cards */
     .paper-hub {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
       margin-bottom: 2.5rem;
     }
+    @media (max-width: 640px) {
+      .paper-hub { grid-template-columns: 1fr; }
+    }
     .paper-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-top: 4px solid var(--river-blue);
+      border-radius: 6px;
       padding: 1.5rem;
       text-align: center;
-      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .paper-card.times-card {
+      border-top-color: var(--press-red);
     }
     .paper-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.07);
     }
-    .paper-card h2 { color: var(--primary); font-size: 1.4rem; margin-bottom: 0.5rem; }
-    
-    /* Article Stream */
-    .section-title { font-size: 1.3rem; margin-bottom: 1rem; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 0.25rem; }
+    .paper-card h2 { color: var(--ink); font-size: 1.35rem; margin-bottom: 0.35rem; }
+    .paper-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+    /* Section Headings */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 2px solid var(--ink);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.35rem;
+    }
+    .section-header h2 { font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Article Feed Grid */
     .articles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+    @media (max-width: 640px) {
+      .articles { grid-template-columns: 1fr; }
+    }
     .article-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 6px;
       padding: 1.25rem;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .badge {
       display: inline-block;
       font-size: 0.75rem;
       text-transform: uppercase;
-      font-weight: bold;
+      font-weight: 700;
       padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      margin-bottom: 0.5rem;
+      border-radius: 3px;
+      margin-bottom: 0.75rem;
+      align-self: flex-start;
     }
-    .badge-free { background: #e6fffa; color: #234e52; }
-    .badge-paid { background: #feebc8; color: #7b341e; }
-    .article-card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; }
+    .badge-free { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    .badge-paid { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+    .article-card .paper-tag {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .article-card h3 { margin-bottom: 0.5rem; font-size: 1.2rem; line-height: 1.35; }
+    .article-card p { font-size: 0.95rem; color: #4b5563; }
+
     .btn {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.4rem 0.8rem;
-      background: var(--primary);
+      margin-top: 1.25rem;
+      padding: 0.5rem 1rem;
+      background: var(--river-blue);
       color: #fff;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       font-size: 0.85rem;
+      font-weight: 600;
+      align-self: flex-start;
     }
-    .btn:hover { background: #2b4c7e; }
+    .btn:hover { background: #164680; }
 
-    /* Paywall Modal */
+    /* Interactive Modal */
     .modal-overlay {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(17, 24, 39, 0.75);
       justify-content: center;
       align-items: center;
       z-index: 100;
+      backdrop-filter: blur(2px);
     }
     .modal-box {
       background: #fff;
-      padding: 2rem;
+      padding: 2.25rem;
       border-radius: 8px;
       max-width: 440px;
       width: 90%;
       text-align: center;
-      position: relative;
+      border-top: 5px solid var(--press-red);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
-    .modal-box h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.4rem; }
-    .modal-box p { font-size: 0.95rem; color: #4a5568; margin-bottom: 1.25rem; }
+    .modal-box h3 { color: var(--press-red); margin-bottom: 0.5rem; font-size: 1.4rem; }
+    .modal-box p { font-size: 0.95rem; color: #4b5563; margin-bottom: 1.5rem; }
     .subscribe-btn {
-      background: var(--accent);
+      background: var(--press-red);
       color: #fff;
-      padding: 0.75rem 1.5rem;
+      padding: 0.8rem 1.5rem;
       border: none;
       border-radius: 4px;
       font-weight: bold;
       cursor: pointer;
       width: 100%;
+      font-size: 1rem;
     }
+    .subscribe-btn:hover { background: #b91c1c; }
     .close-btn {
-      margin-top: 0.75rem;
+      margin-top: 0.85rem;
       background: transparent;
       border: none;
-      color: #a0aec0;
+      color: var(--muted);
       cursor: pointer;
       font-size: 0.85rem;
     }
 
-    /* Contact Section */
+    /* Contact Form */
     .contact-section {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      max-width: 600px;
+      border-radius: 6px;
+      padding: 2rem;
+      max-width: 650px;
       margin: 0 auto;
     }
-    .contact-section form { display: flex; flex-direction: column; gap: 0.75rem; }
-    .contact-section input, .contact-section textarea {
+    .contact-section form { display: flex; flex-direction: column; gap: 0.85rem; }
+    .contact-section input, .contact-section select, .contact-section textarea {
       width: 100%;
-      padding: 0.6rem;
+      padding: 0.7rem;
       border: 1px solid var(--border);
       border-radius: 4px;
       font-family: inherit;
+      font-size: 0.95rem;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>The Publishing Group</h1>
-    <p>Independent Local Journalism for Our Communities</p>
+    <div class="masthead-wrapper">
+      <!-- Power County Press Logo -->
+      <img src="press-logo.jpg" alt="The Power County Press - Published in American Falls, Idaho" class="masthead-logo" />
+      
+      <div class="masthead-divider"></div>
+      
+      <!-- The Aberdeen Times Typography Display -->
+      <div class="masthead-text-logo">
+        <h1>The Aberdeen Times</h1>
+        <span class="sub">Serving Aberdeen & Bingham County</span>
+      </div>
+    </div>
+
+    <p class="tagline">Local News • Public Notices • Community Reporting</p>
+    
     <nav>
-      <a href="#papers">Our Newspapers</a>
-      <a href="#latest">Latest Stories</a>
-      <a href="#contact">Contact Us</a>
+      <a href="#papers">Publications</a>
+      <a href="#latest">Headlines</a>
+      <a href="#contact">Contact Newsrooms</a>
     </nav>
   </header>
 
   <div class="container">
-    <!-- Papers Selector -->
+    <!-- Publication Selector Cards -->
     <div id="papers" class="paper-hub">
       <div class="paper-card">
-        <h2>The Gazette</h2>
-        <p>Serving Northern Valley since 1924</p>
-        <button class="btn">View Gazette Edition</button>
+        <h2>The Power County Press</h2>
+        <p>Serving American Falls and Power County, Idaho</p>
+        <button class="btn">View Press Stories</button>
       </div>
-      <div class="paper-card">
-        <h2>The Daily Herald</h2>
-        <p>County-wide reporting and investigations</p>
-        <button class="btn">View Herald Edition</button>
+      <div class="paper-card times-card">
+        <h2>The Aberdeen Times</h2>
+        <p>Serving Aberdeen and Bingham County, Idaho</p>
+        <button class="btn" style="background: var(--press-red);">View Times Stories</button>
       </div>
     </div>
 
-    <!-- Sample Content Stream -->
-    <h2 id="latest" class="section-title">Featured Stories</h2>
+    <!-- Stories Grid -->
+    <div class="section-header">
+      <h2 id="latest">Recent Coverage</h2>
+      <span style="font-size: 0.85rem; color: var(--muted);">Click paid story to test paywall</span>
+    </div>
+
     <div class="articles">
-      <!-- Free Article -->
+      <!-- Free Story: Press -->
       <div class="article-card">
-        <span class="badge badge-free">Free Access</span>
-        <h3>Town Council Approves New Library Construction</h3>
-        <p>Residents gathered at town hall Tuesday evening as officials signed off on the multi-million dollar expansion plan...</p>
-        <button class="btn">Read Full Story</button>
+        <div>
+          <div class="paper-tag">Power County Press</div>
+          <span class="badge badge-free">Free Story</span>
+          <h3>American Falls Library District Extends Fall Operating Hours</h3>
+          <p>The library board announced expanded weekend availability and new community computer lab access starting next week...</p>
+        </div>
+        <button class="btn">Read Free</button>
       </div>
 
-      <!-- Paid Article -->
+      <!-- Paid Story: Times -->
       <div class="article-card">
-        <span class="badge badge-paid">Subscribers Only</span>
-        <h3>County Budget Deep Dive: Where Tax Dollars Actually Go</h3>
-        <p>A four-month investigation into the district expenditure records reveals surprising shifts in departmental spending...</p>
-        <button class="btn" onclick="openPaywall()">Read Full Story</button>
+        <div>
+          <div class="paper-tag">Aberdeen Times</div>
+          <span class="badge badge-paid">Subscribers Only</span>
+          <h3>Aberdeen City Council Approves Downtown Revitalization Grants</h3>
+          <p>A full breakdown of the commercial improvement incentives, street repair schedules, and funded local projects...</p>
+        </div>
+        <button class="btn" style="background: var(--press-red);" onclick="openPaywall('The Aberdeen Times')">Read Article</button>
       </div>
     </div>
 
     <!-- Contact Form -->
     <div id="contact" class="contact-section">
-      <h2 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--primary);">Contact Our Newsrooms</h2>
-      <p style="font-size: 0.85rem; color: #718096; margin-bottom: 1rem;">Send tips, press releases, delivery inquiries, or advertising questions.</p>
-      <form onsubmit="event.preventDefault(); alert('Message received! (Demo prototype)');">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="4" placeholder="Your Message or News Tip" required></textarea>
-        <button type="submit" class="btn" style="align-self: flex-start;">Send Message</button>
+      <h2 style="font-size: 1.3rem; margin-bottom: 0.35rem; color: var(--ink);">Contact Our Newsrooms</h2>
+      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.25rem;">
+        Submit news tips, community calendar events, classifieds, or reach circulation.
+      </p>
+      <form onsubmit="event.preventDefault(); alert('Message sent! (Prototype demo)');">
+        <select required>
+          <option value="">Select Publication</option>
+          <option value="press">The Power County Press (American Falls)</option>
+          <option value="times">The Aberdeen Times (Aberdeen)</option>
+          <option value="both">Both Publications</option>
+        </select>
+        <input type="text" placeholder="Your Full Name" required />
+        <input type="email" placeholder="Your Email Address" required />
+        <textarea rows="4" placeholder="Your Message, News Tip, or Notice" required></textarea>
+        <button type="submit" class="btn" style="align-self: flex-start; background: var(--ink);">Send Message</button>
       </form>
     </div>
   </div>
 
-  <!-- Paywall Modal Trigger -->
+  <!-- Interactive Paywall Modal -->
   <div id="paywallModal" class="modal-overlay">
     <div class="modal-box">
-      <h3>Subscriber Exclusive</h3>
-      <p>This in-depth reporting is supported entirely by our subscribers. Join today for unlimited digital access to both newspapers.</p>
-      <button class="subscribe-btn" onclick="alert('Proceeding to checkout preview...')">Subscribe for $5 / month</button>
+      <h3 id="paywallTitle">Subscriber Exclusive</h3>
+      <p>Keep independent local journalism strong in Power & Bingham counties. Subscribe today for full digital access to both newspapers.</p>
+      <button class="subscribe-btn" onclick="alert('Demo: Redirecting to Stripe checkout...')">Subscribe for $5 / Month</button>
       <br />
       <button class="close-btn" onclick="closePaywall()">Close Preview</button>
     </div>
   </div>
 
   <script>
-    function openPaywall() {
+    function openPaywall(paperName) {
+      if (paperName) {
+        document.getElementById('paywallTitle').innerText = paperName + ' Exclusive';
+      }
       document.getElementById('paywallModal').style.display = 'flex';
     }
     function closePaywall() {
