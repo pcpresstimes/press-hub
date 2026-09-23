@@ -149,7 +149,7 @@
     }
     .nav-cta:hover { background: var(--press-red) !important; }
 
-    .container { max-width: 1040px; margin: 2rem auto; padding: 0 1rem; }
+    .container { max-width: 1060px; margin: 2rem auto; padding: 0 1rem; }
 
     /* Search Bar */
     .search-wrapper {
@@ -222,7 +222,10 @@
     .filter-btn.active-press { background: var(--press-red); color: #fff; border-color: var(--press-red); }
     .filter-btn.active-times { background: var(--times-orange); color: #fff; border-color: var(--times-orange); }
 
-    /* Section Headers */
+    /* Section Layout with Sidebar */
+    .desk-section-container {
+      margin-bottom: 3rem;
+    }
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -233,10 +236,21 @@
     }
     .section-header h2 { font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.5px; }
 
-    /* Article Cards Grid */
-    .articles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3.5rem; }
-    @media (max-width: 640px) {
-      .articles { grid-template-columns: 1fr; }
+    .main-with-sidebar {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 800px) {
+      .main-with-sidebar { grid-template-columns: 1fr; }
+    }
+
+    /* Article Cards Grid Inside Sections */
+    .desk-articles-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
     }
     .article-card {
       background: var(--card-bg);
@@ -246,7 +260,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.15s ease;
     }
     .badge {
       display: inline-block;
@@ -260,7 +273,6 @@
     }
     .badge-press { background: #fef2f2; color: var(--press-red); border: 1px solid #fecaca; }
     .badge-times { background: var(--times-orange-light); color: var(--times-orange); border: 1px solid #fed7aa; }
-    .badge-both { background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; }
 
     .article-card .paper-tag {
       font-size: 0.75rem;
@@ -271,7 +283,6 @@
     }
     .article-card.press-theme .paper-tag { color: var(--press-red); }
     .article-card.times-theme .paper-tag { color: var(--times-orange); }
-    .article-card.both-theme .paper-tag { color: #475569; }
 
     .article-card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; line-height: 1.35; }
     .article-card p { font-size: 0.92rem; color: #44403c; }
@@ -305,6 +316,96 @@
       align-self: flex-start;
     }
     .btn-times:hover { background: #9a4a00; }
+
+    /* -------------------------------------------
+       SUPPORT LOCAL BUSINESS DIRECTORY SIDEBARS
+    ------------------------------------------- */
+    .business-sidebar {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .business-sidebar.press-side { border-top: 4px solid var(--press-red); }
+    .business-sidebar.times-side { border-top: 4px solid var(--times-orange); }
+
+    .business-sidebar-header {
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .business-sidebar-header h3 {
+      font-size: 1.05rem;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+    }
+    .business-sidebar-header span {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+    }
+
+    .biz-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .biz-card {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.85rem;
+      transition: transform 0.15s ease;
+    }
+    .biz-card.highlight {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .biz-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-bottom: 0.15rem;
+    }
+    .biz-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .biz-ad-slot {
+      background: #fafaf9;
+      border: 1px dashed #d6d3d1;
+      border-radius: 6px;
+      padding: 1.15rem 0.85rem;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+    .biz-ad-slot p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .biz-ad-slot button {
+      background: transparent;
+      border: 1px solid var(--ink);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--ink);
+      transition: all 0.15s ease;
+    }
+    .biz-ad-slot button:hover {
+      background: var(--ink);
+      color: #fff;
+    }
 
     /* OBITUARIES SECTION */
     #obituaries {
@@ -669,7 +770,6 @@
       margin-top: 0.5rem;
     }
 
-    /* Device Security Note in Modal */
     .device-policy-note {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
@@ -737,58 +837,118 @@
       </div>
     </div>
 
-    <!-- Stories Grid -->
-    <div class="section-header">
-      <h2 id="streamHeading">Recent News Coverage</h2>
-      <span style="font-size: 0.85rem; color: var(--muted);">Click paid story to test teaser & paywall</span>
+    <!-- =============================================
+         SECTION 1: THE POWER COUNTY PRESS DESK & BUSINESSES
+    ============================================= -->
+    <div class="desk-section-container" id="pressSection">
+      <div class="section-header">
+        <h2 style="color: var(--press-red);">The Power County Press Desk</h2>
+        <span style="font-size: 0.85rem; color: var(--muted);">American Falls & Power County</span>
+      </div>
+
+      <div class="main-with-sidebar">
+        <!-- Press Articles -->
+        <div class="desk-articles-grid">
+          <div class="article-card press-theme">
+            <div>
+              <div class="paper-tag">Power County Press • Sports</div>
+              <span class="badge badge-press">Subscribers Only</span>
+              <h3>American Falls Beavers Clinch Conference Title With Fourth-Quarter Defensive Stand</h3>
+              <p>AMERICAN FALLS — Under Friday night stadium lights, the American Falls Beavers cemented their playoff berth with a thrilling goal-line stop with only 18 seconds remaining on the clock...</p>
+            </div>
+            <button class="btn-press" onclick="openArticleViewer('American Falls Beavers Clinch Conference Title With Fourth-Quarter Defensive Stand', 'The Power County Press', 'Sep 22, 2026', 'AMERICAN FALLS — Under Friday night stadium lights, the American Falls Beavers cemented their playoff berth with a thrilling goal-line stop with only 18 seconds remaining on the clock.', 'Senior running back Marcus Vance racked up 168 yards on 22 carries, scoring two crucial touchdowns before the Beaver defensive line held firm on fourth-and-goal at the 2-yard line. Head Coach Miller praised the unit\'s resilience during post-game interviews, calling it one of the grittiest fourth quarters played at Beaver Stadium in a decade. Full game photo gallery, individual offensive stats, and upcoming regional playoff brackets are detailed below for subscribers.', true)">Read Story</button>
+          </div>
+
+          <div class="article-card press-theme">
+            <div>
+              <div class="paper-tag">Power County Press • Community</div>
+              <span class="badge badge-press">Free Public Story</span>
+              <h3>American Falls Library District Extends Fall Operating Hours</h3>
+              <p>The library board announced expanded weekend availability and new community computer lab access starting next week for all residents...</p>
+            </div>
+            <button class="btn-press" onclick="openArticleViewer('American Falls Library District Extends Fall Operating Hours', 'The Power County Press', 'Sep 19, 2026', 'The library board announced expanded weekend availability and new community computer lab access starting next week for all residents.', 'Patrons will now have access to the main reference room, children\'s reading corner, and printing stations until 7:00 PM on Thursdays and Fridays, along with new Saturday hours from 10:00 AM to 2:00 PM.', false)">Read Free</button>
+          </div>
+        </div>
+
+        <!-- Power County Businesses Sidebar -->
+        <aside class="business-sidebar press-side">
+          <div class="business-sidebar-header">
+            <h3>Power County Businesses</h3>
+            <span>Support Local</span>
+          </div>
+
+          <div class="biz-list">
+            <!-- Business 1: Power County Press -->
+            <div class="biz-card highlight">
+              <div class="biz-name">The Power County Press</div>
+              <div class="biz-tagline">Since 1902 • American Falls, ID</div>
+            </div>
+
+            <!-- Empty Sponsored Business Slots -->
+            <div class="biz-ad-slot">
+              <p><strong>Your Business Here</strong><br>Reach every local reader in Power County</p>
+              <button onclick="openSubmissionForm('Power County Business Directory Listing')">Feature Your Business Here</button>
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
 
-    <div class="articles" id="articleStream">
-      
-      <!-- Story 1: American Falls Beavers (PAID FEATURE STORY) -->
-      <div class="article-card press-theme" data-desk="press">
-        <div>
-          <div class="paper-tag">The Power County Press • Sports</div>
-          <span class="badge badge-press">Subscribers Only</span>
-          <h3>American Falls Beavers Clinch Conference Title With Fourth-Quarter Defensive Stand</h3>
-          <p>AMERICAN FALLS — Under Friday night stadium lights, the American Falls Beavers cemented their playoff berth with a thrilling goal-line stop with only 18 seconds remaining on the clock...</p>
-        </div>
-        <button class="btn-press" onclick="openArticleViewer('American Falls Beavers Clinch Conference Title With Fourth-Quarter Defensive Stand', 'The Power County Press', 'Sep 22, 2026', 'AMERICAN FALLS — Under Friday night stadium lights, the American Falls Beavers cemented their playoff berth with a thrilling goal-line stop with only 18 seconds remaining on the clock.', 'Senior running back Marcus Vance racked up 168 yards on 22 carries, scoring two crucial touchdowns before the Beaver defensive line held firm on fourth-and-goal at the 2-yard line. Head Coach Miller praised the unit\'s resilience during post-game interviews, calling it one of the grittiest fourth quarters played at Beaver Stadium in a decade. Full game photo gallery, individual offensive stats, and upcoming regional playoff brackets are detailed below for subscribers.', true)">Read Story</button>
+    <!-- =============================================
+         SECTION 2: THE ABERDEEN TIMES DESK & BUSINESSES
+    ============================================= -->
+    <div class="desk-section-container" id="timesSection">
+      <div class="section-header">
+        <h2 style="color: var(--times-orange);">The Aberdeen Times Desk</h2>
+        <span style="font-size: 0.85rem; color: var(--muted);">Aberdeen & Bingham County</span>
       </div>
 
-      <!-- Story 2: Aberdeen Times (Subscribers Only) -->
-      <div class="article-card times-theme" data-desk="times">
-        <div>
-          <div class="paper-tag">The Aberdeen Times • Local Government</div>
-          <span class="badge badge-times">Subscribers Only</span>
-          <h3>Aberdeen City Council Approves Downtown Revitalization Grants</h3>
-          <p>ABERDEEN — In a unanimous 5-0 decision Tuesday evening, the Aberdeen City Council approved a comprehensive commercial facade improvement program aimed at downtown retailers...</p>
-        </div>
-        <button class="btn-times" onclick="openArticleViewer('Aberdeen City Council Approves Downtown Revitalization Grants', 'The Aberdeen Times', 'Sep 20, 2026', 'ABERDEEN — In a unanimous 5-0 decision Tuesday evening, the Aberdeen City Council approved a comprehensive commercial facade improvement program aimed at downtown retailers.', 'The incentive matching funds will cover up to 50 percent of approved exterior renovations, storefront signage, and historic brick repairs along South Main Street. Funding allocations begin on November 1st, with priority given to locally owned agricultural supply vendors and legacy family businesses.', true)">Read Story</button>
-      </div>
+      <div class="main-with-sidebar">
+        <!-- Times Articles -->
+        <div class="desk-articles-grid">
+          <div class="article-card times-theme">
+            <div>
+              <div class="paper-tag">Aberdeen Times • Local Government</div>
+              <span class="badge badge-times">Subscribers Only</span>
+              <h3>Aberdeen City Council Approves Downtown Revitalization Grants</h3>
+              <p>ABERDEEN — In a unanimous 5-0 decision Tuesday evening, the Aberdeen City Council approved a comprehensive commercial facade improvement program aimed at downtown retailers...</p>
+            </div>
+            <button class="btn-times" onclick="openArticleViewer('Aberdeen City Council Approves Downtown Revitalization Grants', 'The Aberdeen Times', 'Sep 20, 2026', 'ABERDEEN — In a unanimous 5-0 decision Tuesday evening, the Aberdeen City Council approved a comprehensive commercial facade improvement program aimed at downtown retailers.', 'The incentive matching funds will cover up to 50 percent of approved exterior renovations, storefront signage, and historic brick repairs along South Main Street. Funding allocations begin on November 1st, with priority given to locally owned agricultural supply vendors and legacy family businesses.', true)">Read Story</button>
+          </div>
 
-      <!-- Story 3: Press Free Story -->
-      <div class="article-card press-theme" data-desk="press">
-        <div>
-          <div class="paper-tag">The Power County Press • Community</div>
-          <span class="badge badge-press">Free Public Story</span>
-          <h3>American Falls Library District Extends Fall Operating Hours</h3>
-          <p>The library board announced expanded weekend availability and new community computer lab access starting next week for all residents...</p>
+          <div class="article-card times-theme">
+            <div>
+              <div class="paper-tag">Published in Both Newspapers • Agriculture</div>
+              <span class="badge badge-times">Regional News • Free</span>
+              <h3>Snake River Water District Issues Seasonal Irrigation Shutoff Schedule</h3>
+              <p>Canal flow reductions will begin across Power and Bingham counties on October 15th to facilitate scheduled canal bank maintenance and winter storage...</p>
+            </div>
+            <button class="btn-times" onclick="openArticleViewer('Snake River Water District Issues Seasonal Irrigation Shutoff Schedule', 'Published in Both Newspapers', 'Sep 18, 2026', 'Canal flow reductions will begin across Power and Bingham counties on October 15th to facilitate scheduled canal bank maintenance and winter storage.', 'Growers and canal ditch riders are instructed to conclude secondary water diversions prior to 5:00 PM on October 14th.', false)">Read Free</button>
+          </div>
         </div>
-        <button class="btn-press" onclick="openArticleViewer('American Falls Library District Extends Fall Operating Hours', 'The Power County Press', 'Sep 19, 2026', 'The library board announced expanded weekend availability and new community computer lab access starting next week for all residents.', 'Patrons will now have access to the main reference room, children\'s reading corner, and printing stations until 7:00 PM on Thursdays and Fridays, along with new Saturday hours from 10:00 AM to 2:00 PM. No membership fee or subscription is required to use public library terminals.', false)">Read Free</button>
-      </div>
 
-      <!-- Story 4: Both Papers Free Regional Story -->
-      <div class="article-card both-theme" data-desk="both">
-        <div>
-          <div class="paper-tag">Published in Both Newspapers</div>
-          <span class="badge badge-both">Regional News • Free</span>
-          <h3>Snake River Water District Issues Seasonal Irrigation Shutoff Schedule</h3>
-          <p>Canal flow reductions will begin across Power and Bingham counties on October 15th to facilitate scheduled canal bank maintenance and winter storage...</p>
-        </div>
-        <button class="btn-press" style="background: var(--ink);" onclick="openArticleViewer('Snake River Water District Issues Seasonal Irrigation Shutoff Schedule', 'Published in Both Newspapers', 'Sep 18, 2026', 'Canal flow reductions will begin across Power and Bingham counties on October 15th to facilitate scheduled canal bank maintenance and winter storage.', 'Growers and canal ditch riders are instructed to conclude secondary water diversions prior to 5:00 PM on October 14th. Maintenance crews will begin inspecting headgates and concrete canal liners immediately following water drawdown.', false)">Read Free</button>
-      </div>
+        <!-- Aberdeen Businesses Sidebar -->
+        <aside class="business-sidebar times-side">
+          <div class="business-sidebar-header">
+            <h3>Aberdeen Businesses</h3>
+            <span>Support Local</span>
+          </div>
 
+          <div class="biz-list">
+            <!-- Business 1: The Aberdeen Times -->
+            <div class="biz-card highlight">
+              <div class="biz-name">The Aberdeen Times</div>
+              <div class="biz-tagline">Aberdeen, ID</div>
+            </div>
+
+            <!-- Empty Sponsored Business Slots -->
+            <div class="biz-ad-slot">
+              <p><strong>Your Business Here</strong><br>Reach every local reader in Aberdeen</p>
+              <button onclick="openSubmissionForm('Aberdeen Business Directory Listing')">Feature Your Business Here</button>
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
 
     <!-- OBITUARIES (FREE) -->
@@ -849,7 +1009,7 @@
       <div class="archive-preview-box">
         <h3 style="color: #0f172a; margin-bottom: 0.5rem; font-size: 1.15rem;">Over 100 Years of Community History at Your Fingertips</h3>
         <p style="color: #475569; font-size: 0.9rem; max-width: 700px; margin: 0 auto;">
-          Digital subscribers will soon have complete, on-demand access to searchable PDF archives of past editions dating back to 1911.
+          Digital subscribers will soon have complete, on-demand access to searchable PDF archives of past editions dating back to 1911.[cite: 2]
         </p>
       </div>
     </section>
@@ -936,7 +1096,6 @@
       </div>
 
       <div class="pricing-grid">
-        <!-- Digital All-Access -->
         <div class="plan-card featured">
           <span class="plan-badge">Best Online Value</span>
           <div>
@@ -957,7 +1116,6 @@
           <button class="plan-button" onclick="openCheckoutModal('Online All-Access', '$65.00')">Subscribe Online</button>
         </div>
 
-        <!-- Combo -->
         <div class="plan-card">
           <div>
             <h3>All-Access Combo</h3>
@@ -977,7 +1135,6 @@
           <button class="plan-button" onclick="openCheckoutModal('All-Access Combo', '$75.00')">Choose Combo</button>
         </div>
 
-        <!-- Print Only -->
         <div class="plan-card">
           <div>
             <h3>Print Edition Only</h3>
@@ -998,20 +1155,19 @@
         </div>
       </div>
 
-      <!-- DRESSED-UP COMMUNITY & INTEGRITY POLICY NOTE -->
       <div class="community-support-banner">
         <h4>📰 Keeping Honest, Small-Town News Alive</h4>
         <p style="margin-bottom: 0.6rem;">
           In a media landscape filled with distant conglomerates that overlook rural communities—and often spread unverified sensationalism—<em>The Power County Press</em> and <em>The Aberdeen Times</em> remain committed to factual, truthful, and verified reporting on what matters to Power and Bingham counties.
         </p>
         <p style="font-size: 0.85rem; color: var(--muted);">
-          <strong>Account & Household Policy:</strong> To ensure our independent newsrooms remain sustainable, online subscriptions are designed for <strong>single-household use (up to two simultaneous active devices, such as your mobile phone and home computer)</strong>. Subscribers stay logged in automatically on their primary devices. We simply ask that you support local journalism by not sharing account credentials with multiple households.
+          <strong>Account & Household Policy:</strong> To ensure our independent newsrooms remain sustainable, online subscriptions are designed for <strong>single-household use (up to two simultaneous active devices)</strong>. We simply ask that you support local journalism by not sharing account credentials with multiple households.
         </p>
       </div>
     </section>
   </div>
 
-  <!-- ARTICLE VIEWER MODAL (TEASER & PAYWALL) -->
+  <!-- ARTICLE VIEWER MODAL -->
   <div id="articleModal" class="modal-overlay">
     <div class="modal-box" id="articleModalBox">
       <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
@@ -1021,19 +1177,16 @@
       <h2 id="modalArticleTitle" style="font-size: 1.35rem; margin-bottom: 0.35rem; line-height: 1.3;"></h2>
       <p id="modalArticleDate" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem;"></p>
       
-      <!-- First Sentence Teaser -->
       <p id="modalArticleTeaser" style="font-family: Georgia, serif; font-size: 1rem; color: #1f2937; line-height: 1.7; font-weight: 500;"></p>
       
-      <!-- Content Container -->
       <div id="modalArticleRestContainer" class="paywall-blur-box">
         <p id="modalArticleRest" style="font-family: Georgia, serif; font-size: 0.95rem; color: #374151; line-height: 1.7;"></p>
         
-        <!-- Paywall Curtain -->
         <div id="paywallCurtain" class="teaser-locked-curtain">
           <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🔒</div>
           <h4 style="font-size: 1.15rem; color: var(--ink); margin-bottom: 0.25rem;">Subscriber Exclusive Content</h4>
           <p style="font-size: 0.85rem; color: var(--muted); max-width: 380px; margin: 0 auto 1rem;">
-            You have read the preview sentence. To read the remainder of this article and view the photo gallery, please log in or subscribe.
+            You have read the preview sentence. To read the remainder of this article, please log in or subscribe.
           </p>
           <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
             <button class="plan-button" style="width: auto; padding: 0.5rem 1.25rem;" onclick="closeArticleViewer(); openLoginModal();">Log In to Read</button>
@@ -1046,7 +1199,7 @@
     </div>
   </div>
 
-  <!-- SUBSCRIBER LOGIN MODAL (WITH PERSISTENCE & HOUSEHOLD POLICY) -->
+  <!-- SUBSCRIBER LOGIN MODAL -->
   <div id="loginModal" class="modal-overlay">
     <div class="modal-box" style="max-width: 440px; text-align: center;">
       <h3 style="font-size: 1.35rem; color: var(--ink); margin-bottom: 0.35rem;">Subscriber Account Login</h3>
@@ -1064,7 +1217,6 @@
           <input type="password" value="demo1234" required style="width: 100%; padding: 0.65rem; border: 1px solid var(--border); border-radius: 4px;" />
         </div>
 
-        <!-- Remember Me Checkbox -->
         <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 2px;">
           <input type="checkbox" id="rememberMe" checked style="width: 16px; height: 16px; cursor: pointer;" />
           <label for="rememberMe" style="font-size: 0.82rem; color: #374151; cursor: pointer; font-weight: 500;">
@@ -1072,9 +1224,8 @@
           </label>
         </div>
 
-        <!-- Account Sharing Protection Notice -->
         <div class="device-policy-note">
-          🤝 <strong>Supporting Our Small-Town Newsrooms:</strong> Unlike national media corporations, our reporters live and work right here in your community. To ensure local reporting remains sustainable, accounts are intended for single households (up to 2 active devices). Excess simultaneous logins will automatically sign out older sessions.
+          🤝 <strong>Supporting Our Small-Town Newsrooms:</strong> Accounts are intended for single households (up to 2 active devices). Excess simultaneous logins will automatically sign out older sessions.
         </div>
 
         <button type="submit" class="plan-button" style="background: var(--ink); margin-top: 0.5rem;">Log In to Account</button>
@@ -1083,7 +1234,7 @@
     </div>
   </div>
 
-  <!-- CHECKOUT & ACCOUNT REGISTRATION MODAL -->
+  <!-- CHECKOUT MODAL -->
   <div id="checkoutModal" class="modal-overlay">
     <div class="modal-box" style="max-width: 500px;">
       <h3 style="font-size: 1.35rem; color: var(--ink); margin-bottom: 0.25rem;">Subscribe & Activate Account</h3>
@@ -1091,14 +1242,14 @@
       
       <form onsubmit="event.preventDefault(); simulateRegistration();" style="display: flex; flex-direction: column; gap: 0.75rem;">
         <div>
-          <label style="font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">1. Account Details (For Newsroom Records)</label>
+          <label style="font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">1. Account Details</label>
           <input type="text" id="regName" placeholder="Full Name" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 4px;" />
           <input type="email" id="regEmail" placeholder="Email Address (Used for your login & renewal notices)" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 6px;" />
           <input type="password" id="regPass" placeholder="Create Account Password" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 6px;" />
         </div>
 
         <div style="margin-top: 0.5rem;">
-          <label style="font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">2. Payment Information (Secure Stripe Checkout)</label>
+          <label style="font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">2. Payment Information (Stripe Checkout)</label>
           <input type="text" placeholder="Card Number •••• •••• •••• 4242" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 4px;" />
           <div style="display: flex; gap: 0.5rem; margin-top: 6px;">
             <input type="text" placeholder="MM/YY" required style="width: 50%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
@@ -1106,7 +1257,6 @@
           </div>
         </div>
 
-        <!-- Transparent Surcharge Line Item -->
         <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 4px; padding: 0.75rem; font-size: 0.85rem; margin-top: 0.5rem;">
           <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
             <span>Annual Subscription Rate:</span>
@@ -1120,11 +1270,6 @@
             <span>Total Charged:</span>
             <span id="summaryTotalPrice">$67.19</span>
           </div>
-        </div>
-
-        <!-- Household Note on Checkout -->
-        <div class="device-policy-note" style="margin-top: 0.5rem;">
-          🌱 <strong>Thank you for investing in honest local journalism.</strong> Subscriptions are tailored for single-household access (up to 2 active devices). Your browser will remember your login automatically.
         </div>
 
         <button type="submit" class="plan-button" style="background: var(--press-red); margin-top: 0.5rem;">Complete Subscription & Activate Account</button>
@@ -1143,22 +1288,26 @@
     </div>
   </div>
 
-  <!-- COMMUNITY SUBMISSION MODAL -->
+  <!-- COMMUNITY SUBMISSION / AD INQUIRY MODAL -->
   <div id="submitModal" class="modal-overlay">
     <div class="modal-box">
       <h3 id="submitModalTitle">Submit to Our Newsroom</h3>
-      <p style="color: var(--muted); font-size: 0.88rem; margin-bottom: 1rem;">Submissions are reviewed by our editors before publication.</p>
-      <form onsubmit="event.preventDefault(); alert('Submission received! (Demo preview)'); closeSubmitModal();" style="display: flex; flex-direction: column; gap: 0.75rem;">
-        <select required>
-          <option value="">Target Publication</option>
-          <option value="press">The Power County Press (American Falls)</option>
-          <option value="times">The Aberdeen Times (Aberdeen)</option>
-          <option value="both">Both Publications</option>
+      <p style="color: var(--muted); font-size: 0.88rem; margin-bottom: 1rem;">Submissions are reviewed by our editors and advertising team.</p>
+      <form onsubmit="event.preventDefault(); alert('Inquiry received! Our advertising and editorial desk will be in touch. (Demo preview)'); closeSubmitModal();" style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <select id="submitCategorySelect" required>
+          <option value="">Select Purpose</option>
+          <option value="biz-press">Power County Business Directory Listing</option>
+          <option value="biz-times">Aberdeen Business Directory Listing</option>
+          <option value="obit">Obituary Notice</option>
+          <option value="sports">Sports Score / Recap</option>
+          <option value="letter">Letter to the Editor</option>
+          <option value="tip">General News Tip</option>
         </select>
-        <input type="text" placeholder="Your Name or Organization" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
-        <input type="email" placeholder="Your Email Address" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
-        <textarea rows="4" placeholder="Enter details, obituary text, or tip summary..." required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;"></textarea>
-        <button type="submit" class="plan-button" style="background: var(--ink);">Submit for Review</button>
+        <input type="text" placeholder="Your Name or Business Name" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
+        <input type="tel" placeholder="Phone Number" style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
+        <input type="email" placeholder="Email Address" required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;" />
+        <textarea rows="4" placeholder="Enter business details, ad inquiry, or story details..." required style="padding: 0.6rem; border: 1px solid var(--border); border-radius: 4px;"></textarea>
+        <button type="submit" class="plan-button" style="background: var(--ink);">Submit Details</button>
         <button type="button" style="background: transparent; border: none; color: var(--muted); cursor: pointer; margin-top: 5px;" onclick="closeSubmitModal()">Cancel</button>
       </form>
     </div>
@@ -1202,7 +1351,7 @@
         date: "Sep 18, 2026",
         isPaid: false,
         teaser: "Canal flow reductions will begin across Power and Bingham counties on October 15th to facilitate scheduled canal bank maintenance and winter storage.",
-        rest: "Growers and canal ditch riders are instructed to conclude secondary water diversions prior to 5:00 PM on October 14th. Maintenance crews will begin inspecting headgates and concrete canal liners immediately.",
+        rest: "Growers and canal ditch riders are instructed to conclude secondary water diversions prior to 5:00 PM on October 14th.",
         keywords: "irrigation snake river water canal shutoff farming agriculture"
       },
       {
@@ -1278,7 +1427,7 @@
 
       if (!isPaid) {
         badge.innerText = 'Free Story';
-        badge.className = 'badge badge-both';
+        badge.className = 'badge badge-times';
         curtain.style.display = 'none';
         restText.style.display = 'block';
       } else if (isLoggedIn) {
@@ -1288,7 +1437,7 @@
         restText.style.display = 'block';
       } else {
         badge.innerText = 'Subscribers Only';
-        badge.className = 'badge badge-times';
+        badge.className = 'badge badge-press';
         curtain.style.display = 'block';
         restText.style.display = 'none';
       }
@@ -1321,7 +1470,7 @@
       document.getElementById('navLoginBtn').style.borderColor = '#86efac';
 
       closeLoginModal();
-      alert(`Welcome back! Logged in as ${email}.\n\n• Session saved: ${remember ? 'Remembered on this device' : 'Active for this visit only'}\n• All subscriber stories unlocked.`);
+      alert(`Welcome back! Logged in as ${email}.\n\n• Session: ${remember ? 'Remembered on this device' : 'Active for this visit only'}\n• All subscriber stories unlocked.`);
     }
 
     function simulateLogout() {
@@ -1357,15 +1506,15 @@
       document.getElementById('navLoginBtn').style.background = '#dcfce7';
       document.getElementById('navLoginBtn').style.borderColor = '#86efac';
 
-      alert(`Subscription confirmed!\n\n• Account created for: ${email}\n• Added to subscriber database\n• Single-household session active\n• You are now logged in with full access!`);
+      alert(`Subscription confirmed!\n\n• Account created for: ${email}\n• Added to subscriber database\n• Single-household session active\n• You are now logged in!`);
     }
 
     function filterDesk(desk) {
-      const cards = document.querySelectorAll('.article-card');
+      const pressSec = document.getElementById('pressSection');
+      const timesSec = document.getElementById('timesSection');
       const btnAll = document.getElementById('btnFilterAll');
       const btnPress = document.getElementById('btnFilterPress');
       const btnTimes = document.getElementById('btnFilterTimes');
-      const heading = document.getElementById('streamHeading');
 
       btnAll.className = 'filter-btn';
       btnPress.className = 'filter-btn';
@@ -1373,27 +1522,21 @@
 
       if (desk === 'press') {
         btnPress.className = 'filter-btn active-press';
-        heading.innerText = 'The Power County Press Coverage';
+        pressSec.style.display = 'block';
+        timesSec.style.display = 'none';
       } else if (desk === 'times') {
         btnTimes.className = 'filter-btn active-times';
-        heading.innerText = 'The Aberdeen Times Coverage';
+        pressSec.style.display = 'none';
+        timesSec.style.display = 'block';
       } else {
         btnAll.className = 'filter-btn active-all';
-        heading.innerText = 'All Community News Coverage';
+        pressSec.style.display = 'block';
+        timesSec.style.display = 'block';
       }
-
-      cards.forEach(card => {
-        const cardDesk = card.getAttribute('data-desk');
-        if (desk === 'all' || cardDesk === desk || cardDesk === 'both') {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
     }
 
     function openSubmissionForm(formType) {
-      document.getElementById('submitModalTitle').innerText = 'Submit: ' + formType;
+      document.getElementById('submitModalTitle').innerText = formType;
       document.getElementById('submitModal').style.display = 'flex';
     }
     function closeSubmitModal() {
